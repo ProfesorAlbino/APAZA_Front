@@ -1,22 +1,27 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue'
+import HomeView from './views/HomeView.vue'
 </script>
 
-<!-- <template>
+<template>
+
   <header>
     <Navbar />
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
   </header>
 
-  <RouterView />
-</template> -->
+  <body>
+    <nav>
+      <RouterLink to="/" />
+    </nav>
+  </body>
 
-<template>
-  <div class="bg-white-400 h-screen">
-    <Navbar />
-  </div>
+
+  <RouterView />
 </template>
+
+<style>
+body {
+  background-color: var(--background-color-3);
+}
+</style>

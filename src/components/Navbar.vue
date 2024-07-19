@@ -1,7 +1,5 @@
 <script>
-export default {
 
-}
 </script>
 
 <template>
@@ -58,6 +56,7 @@ export default {
 <style scoped>
 nav {
     background-color: var(--background-color);
+    font-family: var(--text-font-1);
 }
 
 img {

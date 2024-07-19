@@ -5,8 +5,14 @@
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
     --accent-color: #e74c3c;
+
     --background-color: #002161;
+    --background-color-2: #fc7b0b;
+    --background-color-3: #ffffff;
+
     --text-color-2: #2c3e50;
     --text-color-1: #ecf0f1;
     --text-hover-1: #fc7b0b;
+
+    --text-font-1: 'Prompt', sans-serif;
 }
