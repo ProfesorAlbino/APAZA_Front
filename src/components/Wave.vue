@@ -19,8 +19,8 @@ export default {
 
 <template>
     <section id="container">
-        <h1>{{ title }}</h1>
-        <p>{{ description }}</p>
+        <h1 class="text-6xl font-bold text-center">{{ title }}</h1>
+        <p class="text-2xl text-center mt-4">{{ description }}</p>
 
         <div class="custom-shape-divider-bottom-1721350035">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
@@ -36,13 +36,19 @@ export default {
 
 <style scoped>
 #container {
-    background-color: var(--background-color-3);
     padding: 20rem;
     position: relative;
     height: 200%;
     background-image: url('../assets/Fondo-pagina-principal.jpg');
     color: var(--text-color-1);
     font-family: var(--text-font-1);
+    z-index: -1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .custom-shape-divider-bottom-1721350035 {
