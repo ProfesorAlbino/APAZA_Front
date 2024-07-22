@@ -10,9 +10,15 @@
     --background-color-2: #fc7b0b;
     --background-color-3: #ffffff;
 
-    --text-color-2: #2c3e50;
+    --text-color-3: #000000;
+    --text-hover-3: #e74c3c;
+
+    --text-color-2: #1044ad;
+    --tex-hover-2: #3498db;
+
     --text-color-1: #ecf1ec;
     --text-hover-1: #fc7b0b;
 
     --text-font-1: 'Prompt', sans-serif;
+    --text-font-2: 'Prompt', Roboto;
 }
