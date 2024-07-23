@@ -84,6 +84,7 @@ nav {
     position: fixed;
     transition: background-color 0.8s ease;
     width: 100%;
+    z-index: 1000;
 }
 
 .transparent {
