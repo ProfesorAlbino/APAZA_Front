@@ -1,7 +1,7 @@
 <script setup>
 import wave from '../components/Wave.vue'
-import CardImageText from '../components/CardImageText.vue'
-import CardFullImage from '../components/CardFullImage.vue'
+import CardImageText from '../components/cards/CardImageText.vue'
+import CardFullImage from '../components/cards/CardFullImage.vue'
 </script>
 
 <template>
@@ -22,7 +22,7 @@ import CardFullImage from '../components/CardFullImage.vue'
                 relacionarse
                 con los demás, y pueden tener intereses y comportamientos repetitivos."
       url="src/assets/Fondo-pagina-principal.jpg" :order="false" data-aos="fade-left" data-aos-offset="300"
-      data-aos-easing="ease-in-sine" class="mb-20" />
+      data-aos-easing="ease-in-sine" class="mb-5" />
   </section>
 
   <section id="sectionCards" class="a">
@@ -38,18 +38,53 @@ import CardFullImage from '../components/CardFullImage.vue'
 
     <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-40 ">
       <div class="col-span-1">
-        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg" data-aos="fade-up"
-          data-aos-duration="3000" />
+        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+          link="#" data-aos="fade-up" data-aos-duration="3000" />
       </div>
       <div class="col-span-1">
         <CardFullImage title="Personas con Autismo" url="src/assets/Fondo-pagina-principal.jpg" data-aos="fade-up"
+          descriptionCard="En esta seccion se muestra informacion sobre el autismo y como se puede ayudar a las personas con autismo"
+          link="#" data-aos-duration="3000" />
+      </div>
+      <div class="col-span-1">
+        <CardFullImage title="Solicita Informacion" url="src/assets/Fondo-pagina-principal.jpg"
+          descriptionCard="En esta seccion puedes comunicarte con nosotros para realizar sus consultas" link="#"
+          data-aos="fade-up" data-aos-duration="3000" />
+      </div>
+    </div>
+
+    <h1 id="title" class="text-6xl font-bold text-center mt-20">Servicios y Eventos</h1>
+
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-40 ">
+      <div class="col-span-1">
+        <CardFullImage title="Nuestro Equipo" url="src/assets/Fondo-pagina-principal.jpg"
+          descriptionCard="Aqui encontraras toda la informacion sobre nuestro equipo de trabajo" link="#"
+          data-aos="fade-up" data-aos-duration="3000" />
+      </div>
+      <div class="col-span-1">
+        <CardFullImage title="Colaboradores" url="src/assets/Fondo-pagina-principal.jpg" data-aos="fade-up"
+          descriptionCard="Aqui encontraras toda la informacion sobre nuestros colaboradores" link="#"
           data-aos-duration="3000" />
       </div>
       <div class="col-span-1">
-        <CardFullImage title="Solicita Informacion" url="src/assets/Fondo-pagina-principal.jpg" data-aos="fade-up"
-          data-aos-duration="3000" />
+        <CardFullImage title="Actividades y Eventos" url="src/assets/Fondo-pagina-principal.jpg"
+          descriptionCard="En esta seccion puedes informarte sobre proximos eventos y actividades" link="#"
+          data-aos="fade-up" data-aos-duration="3000" />
       </div>
     </div>
+
+    <div class="custom-shape-divider-bottom-1721776550">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h1 class="text-6xl font-bold text-center mt-20">"Ante Todo Persona"</h1>
   </section>
 
 </template>
@@ -93,5 +128,26 @@ import CardFullImage from '../components/CardFullImage.vue'
 
 .custom-shape-divider-top-1721696071 .shape-fill {
   fill: var(--background-color-3);
+}
+
+.custom-shape-divider-bottom-1721776550 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1721776550 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 131px;
+}
+
+.custom-shape-divider-bottom-1721776550 .shape-fill {
+  fill: #FFFFFF;
 }
 </style>

@@ -1,27 +1,30 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from './components/Navbar.vue'
-import HomeView from './views/HomeView.vue'
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
+  <div class="flex flex-col min-h-screen">
+    <header>
+      <Navbar />
+    </header>
 
-  <header>
-    <Navbar />
-  </header>
+    <main class="flex-grow">
+      <nav>
+        <RouterLink to="/" />
+      </nav>
+      <RouterView />
+    </main>
 
-  <body>
-    <nav>
-      <RouterLink to="/" />
-    </nav>
-  </body>
-
-
-  <RouterView />
+    <footer>
+      <Footer />
+    </footer>
+  </div>
 </template>
 
 <style>
 body {
-  background-color: var(--background-color-3);
+  @apply bg-[var(--background-color-3)];
 }
 </style>
