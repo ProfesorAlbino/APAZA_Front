@@ -1,24 +1,22 @@
-<script>
-export default {
-    props: {
-        url: {
-            type: String,
-            required: true
-        },
-        title: {
-            type: String,
-            required: true
-        },
-        description: {
-            type: String,
-            required: true
-        }
+<script setup>
+const props = defineProps({
+    url: {
+        type: String,
+        required: true
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
     }
-};
+});
 </script>
 
 <template>
-    <section id="container">
+    <section id="container" :style="{ backgroundImage: `url(${props.url})` }">
         <h1 class="text-6xl font-bold text-center">{{ title }}</h1>
         <p class="text-2xl text-center mt-4">{{ description }}</p>
 
@@ -38,8 +36,7 @@ export default {
 #container {
     padding: 20rem;
     position: relative;
-    height: 200%;
-    background-image: url('../assets/Fondo-pagina-principal.jpg');
+    height: 800px;
     color: var(--text-color-1);
     font-family: var(--text-font-1);
     z-index: -1;

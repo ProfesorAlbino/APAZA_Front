@@ -6,8 +6,7 @@ import CardFullImage from '../components/cards/CardFullImage.vue'
 
 <template>
   <section>
-    <wave class="mb-20" url="../assets/Fondo-pagina-principal.jpg" title="Pagina principal APAZA"
-      description="Prueba" />
+    <wave class="mb-20" url="src/assets/APAZA_FONDO.jpg" title="" description="" />
 
     <CardImageText title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
                 mundo y con
@@ -34,7 +33,8 @@ import CardFullImage from '../components/cards/CardFullImage.vue'
       </svg>
     </div>
 
-    <h1 id="title" class="text-6xl font-bold text-center">Informacion sobre el autismo</h1>
+    <h1 id="title" class="text-6xl font-bold text-center" data-aos="fade-up" data-aos-duration="3000">Informacion sobre
+      el autismo</h1>
 
     <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-40 ">
       <div class="col-span-1">
@@ -54,7 +54,8 @@ import CardFullImage from '../components/cards/CardFullImage.vue'
       </div>
     </div>
 
-    <h1 id="title" class="text-6xl font-bold text-center mt-20">Servicios y Eventos</h1>
+    <h1 id="title" class="text-6xl font-bold text-center mt-20" data-aos="fade-up" data-aos-duration="3000">Servicios y
+      Eventos</h1>
 
     <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-40 ">
       <div class="col-span-1">
