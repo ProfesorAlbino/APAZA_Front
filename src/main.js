@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import './styles/General.css'
 import './style.css'
+import 'bootstrap/dist/css/bootstrap.css'
 
 import 'aos/dist/aos.css'
 import AOS from "aos"
