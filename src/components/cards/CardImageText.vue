@@ -15,8 +15,6 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    // True = izquierda imagen, derecha texto
-    // False = izquierda texto, derecha imagen
     order: {
         type: Boolean,
         required: true,

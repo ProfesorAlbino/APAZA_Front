@@ -1,10 +1,35 @@
 <script setup>
 import wave from '../components/Wave.vue'
-import CardImageText from '../components/cards/CardImageText.vue'
+import CardImageRight from '../components/cards/CardImageRight.vue'
+import CardImageLeft from '../components/cards/CardImageLeft.vue'
 import CardFullImage from '../components/cards/CardFullImage.vue'
 </script>
 
 <template>
+  <section>
+    <wave class="mb-20" url="src/assets/APAZA_FONDO.jpg" title="" description="" />
+  </section>
+
+  <section>
+    <CardImageRight title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
+              mundo y con
+              las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y
+              relacionarse
+              con los demás, y pueden tener intereses y comportamientos repetitivos."
+      url="src/assets/Fondo-pagina-principal.jpg" :order="false" />
+
+    <CardImageLeft title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
+              mundo y con
+              las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y
+              relacionarse
+              con los demás, y pueden tener intereses y comportamientos repetitivos."
+      url="src/assets/Fondo-pagina-principal.jpg" :order="false" />
+  </section>
+</template>
+
+
+
+<!-- <template>
   <section>
     <wave class="mb-20" url="src/assets/APAZA_FONDO.jpg" title="" description="" />
 
@@ -13,7 +38,7 @@ import CardFullImage from '../components/cards/CardFullImage.vue'
                 las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y
                 relacionarse
                 con los demás, y pueden tener intereses y comportamientos repetitivos."
-      url="src/assets/Fondo-pagina-principal.jpg" :order="true" />
+      url="src/assets/Fondo-pagina-principal.jpg" :order="false" />
 
     <CardImageText title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
                 mundo y con
@@ -89,7 +114,7 @@ import CardFullImage from '../components/cards/CardFullImage.vue'
   <section>
     <h1 class="text-6xl font-bold text-center mt-20">"Ante Todo Persona"</h1>
   </section>
-</template>
+</template> -->
 
 <style scoped>
 #sectionCards {

@@ -1,66 +1,49 @@
 <template>
-    <div id="app">
-        <nav ref="navbar" :class="navbarClass">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="../assets/apaza_logo.png" class="h-8" alt="Flowbite Logo" />
-                    <span id='title'
-                        class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">APAZA</span>
-                </a>
-                <button data-collapse-toggle="navbar-solid-bg" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="navbar-solid-bg" aria-expanded="false">
-                    <span id="description" class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 17 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 1h15M1 7h15M1 13h15" />
-                    </svg>
-                </button>
-
-                <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
-                    <ul
-                        class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
-                                aria-current="page">Inicio</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Junta</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Colaboradores</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Eventos</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Iniciar
-                                Sesion</a>
-                        </li>
-                    </ul>
-                </div>
+    <nav ref="navbar" :class="['navbar', 'navbar-expand-lg', 'fixed-top', navbarClass]">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="../assets/apaza_logo.png" alt="APAZA Logo" width="60" height="60" class="me-2 navbar-logo">
+                <span id="title" class="fs-4 fw-semibold">APAZA</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span id="description" class="visually-hidden">Open main menu</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Junta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Colaboradores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Iniciar Sesion</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 </template>
 
 <script>
 export default {
     data() {
         return {
-            navbarClass: 'transparent',
+            navbarClass: 'navbar-transparent',
         };
     },
     mounted() {
         window.addEventListener('scroll', this.handleScroll);
     },
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
@@ -68,9 +51,9 @@ export default {
             const navbar = this.$refs.navbar;
             const navbarHeight = navbar.offsetHeight;
             if (window.scrollY >= navbarHeight) {
-                this.navbarClass = 'solid';
+                this.navbarClass = 'navbar-solid';
             } else {
-                this.navbarClass = 'transparent';
+                this.navbarClass = 'navbar-transparent';
             }
         },
     },
@@ -78,51 +61,33 @@ export default {
 </script>
 
 <style scoped>
-nav {
-    background-color: var(--background-color);
+.navbar {
     font-family: var(--text-font-1);
-    position: fixed;
     transition: background-color 0.8s ease;
-    width: 100%;
-    z-index: 1000;
 }
 
-.transparent {
+.navbar-transparent {
     background-color: rgba(255, 255, 255, 0);
 }
 
-.solid {
+.navbar-solid {
     background-color: var(--background-color);
 }
 
-img {
-    width: 60px;
-    height: 60px;
+.navbar-logo {
     transition: transform 0.3s ease;
 }
 
-img:hover {
+.navbar-logo:hover {
     transform: scale(1.5);
 }
 
-a {
-    color: var(--text-color-1);
+.nav-link {
+    color: var(--text-color-1) !important;
 }
 
-a:hover {
-    color: var(--text-hover-1);
-}
-
-button {
-    background-color: var(--background-color);
-}
-
-span {
-    color: var(--text-color-1);
-}
-
-span:hover {
-    color: var(--text-hover-1);
+.nav-link:hover {
+    color: var(--text-hover-1) !important;
 }
 
 #title {
@@ -131,5 +96,22 @@ span:hover {
 
 #description {
     color: var(--text-color-1);
+}
+
+/* Estilos para modo oscuro si es necesario */
+@media (prefers-color-scheme: dark) {
+    .navbar-solid {
+        background-color: var(--background-color);
+    }
+
+    .nav-link,
+    #title,
+    #description {
+        color: var(--text-color-1-dark, #fff) !important;
+    }
+
+    .nav-link:hover {
+        color: var(--text-hover-1) !important;
+    }
 }
 </style>

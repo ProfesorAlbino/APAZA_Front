@@ -22,3 +22,8 @@
     --text-font-1: 'Prompt', sans-serif;
     --text-font-2: 'Prompt', Roboto;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+}

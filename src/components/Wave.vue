@@ -15,10 +15,20 @@ const props = defineProps({
 });
 </script>
 
+
+
 <template>
-    <section id="container" :style="{ backgroundImage: `url(${props.url})` }">
-        <h1 class="text-6xl font-bold text-center">{{ title }}</h1>
-        <p class="text-2xl text-center mt-4">{{ description }}</p>
+    <section
+        class="vh-100 d-flex align-items-center justify-content-center text-center text-white position-relative overflow-hidden"
+        :style="{ backgroundImage: `url(${props.url})`, backgroundPosition: 'center' }">
+        <div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h1 class="display-4 mb-3">{{ title }}</h1>
+                    <p class="lead">{{ description }}</p>
+                </div>
+            </div>
+        </div>
 
         <div class="custom-shape-divider-bottom-1721350035">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
@@ -28,15 +38,16 @@ const props = defineProps({
                     class="shape-fill"></path>
             </svg>
         </div>
-
     </section>
+
+
 </template>
 
 <style scoped>
 #container {
     padding: 20rem;
     position: relative;
-    height: 800px;
+    height: 500px;
     color: var(--text-color-1);
     font-family: var(--text-font-1);
     z-index: -1;

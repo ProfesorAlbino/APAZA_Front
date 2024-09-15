@@ -10,7 +10,7 @@ import Footer from './components/Footer.vue'
       <Navbar />
     </header>
 
-    <main class="flex-grow">
+    <main class="container-fluid p-0">
       <nav>
         <RouterLink to="/" />
       </nav>
