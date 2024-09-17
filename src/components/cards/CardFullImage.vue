@@ -20,82 +20,90 @@ const props = defineProps({
 </script>
 
 <template>
-    <div id="card"
-        class="relative grid h-80 w-full max-w-lg overflow-hidden rounded-xl bg-white text-center text-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <article class="card__article">
-            <div :style="{ backgroundImage: `url(${props.url})` }"
-                class="absolute inset-0 h-full w-full bg-cover bg-center">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="image">
+                    <img :src="url" :alt="title">
+                    <div id="container_text">
+                        <h2>{{ title }}</h2>
+                        <p>{{ descriptionCard }}</p>
+                        <a :href="link" class="btn btn-light mt-2">Más información</a>
+                    </div>
+                </div>
             </div>
-
-            <div class="relative p-6">
-                <h2 class="mb-6 text-4xl font-medium text-white">{{ title }}</h2>
-            </div>
-
-            <div
-                class="card__data absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white p-6 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 ease-in-out">
-                <span class="block text-gray-600 mb-2">{{ descriptionCard }}</span>
-                <a :href="link" class="text-blue-500 hover:text-blue-600 transition-colors">Mas informacion</a>
-            </div>
-        </article>
+        </div>
     </div>
 </template>
 
 <style scoped>
-#card {
-    margin-inline: 1.5rem;
-}
-
-.card__article {
-    position: relative;
+.container {
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.card__article:hover .card__data {
-    opacity: 1;
-    bottom: 2rem;
-    transition: bottom 0.3s ease-in-out, opacity 0.3s ease-in-out;
+.image {
+    overflow: hidden;
+    height: 300px;
+    width: 300px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 25px 1px rgba(0, 0, 0, .3);
+    transition: .5s;
+    background-color: #000;
+    /* Fondo oscuro para el efecto de gradiente */
 }
 
-.card__data {
-    bottom: -6rem;
+.image::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    transition: bottom 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    width: 500px;
+    height: 500px;
+    transform: translate(-140%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Fondo semi-transparente para el texto */
+    opacity: 0.8;
+    border-radius: 50%;
+    transition: .8s;
 }
 
-@media screen and (max-width: 340px) {
-    .container {
-        margin-inline: 1rem;
-    }
-
-    .card__data {
-        width: 250px;
-        padding: 1rem;
-    }
+.image:hover::after {
+    transform: translate(-50%, -50%);
 }
 
-/* For medium devices */
-@media screen and (min-width: 768px) {
-    .card__container {
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 1.5rem;
-    }
+.image:hover img {
+    transform: translate(-50%, -50%) scale(1.3) rotate(20deg);
 }
 
-/* For large devices */
-@media screen and (min-width: 1120px) {
-    .container {
-        height: 100vh;
-    }
+img {
+    position: absolute;
+    height: 110%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .8s;
+}
 
-    .card__container {
-        grid-template-columns: repeat(3, 1fr);
-    }
+#container_text {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-200%, -50%);
+    color: #fff;
+    text-align: center;
+    transition: .8s;
+    transition-timing-function: ease-in;
+    width: 80%;
+}
 
-    .card__data {
-        width: 316px;
-        padding-inline: 2.5rem;
-    }
+.image:hover #container_text {
+    transform: translate(-50%, -50%);
+    transition-timing-function: ease;
 }
 </style>

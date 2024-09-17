@@ -25,29 +25,6 @@ import CardFullImage from '../components/cards/CardFullImage.vue'
               con los demás, y pueden tener intereses y comportamientos repetitivos."
       url="src/assets/Fondo-pagina-principal.jpg" :order="false" />
   </section>
-</template>
-
-
-
-<!-- <template>
-  <section>
-    <wave class="mb-20" url="src/assets/APAZA_FONDO.jpg" title="" description="" />
-
-    <CardImageText title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
-                mundo y con
-                las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y
-                relacionarse
-                con los demás, y pueden tener intereses y comportamientos repetitivos."
-      url="src/assets/Fondo-pagina-principal.jpg" :order="false" />
-
-    <CardImageText title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
-                mundo y con
-                las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y
-                relacionarse
-                con los demás, y pueden tener intereses y comportamientos repetitivos."
-      url="src/assets/Fondo-pagina-principal.jpg" :order="false" data-aos="fade-left" data-aos-offset="300"
-      data-aos-easing="ease-in-sine" class="mb-5" />
-  </section>
 
   <section id="sectionCards" class="a">
 
@@ -59,45 +36,47 @@ import CardFullImage from '../components/cards/CardFullImage.vue'
       </svg>
     </div>
 
-    <h1 id="title" class="text-6xl font-bold text-center" data-aos="fade-up" data-aos-duration="3000">Informacion sobre
-      el autismo</h1>
+    <h1 id="title" class="text-center" data-aos="fade-up" data-aos-duration="3000">Informacion sobre el autismo</h1>
 
-    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-40 ">
-      <div class="col-span-1">
+    <div class="row mt-5">
+      <div class="col-4">
         <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
-          link="#" data-aos="fade-up" data-aos-duration="3000" />
+          link="#" />
       </div>
-      <div class="col-span-1">
-        <CardFullImage title="Personas con Autismo" url="src/assets/Fondo-pagina-principal.jpg" data-aos="fade-up"
-          descriptionCard="En esta seccion se muestra informacion sobre el autismo y como se puede ayudar a las personas con autismo"
-          link="#" data-aos-duration="3000" />
+
+      <div class="col-4">
+        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+          link="#" />
       </div>
-      <div class="col-span-1">
-        <CardFullImage title="Solicita Informacion" url="src/assets/Fondo-pagina-principal.jpg"
-          descriptionCard="En esta seccion puedes comunicarte con nosotros para realizar sus consultas" link="#"
-          data-aos="fade-up" data-aos-duration="3000" />
+
+      <div class="col-4">
+        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+          link="#" />
       </div>
     </div>
 
-    <h1 id="title" class="text-6xl font-bold text-center mt-20" data-aos="fade-up" data-aos-duration="3000">Servicios y
-      Eventos</h1>
+    <h1 id="title" class="text-center mt-5">Servicios y Eventos </h1>
 
-    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-40 ">
-      <div class="col-span-1">
-        <CardFullImage title="Nuestro Equipo" url="src/assets/Fondo-pagina-principal.jpg"
-          descriptionCard="Aqui encontraras toda la informacion sobre nuestro equipo de trabajo" link="#"
-          data-aos="fade-up" data-aos-duration="3000" />
+    <div class="row mt-5">
+      <div class="col-4">
+        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+          link="#" />
       </div>
-      <div class="col-span-1">
-        <CardFullImage title="Colaboradores" url="src/assets/Fondo-pagina-principal.jpg" data-aos="fade-up"
-          descriptionCard="Aqui encontraras toda la informacion sobre nuestros colaboradores" link="#"
-          data-aos-duration="3000" />
+
+      <div class="col-4">
+        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+          link="#" />
       </div>
-      <div class="col-span-1">
-        <CardFullImage title="Actividades y Eventos" url="src/assets/Fondo-pagina-principal.jpg"
-          descriptionCard="En esta seccion puedes informarte sobre proximos eventos y actividades" link="#"
-          data-aos="fade-up" data-aos-duration="3000" />
+
+      <div class="col-4">
+        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+          link="#" />
       </div>
     </div>
 
@@ -108,13 +87,9 @@ import CardFullImage from '../components/cards/CardFullImage.vue'
           class="shape-fill"></path>
       </svg>
     </div>
-
   </section>
 
-  <section>
-    <h1 class="text-6xl font-bold text-center mt-20">"Ante Todo Persona"</h1>
-  </section>
-</template> -->
+</template>
 
 <style scoped>
 #sectionCards {
