@@ -2,12 +2,32 @@
 import wave from '../components/Wave.vue'
 import CardImageText from '../components/cards/CardImageText.vue'
 import CardFullImage from '../components/cards/CardFullImage.vue'
+import { ref, onMounted } from 'vue';
+import { getEvents } from '@/services/EventService';
+
+const events = ref(null);
+
+const getEvent = async () => {
+  try {
+    const data = await getEvents(); // Obtenemos los eventos
+    console.log(data);
+    events.value = data; // Actualizamos el valor de la referencia
+  } catch (error) {
+    console.error("Error fetching events:", error);
+  }
+};
+
+// Similar al useEffect en React, se ejecuta cuando el componente se monta
+onMounted(() => {
+  getEvent();
+});
+
+
 </script>
 
 <template>
   <section>
     <wave class="mb-20" url="src/assets/APAZA_FONDO.jpg" title="" description="" />
-
     <CardImageText title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
                 mundo y con
                 las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y
