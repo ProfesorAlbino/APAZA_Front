@@ -1,4 +1,4 @@
-const DEV_MODE = false;
+const DEV_MODE = true;
 const LOCAL_API_URL = "http://localhost:3000";//<-- EN MI PC NO SIRVE EL LOCALHOST
 const API_URL = "https://apaza-api.onrender.com";
 

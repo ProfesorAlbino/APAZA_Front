@@ -2,7 +2,8 @@
 import wave from '../components/Wave.vue'
 import CardImageText from '../components/cards/CardImageText.vue'
 import CardFullImage from '../components/cards/CardFullImage.vue'
-import { ref, onMounted } from 'vue';
+/*import { ref, onMounted } from 'vue';
+
 import { getEvents } from '@/services/EventService';
 
 const events = ref(null);
@@ -20,7 +21,7 @@ const getEvent = async () => {
 // Similar al useEffect en React, se ejecuta cuando el componente se monta
 onMounted(() => {
   getEvent();
-});
+});*/
 
 
 </script>

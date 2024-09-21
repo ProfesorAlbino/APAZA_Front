@@ -2,7 +2,7 @@
     <div id="app">
         <nav ref="navbar" :class="navbarClass">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
                     <img src="../assets/apaza_logo.png" class="h-8" alt="Flowbite Logo" />
                     <span id='title'
                         class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">APAZA</span>
@@ -22,7 +22,7 @@
                     <ul
                         class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
                         <li>
-                            <a href="#"
+                            <a href="/"
                                 class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent"
                                 aria-current="page">Inicio</a>
                         </li>
@@ -39,7 +39,7 @@
                                 class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Eventos</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="/login"
                                 class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Iniciar
                                 Sesion</a>
                         </li>
@@ -58,6 +58,9 @@ export default {
         };
     },
     mounted() {
+        if (window.location.pathname === '/login') {
+            this.navbarClass = 'solid';
+        }
         window.addEventListener('scroll', this.handleScroll);
     },
     beforeDestroy() {
@@ -71,6 +74,10 @@ export default {
                 this.navbarClass = 'solid';
             } else {
                 this.navbarClass = 'transparent';
+            }
+
+            if (window.location.pathname === '/login') {
+                this.navbarClass = 'solid';
             }
         },
     },
