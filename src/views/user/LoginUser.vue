@@ -25,47 +25,50 @@ const initComponent = () => {
 <template>
     <div class="center">
         <div class="container-login" id="container">
-            <div class="form-container sign-up-container">
+            <div class="form-container sign-up-container form-floating">
                 <form action="#">
-                    <h1>Create Account</h1>
-                    <div class="social-container">
-                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    <h1>Crear cuenta</h1>
+                    <div class="form-floating">
+                        <input class="form-control" id="nameRegister" type="text" placeholder="Nombre" />
+                        <label for="nameRegister">Nombre</label>
                     </div>
-                    <span>or use your email for registration</span>
-                    <input type="text" placeholder="Name" />
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <button>Sign Up</button>
+                    <div class="form-floating">
+                        <input class="form-control" id="emailRegister" type="email" placeholder="Correo electrónico" />
+                        <label for="emailRegister">Correo electrónico</label>
+                    </div>
+                    <div class="form-floating">
+                        <input class="form-control" id="passRegister" type="password" placeholder="Contraseña" />
+                        <label for="passRegister">Contraseña</label>
+                    </div>
+                    <button>Registrarse</button>
                 </form>
             </div>
             <div class="form-container sign-in-container">
                 <form action="#">
-                    <h1>Sign in</h1>
-                    <div class="social-container">
-                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    <h1>Iniciar Sesión</h1>
+                    <div class="form-floating">
+                        <input class="form-control" id="emailLogin" type="email" placeholder="Correo electrónico" />
+                        <label for="emailLogin">Correo electrónico</label>
                     </div>
-                    <span>or use your account</span>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <a href="#">Forgot your password?</a>
-                    <button>Sign In</button>
+                    <div class="form-floating">
+                        <input class="form-control" id="passLogin" type="password" placeholder="Contraseña" />
+                        <label for="passLogin">Contraseña</label>
+                    </div>
+                    <a href="#">Olvidó su contraseña?</a>
+                    <button>Iniciar Sesión</button>
                 </form>
             </div>
             <div class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">
-                        <h1>Welcome Back!</h1>
-                        <p>To keep connected with us please login with your personal info</p>
-                        <button class="ghost" id="signIn">Sign In</button>
+                        <h1>Hola!</h1>
+                        <p>Únetenos, así nos podrás apoyar en nuestras actividades y mucho más</p>
+                        <button class="ghost" id="signIn">Iniciar Sesión</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <h1>Hello, Friend!</h1>
-                        <p>Enter your personal details and start journey with us</p>
-                        <button class="ghost" id="signUp">Sign Up</button>
+                        <h1>Bienvenido de vuelta!</h1>
+                        <p>Inicia sesión y obtén mucha información sobre el autismo</p>
+                        <button class="ghost" id="signUp">Registrarse</button>
                     </div>
                 </div>
             </div>
@@ -79,21 +82,13 @@ const initComponent = () => {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    color: var(--text-color-3);
-}
-
 .center {
-    /* background: var(--primary-color); */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100vh;
     margin: -20px 0 50px;
-    
 }
 
 h1 {
@@ -130,8 +125,8 @@ button {
     /* border: 1px solid #FF4B2B;
     background-color: #FF4B2B; 
     color: #FFFFFF;*/
-    border: 1px solid var(--accent-color);
-    background-color: var(--text-hover-3);
+    border: 1px solid var(--primary-color);
+    background-color: var(--background-color);
     color: var(--text-color-1);
     font-size: 12px;
     font-weight: bold;
@@ -157,7 +152,7 @@ button.ghost {
 
 form {
     /* background-color: #FFFFFF; */
-    background-color: var(--background-color-1);
+    background-color: var(--background-color-3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -178,13 +173,13 @@ input {
 
 .container-login {
     /* background-color: #fff; */
-    background-color: var(--background-color-1);
+    background-color: var(--background-color-3);
     border-radius: 10px;
     /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
         0 10px 10px rgba(0, 0, 0, 0.22); */
-    box-shadow: 0 14px 28px var(--background-color) 0 10px 10px var(--background-color);
+    box-shadow: 0 14px 28px var(--background-color) 0 10px 10px var(--primary-color);
     position: relative;
-    border: 1px solid var(--background-color-2);
+    border: 1px solid var(--background-color);
     overflow: hidden;
     width: 768px;
     max-width: 100%;
@@ -206,6 +201,7 @@ input {
 
 .container-login.right-panel-active .sign-in-container {
     transform: translateX(100%);
+    opacity: 0;
 }
 
 .sign-up-container {
@@ -257,9 +253,10 @@ input {
     background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
     background: linear-gradient(to right, #FF4B2B, #FF416C);
     */
-    background: var(--background-color-2);
-    background: -webkit-linear-gradient(to right, var(--accent-color), var(--background-color-2));
-    background: linear-gradient(to right, var(--accent-color), var(--background-color-2));
+    background: var(--background-color);
+    background: -webkit-linear-gradient(to right, var(--primary-color), var(--background-color));
+    background: linear-gradient(to right, var(--primary-color), var(--background-color));
+    /* <-- la combinación de colores de izq a der del panel */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;

@@ -1,7 +1,7 @@
 <template>
     <nav ref="navbar" :class="['navbar', 'navbar-expand-lg', 'fixed-top', navbarClass]">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="/">
                 <img src="../assets/apaza_logo.png" alt="APAZA Logo" width="60" height="60" class="me-2 navbar-logo">
                 <span id="title" class="fs-4 fw-semibold">APAZA</span>
             </a>
@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Junta</a>
@@ -25,7 +25,7 @@
                         <a class="nav-link" href="#">Eventos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Iniciar Sesion</a>
+                        <a class="nav-link" href="/login">Iniciar Sesión</a>
                     </li>
                 </ul>
             </div>
@@ -42,7 +42,7 @@ export default {
     },
     mounted() {
         if (window.location.pathname === '/login') {
-            this.navbarClass = 'solid';
+            this.navbarClass = 'navbar-solid';
         }
         window.addEventListener('scroll', this.handleScroll);
     },
