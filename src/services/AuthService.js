@@ -1,10 +1,23 @@
 import axios from "axios";
 import { getConfig } from "@/config/BasicConfig";
 
-const API_URL = `${getConfig().URL}/auth`;
+const API_URL = `${getConfig().URL}/user`;
 
-function login(credentials) {
-    return axios.post(`${API_URL}/login`, credentials);
+const defaultHeaders = {
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    withCredentials: false,
+    responseType: 'json'
+};
+
+function register(user) {
+    return axios.post(`${API_URL}/`, user, defaultHeaders);
 }
 
-export { login };
+function login(user) {
+    return axios.post(`${API_URL}/login`, user, defaultHeaders);
+}
+
+export { login, register };

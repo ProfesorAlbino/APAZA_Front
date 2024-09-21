@@ -1,12 +1,51 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+import { login, register } from '@/services/AuthService';
+import { getEvents } from '@/services/EventService';
+
+const userLogin = ref({
+    name: '',
+    email: '',
+    password: ''
+});
 
 onMounted(() => {
     initComponent();
+    getEvents().then(response => {
+        console.log(response);
+    }).catch(error => {
+        console.error(error);
+    });
 });
 
+async function loginEvent() {
+    console.log(userLogin.value);
+    const userForLogin = {
+        email: userLogin.value.email,
+        password: userLogin.value.password
+    };
+    login(userForLogin)
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
 
-const initComponent = () => {
+async function registerEvent() {
+    console.log(userLogin.value);
+
+    register(userLogin.value)
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
+
+function initComponent() {
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
     const container = document.getElementById('container');
@@ -25,39 +64,47 @@ const initComponent = () => {
 <template>
     <div class="center">
         <div class="container-login" id="container">
+            <!-- FORM REGISTER -->
             <div class="form-container sign-up-container form-floating">
-                <form action="#">
+                <div class="form">
                     <h1>Crear cuenta</h1>
                     <div class="form-floating">
-                        <input class="form-control" id="nameRegister" type="text" placeholder="Nombre" />
+                        <input class="form-control" id="nameRegister" type="text" placeholder="Nombre"
+                            v-model="userLogin.nameUser" />
                         <label for="nameRegister">Nombre</label>
                     </div>
                     <div class="form-floating">
-                        <input class="form-control" id="emailRegister" type="email" placeholder="Correo electrónico" />
+                        <input class="form-control" id="emailRegister" type="email" placeholder="Correo electrónico"
+                            v-model="userLogin.email" />
                         <label for="emailRegister">Correo electrónico</label>
                     </div>
                     <div class="form-floating">
-                        <input class="form-control" id="passRegister" type="password" placeholder="Contraseña" />
+                        <input class="form-control" id="passRegister" type="password" placeholder="Contraseña"
+                            v-model="userLogin.password" />
                         <label for="passRegister">Contraseña</label>
                     </div>
-                    <button>Registrarse</button>
-                </form>
+                    <button @click="registerEvent()">Registrarse</button>
+                </div>
             </div>
+            <!-- FORM LOGIN -->
             <div class="form-container sign-in-container">
-                <form action="#">
+                <div class="form">
                     <h1>Iniciar Sesión</h1>
                     <div class="form-floating">
-                        <input class="form-control" id="emailLogin" type="email" placeholder="Correo electrónico" />
+                        <input class="form-control" id="emailLogin" type="email" placeholder="Correo electrónico"
+                            v-model="userLogin.email" />
                         <label for="emailLogin">Correo electrónico</label>
                     </div>
                     <div class="form-floating">
-                        <input class="form-control" id="passLogin" type="password" placeholder="Contraseña" />
+                        <input class="form-control" id="passLogin" type="password" placeholder="Contraseña"
+                            v-model="userLogin.password" />
                         <label for="passLogin">Contraseña</label>
                     </div>
                     <a href="#">Olvidó su contraseña?</a>
-                    <button>Iniciar Sesión</button>
-                </form>
+                    <button @click="loginEvent()">Iniciar Sesión</button>
+                </div>
             </div>
+            <!-- PANELES CON MENSAJES -->
             <div class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">
@@ -150,7 +197,7 @@ button.ghost {
     border-color: var(--text-color-1);
 }
 
-form {
+.form {
     /* background-color: #FFFFFF; */
     background-color: var(--background-color-3);
     display: flex;
