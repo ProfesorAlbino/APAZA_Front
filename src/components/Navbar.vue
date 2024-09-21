@@ -60,7 +60,7 @@ export default {
             }
 
             if (window.location.pathname === '/login') {
-                this.navbarClass = 'solid';
+                this.navbarClass = 'navbar-solid';
             }
         },
     },
