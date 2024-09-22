@@ -1,17 +1,24 @@
 import { fileURLToPath, URL } from 'node:url'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
-//import basicSsl from '@vitejs/plugin-basic-ssl'
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    vue()
-    //basicSsl()
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+export default defineConfig(({ mode }) => {
+  // Cargar variables de entorno
+  // eslint-disable-next-line no-undef
+  const env = loadEnv(mode, process.cwd(), '')
+
+  return {
+    plugins: [vue()],
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url))
+      }
+    },
+    server: {
+      port: env.PORT || 3000, // Usa el puerto de la variable de entorno o 3000 como fallback
+    },
+    preview: {
+      port: env.PORT || 8080, // Configura el puerto para 'vite preview' en producción
     }
   }
 })
