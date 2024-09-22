@@ -25,7 +25,7 @@
                         <a class="nav-link" href="#">Eventos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">Iniciar Sesión</a>
+                        <a class="nav-link" @click="navigateLoginOrLogout">{{ logOrOutText }}</a>
                     </li>
                 </ul>
             </div>
@@ -34,13 +34,17 @@
 </template>
 
 <script>
+import { getCookie, removeCookie } from '@/config/CookiesService';
+
 export default {
     data() {
         return {
             navbarClass: 'navbar-transparent',
+            logOrOutText: 'Iniciar Sesión',
         };
     },
     mounted() {
+        this.updateLoginText();
         if (window.location.pathname === '/login') {
             this.navbarClass = 'navbar-solid';
         }
@@ -62,6 +66,18 @@ export default {
             if (window.location.pathname === '/login') {
                 this.navbarClass = 'navbar-solid';
             }
+        },
+        updateLoginText() {
+            this.logOrOutText = getCookie('User') ? 'Cerrar Sesión' : 'Iniciar Sesión';
+        },
+        navigateLoginOrLogout() {
+            if (!getCookie('User')) {
+                window.location.href = '/login';
+                return;
+            }
+
+            removeCookie('User');
+            this.updateLoginText(); 
         },
     },
 };

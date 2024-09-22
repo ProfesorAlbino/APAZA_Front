@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import { cookiesConfig } from './BasicConfig';
 
 /**
  * Creates a standard cookie with the given name and value.
@@ -8,11 +9,7 @@ import Cookies from 'js-cookie';
  * @returns {void}
  */
 function createCookieStandard(name, value) {
-    createCookie(name, value, {
-        expires: 7, // Tiempo de expiración (días)
-        secure: true, // Solo para conexiones HTTPS
-        sameSite: 'none' 
-    })
+    createCookie(name, value, cookiesConfig());
 }
 
 /**
@@ -46,4 +43,4 @@ function getCookie(name) {
 }
 
 
-export { createCookieStandard, createCookie, removeCookie, getCookie};
+export { createCookieStandard, createCookie, removeCookie, getCookie };

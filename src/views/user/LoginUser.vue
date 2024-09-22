@@ -1,7 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import { login, register } from '@/services/AuthService';
-import { getEvents } from '@/services/EventService';
+import { loginUser, registerUser } from './UserLogic';
+import { Toast } from 'bootstrap';
+import NotificationToast from '@/components/toasts/NotificationToast.vue';
 
 const userLogin = ref({
     name: '',
@@ -9,40 +10,58 @@ const userLogin = ref({
     password: ''
 });
 
+const notify = ref({
+    header: 'Bienvenido',
+    body: 'Gracias por registrarte'
+});
+
 onMounted(() => {
     initComponent();
-    getEvents().then(response => {
-        console.log(response);
-    }).catch(error => {
-        console.error(error);
-    });
 });
 
 async function loginEvent() {
-    console.log(userLogin.value);
     const userForLogin = {
         email: userLogin.value.email,
         password: userLogin.value.password
     };
-    login(userForLogin)
-        .then(response => {
-            console.log(response);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    const res = await loginUser(userForLogin);
+    if (res && res.status) {
+        showNotify(res.message, 'Bienvenido');
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 1500);
+    } else {
+        showNotify(res ? res.message : 'Error', 'No se pudo iniciar sesión');
+        setTimeout(() => {
+            window.location.reload();
+        }, 1500);
+    }
+
+
 };
 
 async function registerEvent() {
-    console.log(userLogin.value);
+    const res = await registerUser(userLogin.value);
+    if (res && res.status) {
+        showNotify(res.message, 'Gracias por registrarte');
+        setTimeout(() => {
+            window.location.reload();
+        }, 1500);
+    } else {
+        showNotify(res ? res.message : 'Error', 'No se pudo registrar');
+        setTimeout(() => {
+            window.location.reload();
+        }, 1500);
+    }
+};
 
-    register(userLogin.value)
-        .then(response => {
-            console.log(response);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+function showNotify(header, body) {
+    notify.value.header = header;
+    notify.value.body = body;
+
+    const toastLiveExample = document.getElementById('liveToast');
+    const toastBootstrap = Toast.getOrCreateInstance(toastLiveExample)
+    toastBootstrap.show();
 };
 
 function initComponent() {
@@ -70,7 +89,7 @@ function initComponent() {
                     <h1>Crear cuenta</h1>
                     <div class="form-floating">
                         <input class="form-control" id="nameRegister" type="text" placeholder="Nombre"
-                            v-model="userLogin.nameUser" />
+                            v-model="userLogin.name" />
                         <label for="nameRegister">Nombre</label>
                     </div>
                     <div class="form-floating">
@@ -121,6 +140,7 @@ function initComponent() {
             </div>
         </div>
     </div>
+    <NotificationToast v-bind:header="notify.header" v-bind:body="notify.body" />
 </template>
 
 
