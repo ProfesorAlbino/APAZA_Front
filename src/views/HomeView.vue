@@ -3,17 +3,18 @@ import wave from '../components/Wave.vue'
 import CardImageRight from '../components/cards/CardImageRight.vue'
 import CardImageLeft from '../components/cards/CardImageLeft.vue'
 import CardFullImage from '../components/cards/CardFullImage.vue'
-/*import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
 import { getEvents } from '@/services/EventService';
 
-const events = ref(null);
+const events = ref([]);
 
 const getEvent = async () => {
   try {
     const data = await getEvents(); // Obtenemos los eventos
     console.log(data);
-    events.value = data; // Actualizamos el valor de la referencia
+    //events.value = data.data.data; // Actualizamos el valor de la referencia
+    events.value = data.data.data.slice(0, 3);
   } catch (error) {
     console.error("Error fetching events:", error);
   }
@@ -22,7 +23,7 @@ const getEvent = async () => {
 // Similar al useEffect en React, se ejecuta cuando el componente se monta
 onMounted(() => {
   getEvent();
-});*/
+});
 
 
 </script>
@@ -58,48 +59,50 @@ onMounted(() => {
       </svg>
     </div>
 
-    <h1 id="title" class="text-center" data-aos="fade-up" data-aos-duration="3000">Informacion sobre el autismo</h1>
+    <h1 id="title" class="text-center" data-aos="fade-up" data-aos-duration="3000">Información sobre el autismo</h1>
 
     <div class="row mt-5">
       <div class="col-4">
-        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+        <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
           link="#" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+        <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
           link="#" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+        <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
           link="#" />
       </div>
     </div>
 
+    <!-- SECCIÓN DE EVENTOS -->
     <h1 id="title" class="text-center mt-5">Servicios y Eventos </h1>
 
     <div class="row mt-5">
-      <div class="col-4">
-        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+      <div class="col-4" v-for="(event, index) in events"
+      :key="index">
+        <CardFullImage :title="event.title" :url="event.image"
+          :descriptionCard="event.description"
+          link="#" />
+      </div>
+
+      <!-- <div class="col-4">
+        <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
           link="#" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+        <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
           link="#" />
-      </div>
-
-      <div class="col-4">
-        <CardFullImage title="Recien Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
-          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
-          link="#" />
-      </div>
+      </div> -->
     </div>
 
     <div class="custom-shape-divider-bottom-1721776550">
