@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "vite preview --port $PORT",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
