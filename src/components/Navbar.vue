@@ -45,7 +45,7 @@ export default {
     },
     mounted() {
         this.updateLoginText();
-        if (window.location.pathname === '/login') {
+        if (window.location.pathname !== '/') {
             this.navbarClass = 'navbar-solid';
         }
         window.addEventListener('scroll', this.handleScroll);
@@ -63,7 +63,7 @@ export default {
                 this.navbarClass = 'navbar-transparent';
             }
 
-            if (window.location.pathname === '/login') {
+            if (window.location.pathname !== '/') {
                 this.navbarClass = 'navbar-solid';
             }
         },
