@@ -3,6 +3,8 @@ import { onMounted, ref } from 'vue';
 import { loginUser, registerUser } from './UserLogic';
 import { Toast } from 'bootstrap';
 import NotificationToast from '@/components/toasts/NotificationToast.vue';
+import { isUserLoggedAdmin } from '@/utils/Validations';
+import { removeCookie } from '@/config/CookiesService';
 
 const userLogin = ref({
     name: '',
@@ -12,11 +14,14 @@ const userLogin = ref({
 
 const notify = ref({
     header: 'Bienvenido',
-    body: 'Gracias por registrarte'
+    body: 'Correcto'
 });
+
+const isLog = ref(false);
 
 onMounted(() => {
     initComponent();
+    if (isUserLoggedAdmin()) isLog.value = true;
 });
 
 async function loginEvent() {
@@ -27,8 +32,9 @@ async function loginEvent() {
     const res = await loginUser(userForLogin);
     if (res && res.status) {
         showNotify(res.message, 'Bienvenido');
+        isLog.value = true;
         setTimeout(() => {
-            window.location.href = '/';
+            window.location.reload();
         }, 1500);
     } else {
         showNotify(res ? res.message : 'Error', 'No se pudo iniciar sesión');
@@ -41,6 +47,7 @@ async function loginEvent() {
 };
 
 async function registerEvent() {
+    if (!isLog.value) return;
     const res = await registerUser(userLogin.value);
     if (res && res.status) {
         showNotify(res.message, 'Gracias por registrarte');
@@ -55,12 +62,17 @@ async function registerEvent() {
     }
 };
 
+function logoutEvent(){
+    removeCookie('User');
+    isLog.value = false;
+}
+
 function showNotify(header, body) {
     notify.value.header = header;
     notify.value.body = body;
 
     const toastLiveExample = document.getElementById('liveToast');
-    const toastBootstrap = Toast.getOrCreateInstance(toastLiveExample)
+    const toastBootstrap = Toast.getOrCreateInstance(toastLiveExample);
     toastBootstrap.show();
 };
 
@@ -70,6 +82,7 @@ function initComponent() {
     const container = document.getElementById('container');
 
     signUpButton.addEventListener('click', () => {
+        if (!isLog.value) return;
         container.classList.add("right-panel-active");
     });
 
@@ -86,41 +99,49 @@ function initComponent() {
             <!-- FORM REGISTER -->
             <div class="form-container sign-up-container form-floating">
                 <div class="form">
-                    <h1>Crear cuenta</h1>
-                    <div class="form-floating">
-                        <input class="form-control" id="nameRegister" type="text" placeholder="Nombre"
-                            v-model="userLogin.name" />
-                        <label for="nameRegister">Nombre</label>
+                    <div>
+                        <h1>Crear cuenta</h1>
+                        <div class="form-floating">
+                            <input class="form-control" id="nameRegister" type="text" placeholder="Nombre"
+                                v-model="userLogin.name" />
+                            <label for="nameRegister">Nombre</label>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" id="emailRegister" type="email" placeholder="Correo electrónico"
+                                v-model="userLogin.email" />
+                            <label for="emailRegister">Correo electrónico</label>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" id="passRegister" type="password" placeholder="Contraseña"
+                                v-model="userLogin.password" />
+                            <label for="passRegister">Contraseña</label>
+                        </div>
+                        <button @click="registerEvent()">Registrar</button>
                     </div>
-                    <div class="form-floating">
-                        <input class="form-control" id="emailRegister" type="email" placeholder="Correo electrónico"
-                            v-model="userLogin.email" />
-                        <label for="emailRegister">Correo electrónico</label>
-                    </div>
-                    <div class="form-floating">
-                        <input class="form-control" id="passRegister" type="password" placeholder="Contraseña"
-                            v-model="userLogin.password" />
-                        <label for="passRegister">Contraseña</label>
-                    </div>
-                    <button @click="registerEvent()">Registrarse</button>
                 </div>
             </div>
             <!-- FORM LOGIN -->
             <div class="form-container sign-in-container">
                 <div class="form">
-                    <h1>Iniciar Sesión</h1>
-                    <div class="form-floating">
-                        <input class="form-control" id="emailLogin" type="email" placeholder="Correo electrónico"
-                            v-model="userLogin.email" />
-                        <label for="emailLogin">Correo electrónico</label>
+                    <div v-if="!isLog">
+                        <h1 class="mb-3">Iniciar Sesión</h1>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="emailLogin" type="email" placeholder="Correo electrónico"
+                                v-model="userLogin.email" />
+                            <label for="emailLogin">Correo electrónico</label>
+                        </div>
+                        <div class="form-floating">
+                            <input class="form-control" id="passLogin" type="password" placeholder="Contraseña"
+                                v-model="userLogin.password" />
+                            <label for="passLogin">Contraseña</label>
+                        </div>
+                        <!-- <a href="#">Olvidó su contraseña?</a> -->
+                        <button @click="loginEvent()">Iniciar Sesión</button>
                     </div>
-                    <div class="form-floating">
-                        <input class="form-control" id="passLogin" type="password" placeholder="Contraseña"
-                            v-model="userLogin.password" />
-                        <label for="passLogin">Contraseña</label>
+                    <div v-if="isLog">
+                        <h1 class="mb-3">Inicio de sesión exitoso</h1>
+                        <button @click="logoutEvent()">Cerrar Sesión</button>
                     </div>
-                    <a href="#">Olvidó su contraseña?</a>
-                    <button @click="loginEvent()">Iniciar Sesión</button>
                 </div>
             </div>
             <!-- PANELES CON MENSAJES -->
@@ -128,13 +149,13 @@ function initComponent() {
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">
                         <h1>Hola!</h1>
-                        <p>Únetenos, así nos podrás apoyar en nuestras actividades y mucho más</p>
-                        <button class="ghost" id="signIn">Iniciar Sesión</button>
+                        <p>Volver atrás</p>
+                        <button class="ghost" id="signIn">Atrás</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <h1>Bienvenido de vuelta!</h1>
-                        <p>Inicia sesión y obtén mucha información sobre el autismo</p>
-                        <button class="ghost" id="signUp">Registrarse</button>
+                        <h1>¿Crear otro administrador?</h1>
+                        <p>Inicia sesión para que puedas crear otro usuario</p>
+                        <button class="ghost" id="signUp">Crear nuevo administrador</button>
                     </div>
                 </div>
             </div>
