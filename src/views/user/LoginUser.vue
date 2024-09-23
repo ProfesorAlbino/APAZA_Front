@@ -5,6 +5,9 @@ import { Toast } from 'bootstrap';
 import NotificationToast from '@/components/toasts/NotificationToast.vue';
 import { isUserLoggedAdmin } from '@/utils/Validations';
 import { removeCookie } from '@/config/CookiesService';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const userLogin = ref({
     name: '',
@@ -34,12 +37,14 @@ async function loginEvent() {
         showNotify(res.message, 'Bienvenido');
         isLog.value = true;
         setTimeout(() => {
-            window.location.reload();
+            //window.location.reload(); <-- AQUÍ
+            router.go(0);
         }, 1500);
     } else {
         showNotify(res ? res.message : 'Error', 'No se pudo iniciar sesión');
         setTimeout(() => {
-            window.location.reload();
+            //window.location.reload(); <-- AQUÍ
+            router.go(0);
         }, 1500);
     }
 
@@ -52,12 +57,14 @@ async function registerEvent() {
     if (res && res.status) {
         showNotify(res.message, 'Gracias por registrarte');
         setTimeout(() => {
-            window.location.reload();
+            //window.location.reload(); <-- AQUÍ
+            router.go(0);
         }, 1500);
     } else {
         showNotify(res ? res.message : 'Error', 'No se pudo registrar');
         setTimeout(() => {
-            window.location.reload();
+            //window.location.reload(); <-- AQUÍ
+            router.go(0);
         }, 1500);
     }
 };
@@ -71,8 +78,8 @@ function showNotify(header, body) {
     notify.value.header = header;
     notify.value.body = body;
 
-    const toastLiveExample = document.getElementById('liveToast');
-    const toastBootstrap = Toast.getOrCreateInstance(toastLiveExample);
+    const toastLive = document.getElementById('liveToast');
+    const toastBootstrap = Toast.getOrCreateInstance(toastLive);
     toastBootstrap.show();
 };
 

@@ -1,7 +1,7 @@
 <template>
     <nav ref="navbar" :class="['navbar', 'navbar-expand-lg', 'fixed-top', navbarClass]">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="/">
+            <a class="navbar-brand d-flex align-items-center" @click="gotoHome">
                 <img src="../assets/apaza_logo.png" alt="APAZA Logo" width="60" height="60" class="me-2 navbar-logo">
                 <span id="title" class="fs-4 fw-semibold">APAZA</span>
             </a>
@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                        <a class="nav-link active" aria-current="page" @click="gotoHome">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Junta</a>
@@ -22,10 +22,10 @@
                         <a class="nav-link" href="#">Colaboradores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Eventos</a>
+                        <a class="nav-link" @click="goToEvents">Eventos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @click="navigateLoginOrLogout">{{ logOrOutText }}</a>
+                        <a class="nav-link" @click="navigateLoginOrLogout">Ingresar</a>
                     </li>
                 </ul>
             </div>
@@ -34,17 +34,16 @@
 </template>
 
 <script>
-import { getCookie, removeCookie } from '@/config/CookiesService';
+import { useRouter } from 'vue-router';
 
 export default {
     data() {
         return {
             navbarClass: 'navbar-transparent',
-            logOrOutText: 'Iniciar Sesión',
+            router: useRouter()
         };
     },
     mounted() {
-        this.updateLoginText();
         if (window.location.pathname !== '/') {
             this.navbarClass = 'navbar-solid';
         }
@@ -67,18 +66,18 @@ export default {
                 this.navbarClass = 'navbar-solid';
             }
         },
-        updateLoginText() {
-            this.logOrOutText = getCookie('User') ? 'Cerrar Sesión' : 'Iniciar Sesión';
-        },
         navigateLoginOrLogout() {
-            if (!getCookie('User')) {
-                window.location.href = '/login';
-                return;
-            }
-
-            removeCookie('User');
-            this.updateLoginText(); 
+            //window.location.href = '/login';
+            this.router.push('/login');
+            this.navbarClass = 'navbar-solid'; // <-- NO SE SI SEA LA MEJOR FORMA DE HACERLO ****REVISAR****             
         },
+        goToEvents() {
+            this.router.push('/events');
+            this.navbarClass = 'navbar-solid'; // <-- NO SE SI SEA LA MEJOR FORMA DE HACERLO ****REVISAR****             
+        },
+        gotoHome() {
+            this.router.push('/');
+        }
     },
 };
 </script>

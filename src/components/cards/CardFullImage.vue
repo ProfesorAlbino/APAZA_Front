@@ -1,5 +1,9 @@
 <script setup>
-const props = defineProps({
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+defineProps({
     title: {
         type: String,
         required: true,
@@ -17,6 +21,10 @@ const props = defineProps({
         required: true,
     }
 });
+
+function goToEventPage(link) {
+    router.push(link);
+}
 </script>
 
 <template>
@@ -28,7 +36,7 @@ const props = defineProps({
                     <div id="container_text">
                         <h2>{{ title }}</h2>
                         <p>{{ descriptionCard }}</p>
-                        <a :href="link" class="btn btn-light mt-2">Más información</a>
+                        <a @click="goToEventPage(link)" class="btn btn-light mt-2">Más información</a>
                     </div>
                 </div>
             </div>

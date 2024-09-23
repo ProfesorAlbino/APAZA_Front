@@ -12,6 +12,10 @@ function getEvents() {
   return axios.get(API_URL, defaultHeaders);
 }
 
+function getEvent(id) {
+  return axios.get(API_URL + id, defaultHeaders);
+}
 
 
-export { getEvents };
+
+export { getEvents, getEvent };

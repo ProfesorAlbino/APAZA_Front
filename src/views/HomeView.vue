@@ -12,7 +12,6 @@ const events = ref([]);
 const getEvent = async () => {
   try {
     const data = await getEvents(); // Obtenemos los eventos
-    console.log(data);
     //events.value = data.data.data; // Actualizamos el valor de la referencia
     events.value = data.data.data.slice(0, 3);
   } catch (error) {
@@ -89,7 +88,7 @@ onMounted(() => {
       :key="index">
         <CardFullImage :title="event.title" :url="event.image"
           :descriptionCard="event.description"
-          link="#" />
+          link="/events" />
       </div>
 
       <!-- <div class="col-4">

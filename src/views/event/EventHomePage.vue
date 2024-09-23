@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <div v-for="(event, index) in events" :key="index" class="col">
-                    <div class="card h-100 event-card">
+                    <div class="card h-100 event-card" @click="goToEventPage(event)">
                         <img :src="event.image" class="card-img-top" :alt="event.title">
                         <div class="card-body">
                             <h5 class="card-title">{{ event.title }}</h5>
@@ -24,9 +24,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue';
 import { getEvents } from '@/services/EventService';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const events = ref([]);
 
 const getEvent = async () => {
@@ -34,9 +36,16 @@ const getEvent = async () => {
         const data = await getEvents();
         events.value = data.data.data;
     } catch (error) {
-        window.location.reload();
+        //window.location.reload();
+        //router.push('/events'); // <-- Estoy en la pagina de eventos, si hay un error esto debería recargar la página ***Probar***
+        router.go(0); // <-- Esto debería recargar la página ***Probar*** Según ChatGPT
     }
 };
+
+function goToEventPage(event) {
+    sessionStorage.setItem('event', JSON.stringify(event));
+    router.push(`/event`);
+}
 
 
 onMounted(() => {
