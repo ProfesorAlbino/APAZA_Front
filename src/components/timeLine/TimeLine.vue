@@ -8,17 +8,19 @@
                 <div class="date-content">
                     <div class="date-outer">
                         <span class="date">
-                            <span class="month">2 años</span>
-                            <span class="year">2013</span>
+                            <span class="month">Julio</span>
+                            <span class="year">2010</span>
                         </span>
                     </div>
                 </div>
                 <div class="timeline-content">
-                    <h5 class="title">Creación de Apaza</h5>
+                    <h5 class="title">Inicios</h5>
                     <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa
-                        scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent
-                        dapibus dolor felis, eu ultrices elit molestie.
+                        un grupo de padres con hijos diagnosticados con autismo se reunió por primera vez. 
+                        Este encuentro marcó el inicio de un viaje transformador en la búsqueda de mejorar la calidad de vida de sus seres queridos. 
+                        A medida que el grupo crecía, se hizo evidente la necesidad de trabajar en la concienciación sobre el autismo, 
+                        comenzando por los mismos padres, familiares y extendiéndose a la comunidad. El objetivo era claro: integrar a las personas con
+                         autismo en la sociedad de manera digna y respetuosa.
                     </p>
                 </div>
             </div>
@@ -30,17 +32,17 @@
                 <div class="date-content">
                     <div class="date-outer">
                         <span class="date">
-                            <span class="month">4 Años</span>
-                            <span class="year">2015</span>
+                            <span class="month">2 de Abril</span>
+                            <span class="year">2011</span>
                         </span>
                     </div>
                 </div>
                 <div class="timeline-content">
-                    <h5 class="title">Crecimiento de nuestro Equipo</h5>
+                    <h5 class="title">Primera Actividad</h5>
                     <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa
-                        scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent
-                        dapibus dolor felis, eu ultrices elit molestie.
+                        la asociación celebró su primera actividad en conmemoración del Día Mundial de la Concienciación del Autismo,
+                         declarado por la Asamblea General de las Naciones Unidas el 18 de diciembre de 2007.
+                          Durante esta significativa conmemoración, se llevaron a cabo diversos actos culturales que destacaron la importancia de la inclusión.
                     </p>
                 </div>
             </div>
@@ -52,17 +54,16 @@
                 <div class="date-content">
                     <div class="date-outer">
                         <span class="date">
-                            <span class="month">5 Años</span>
-                            <span class="year">2016</span>
+                            <span class="month">17 de Abril</span>
+                            <span class="year">2011</span>
                         </span>
                     </div>
                 </div>
                 <div class="timeline-content">
-                    <h5 class="title">Web Designer</h5>
+                    <h5 class="title">Asamblea Constitutiva</h5>
                     <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa
-                        scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent
-                        dapibus dolor felis, eu ultrices elit molestie.
+                        El 17 de abril de 2011, se realizó la Asamblea Constitutiva, donde los padres,
+                         unidos por su compromiso y pasión, dieron los primeros pasos para formalizar su esfuerzo colectivo en beneficio de sus hijos.
                     </p>
                 </div>
             </div>
@@ -74,17 +75,17 @@
                 <div class="date-content">
                     <div class="date-outer">
                         <span class="date">
-                            <span class="month">7 Años</span>
+                            <span class="month">3 de Octubre</span>
                             <span class="year">2018</span>
                         </span>
                     </div>
                 </div>
                 <div class="timeline-content">
-                    <h5 class="title">Graphic Designer</h5>
+                    <h5 class="title">APAZA</h5>
                     <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed efficitur ex sit amet massa
-                        scelerisque scelerisque. Aliquam erat volutpat. Aenean interdum finibus efficitur. Praesent
-                        dapibus dolor felis, eu ultrices elit molestie.
+                        Finalmente, el 3 de octubre de 2011, se inscribió oficialmente la Asociación de Personas con Autismo de la Zona Atlántica, 
+                        conocida por sus siglas como APAZA, como una asociación legalmente constituida bajo la ley 218
+                        Este hito marcó un importante avance en nuestra misión de promover la inclusión y brindar apoyo a las familias afectadas por el autismo en la región.
                     </p>
                 </div>
             </div>

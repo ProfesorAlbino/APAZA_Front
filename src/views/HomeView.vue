@@ -34,18 +34,14 @@ onMounted(() => {
 
   <section>
     <CardImageRight title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
-              mundo y con
-              las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y
-              relacionarse
-              con los demás, y pueden tener intereses y comportamientos repetitivos."
-      url="src/assets/Fondo-pagina-principal.jpg" :order="false" />
+                            mundo y con las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y relacionarse
+                            con los demás, y pueden tener intereses y comportamientos repetitivos."
+      url="public/Apaza/Que es el autismo.png" :order="false" />
 
-    <CardImageLeft title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
-              mundo y con
-              las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y
-              relacionarse
-              con los demás, y pueden tener intereses y comportamientos repetitivos."
-      url="src/assets/Fondo-pagina-principal.jpg" :order="false" />
+    <CardImageLeft title="Sintomas del Autismo" description="El autismo, o trastorno del espectro autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
+                  dificultad para comunicarse o mantener contacto visual, comportamientos repetitivos como mecerse o aletear, preferencia por la rutina y 
+                  resistencia al cambio, y problemas para entender emociones o interactuar socialmente."
+      url="public/Apaza/Primeros Sintomas.png" :order="false" />
   </section>
 
   <section id="sectionCards" class="a">
@@ -62,23 +58,24 @@ onMounted(() => {
 
     <div class="row mt-5">
       <div class="col-4">
-        <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+        <CardFullImage title="Recién Diagnosticado" url="/public/Apaza/Recien Diagnosticado.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
           link="#" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
-          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+        <CardFullImage title="Síntomas del Autismo" url="/public/Apaza/Sintomas del Autismo.jpg"
+          descriptionCard="Conoce los síntomas y señales comunes del autismo para una identificación temprana y precisa."
           link="#" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
-          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+        <CardFullImage title="Tratamientos" url="/public/Apaza/Tratamientos.jpg"
+          descriptionCard="Explora diferentes tratamientos y terapias que pueden ayudar en el desarrollo y bienestar de personas con autismo."
           link="#" />
       </div>
     </div>
+
 
     <!-- SECCIÓN DE EVENTOS -->
     <h1 id="title" class="text-center mt-5">Servicios y Eventos </h1>
@@ -98,8 +95,14 @@ onMounted(() => {
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
-          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+        <CardFullImage title="Nuestros Eventos" url="/public/Apaza/Nuestros Eventos.jpg"
+          descriptionCard="Explora nuestros eventos y enterate de todas nuestras actividades para no perderte ninguna."
+          link="#" />
+      </div>
+
+      <div class="col-4">
+        <CardFullImage title="Eventos Comunitarios" url="/public/Apaza/Eventos Comunitarios.jpg"
+          descriptionCard="Asiste a eventos organizados para conectar a familias y personas dentro del espectro autista."
           link="#" />
       </div>
     </div>
