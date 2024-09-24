@@ -1,21 +1,21 @@
 <script setup>
-import Timeline from '../../components/timeLine/Timeline.vue'
+import Timeline from '../../components/timeLine/TimeLine.vue'
 </script>
 
 <template>
     <div class="row" id="containerAcercaDe">
-        <!-- Mover el contenido más a la derecha y centrar el texto en el medio del div -->
         <div class="col-6 ms-auto d-flex align-items-center justify-content-center" id="containerText">
             <div class="text-center offset-3">
                 <p>Acerca de nosotros</p>
-                <h1>Informacion relevante sobre la organizacion Apaza</h1>
-                <p>Toda la informacion de lo que es Apaza</p>
+                <h1>Información relevante sobre la organización Apaza</h1>
+                <p>Toda la información de lo que es Apaza</p>
             </div>
         </div>
 
         <div class="col-6 mt-5">
             <div>
-                <img src="/public/Apaza/AcercaDe.png" alt="Logo" class="img-fluid" />
+                <!-- Al usar rutas desde public no hace falta poner el public, muestra un warning, para @ProfesorAlbino -->
+                <img src="/Apaza/AcercaDe.png" alt="Logo" class="img-fluid" />
             </div>
         </div>
     </div>
@@ -26,15 +26,15 @@ import Timeline from '../../components/timeLine/Timeline.vue'
 
             <div class="col-6 ms-auto d-flex align-items-center justify-content-center" id="containerText">
                 <div class="text-center">
-                    <h1 class="titulo">Nuestra Mision</h1>
-                    <p>La mision de la organizacion Apaza es...</p>
+                    <h1 class="titulo">Nuestra Misión</h1>
+                    <p>La misión de la organización Apaza es...</p>
                 </div>
             </div>
 
             <div class="col-6 ms-auto d-flex align-items-center justify-content-center" id="containerText">
                 <div class="text-center">
                     <h1>Nuestra Vision</h1>
-                    <p>La vision de la organizacion Apaza es...</p>
+                    <p>La vision de la organización Apaza es...</p>
                 </div>
             </div>
         </div>

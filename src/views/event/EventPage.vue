@@ -14,6 +14,9 @@
                         <div class="card-body">
                             <h5 class="card-title">Información</h5>
                             <p class="card-text"><strong>Fecha:</strong> {{ event.date }}</p>
+                            <div class="my-2" v-if="isAdmin">
+                                <button class="btn btn-danger" @click="modalDelete">Eliminar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -32,14 +35,23 @@
             </div>
         </div>
     </div>
+    <BaseModal v-if="isAdmin" :title="modalDeleteInfo.title" :body="modalDeleteInfo.body"
+        :closeText="modalDeleteInfo.closeText" :acceptText="modalDeleteInfo.acceptText"
+        :onAccept="modalDeleteInfo.onAccept" colorAcceptButton="danger" />
 </template>
 
 <script setup>
+import BaseModal from '@/components/modals/BaseModal.vue';
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { format } from '@formkit/tempo';
+import { Modal } from 'bootstrap';
+import { deleteEvent } from '@/services/EventService';
+import { isUserLoggedAdmin } from '@/utils/Validations';
 
 const router = useRouter();
+
+const isAdmin = ref(false);
 
 const event = ref({});
 
@@ -47,11 +59,29 @@ const backToList = () => {
     router.push('/events');
 }
 
+const modalDelete = () => {
+    const myModal = Modal.getOrCreateInstance(document.getElementById('staticBackdrop'));
+    myModal.show();
+}
+
+const modalDeleteInfo = ref({
+    title: 'Eliminar evento',
+    body: '¿Estás seguro de que deseas eliminar este evento?',
+    closeText: 'Cancelar',
+    acceptText: 'Eliminar',
+    onAccept: async () => {
+        await deleteEvent(event.value._id);
+        router.push('/events');
+    }
+});
+
 onMounted(async () => {
+    isAdmin.value = isUserLoggedAdmin();
     const item = sessionStorage.getItem('event');
     if (!item) router.push('/events');
-    const objItem = JSON.parse(item);
-    //objItem.date = objItem.date.replace('Z', ''); // <-- Esto es para quitar la Z del final de la fecha, si no se quita le quita un día a la fecha
+
+    const objItem = JSON.parse(item); //objItem.date = objItem.date.replace('Z', ''); // <-- Esto es para quitar la Z del final de la fecha, si no se quita le quita un día a la fecha
+
     objItem.date = format(new Date(objItem.date.replace('Z', '')), { date: "full" }, 'es');
     event.value = objItem;
 });
@@ -96,27 +126,39 @@ onMounted(async () => {
 
 h2,
 h3 {
-    color: #333;
+    /* color: #333; */
+    color: var(--text-color-3);
     margin-bottom: 1rem;
 }
 
 .btn-primary {
-    background-color: #4ecdc4;
-    border-color: #4ecdc4;
+    /*  background-color: #4ecdc4;
+    border-color: #4ecdc4; */
+    background-color: var(--primary-color);
+    border-color: var(--decorative-color);
 }
 
 .btn-primary:hover {
-    background-color: #45b7ae;
-    border-color: #45b7ae;
+    /* background-color: #45b7ae;
+    border-color: #45b7ae; */
+    background-color: var(--primary-color);
+    border-color: var(--decorative-color);
 }
 
 .btn-secondary {
-    background-color: #ff6b6b;
-    border-color: #ff6b6b;
+    /* background-color: #ff6b6b;
+    border-color: #ff6b6b; */
+    background-color: var(--primary-color);
+    border-color: var(--decorative-color);
+    transition: transform 0.2s ease-in-out;
 }
 
 .btn-secondary:hover {
-    background-color: #ff5252;
-    border-color: #ff5252;
+    /*  background-color: #ff5252;
+    border-color: #ff5252; */
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
+    background-color: var(--decorative-color);
+    border-color: var(--decorative-color);
 }
 </style>

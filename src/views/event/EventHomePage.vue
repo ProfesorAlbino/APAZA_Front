@@ -6,18 +6,9 @@
         </div>
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <div v-for="(event, index) in events" :key="index" class="col">
-                    <div class="card h-100 event-card" @click="goToEventPage(event)">
-                        <img :src="event.image" class="card-img-top" :alt="event.title">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ event.title }}</h5>
-                            <p class="card-text">{{ event.description }}</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">{{ format(event.date.replace('Z', ''), 'full', 'es') }}</small>
-                        </div>
-                    </div>
-                </div>
+                <CardPresentInfoOverImage v-for="(event, index) in events" :key="index" :title="event.title"
+                    :description="event.description" :image="event.image"
+                    :date="format(event.date.replace('Z', ''), 'full', 'es')" @click="goToEventPage(event)" />
             </div>
         </div>
         <div class="text-center" v-if="isAdmin">
@@ -32,6 +23,7 @@ import { getEvents } from '@/services/EventService';
 import { useRouter } from 'vue-router';
 import { isUserLoggedAdmin } from '@/utils/Validations';
 import { format } from '@formkit/tempo';
+import CardPresentInfoOverImage from '@/components/cards/CardPresentInfoOverImage.vue';
 
 const router = useRouter();
 const events = ref([]);

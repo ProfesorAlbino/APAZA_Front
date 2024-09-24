@@ -1,10 +1,11 @@
 /* Colores Generales de la pagina */
-/* Usar solo los colores de esta seccion*/
+/* Usar solo los colores de esta sección*/
 
 :root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
     --accent-color: #e74c3c;
+    --decorative-color: #2a5d7f;
 
     --background-color: #002161;
     --background-color-2: #fc7b0b;

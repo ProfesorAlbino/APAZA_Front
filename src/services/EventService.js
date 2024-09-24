@@ -27,5 +27,9 @@ function addEvent(event) {
   return axios.post(API_URL, eventData);
 }
 
+function deleteEvent(id) {
+  return axios.delete(API_URL + id, defaultHeaders);
+}
 
-export { getEvents, getEvent, addEvent };
+
+export { getEvents, getEvent, addEvent, deleteEvent };
