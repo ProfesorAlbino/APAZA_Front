@@ -36,12 +36,12 @@ onMounted(() => {
     <CardImageRight title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
                             mundo y con las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y relacionarse
                             con los demás, y pueden tener intereses y comportamientos repetitivos."
-      url="public/Apaza/Que es el autismo.png" :order="false" data-aos="zoom-in-right"/>
+      url="/Apaza/Que es el autismo.png" :order="false" data-aos="zoom-in-right"/>
 
     <CardImageLeft title="Sintomas del Autismo" description="El autismo, o trastorno del espectro autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
                   dificultad para comunicarse o mantener contacto visual, comportamientos repetitivos como mecerse o aletear, preferencia por la rutina y 
                   resistencia al cambio, y problemas para entender emociones o interactuar socialmente."
-      url="public/Apaza/Primeros Sintomas.png" :order="false" data-aos="zoom-in-left"/>
+      url="/Apaza/Primeros Sintomas.png" :order="false" data-aos="zoom-in-left"/>
   </section>
 
   <section id="sectionCards" class="a">
