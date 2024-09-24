@@ -2,7 +2,7 @@
     <nav ref="navbar" :class="['navbar', 'navbar-expand-lg', 'fixed-top', navbarClass]">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" @click="gotoHome">
-                <img src="../assets/apaza_logo.png" alt="APAZA Logo" width="60" height="60" class="me-2 navbar-logo">
+                <img src="/public/Apaza/apaza_logo.png" alt="APAZA Logo" width="60" height="60" class="me-2 navbar-logo">
                 <span id="title" class="fs-4 fw-semibold">APAZA</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

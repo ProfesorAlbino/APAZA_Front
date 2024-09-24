@@ -9,6 +9,12 @@ import AOS from "aos"
 
 const app = createApp(App)
 
+// Inicializa AOS con un offset alto
+AOS.init({ 
+  duration: 1500, // Duración de la animación
+  once: true,     // Si la animación debe ejecutarse solo una vez
+  offset: 600     // Píxeles desde el borde del viewport para activar la animación
+})
+
 app.use(router)
-app.use(AOS.init({ duration: 1000, once: true}))
 app.mount('#app')

@@ -29,19 +29,19 @@ onMounted(() => {
 
 <template>
   <section>
-    <wave class="mb-20" url="src/assets/APAZA_FONDO.jpg" title="" description="" />
+    <wave class="mb-20" url="/public/Apaza/APAZA_FONDO.jpg" title="" description="" />
   </section>
 
   <section>
     <CardImageRight title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
                             mundo y con las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y relacionarse
                             con los demás, y pueden tener intereses y comportamientos repetitivos."
-      url="public/Apaza/Que es el autismo.png" :order="false" />
+      url="public/Apaza/Que es el autismo.png" :order="false" data-aos="zoom-in-right"/>
 
     <CardImageLeft title="Sintomas del Autismo" description="El autismo, o trastorno del espectro autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
                   dificultad para comunicarse o mantener contacto visual, comportamientos repetitivos como mecerse o aletear, preferencia por la rutina y 
                   resistencia al cambio, y problemas para entender emociones o interactuar socialmente."
-      url="public/Apaza/Primeros Sintomas.png" :order="false" />
+      url="public/Apaza/Primeros Sintomas.png" :order="false" data-aos="zoom-in-left"/>
   </section>
 
   <section id="sectionCards" class="a">
@@ -60,19 +60,19 @@ onMounted(() => {
       <div class="col-4">
         <CardFullImage title="Recién Diagnosticado" url="/public/Apaza/Recien Diagnosticado.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
-          link="#" />
+          link="#" data-aos="zoom-out-up"/>
       </div>
 
       <div class="col-4">
         <CardFullImage title="Síntomas del Autismo" url="/public/Apaza/Sintomas del Autismo.jpg"
           descriptionCard="Conoce los síntomas y señales comunes del autismo para una identificación temprana y precisa."
-          link="#" />
+          link="#" data-aos="zoom-out-up"/>
       </div>
 
       <div class="col-4">
         <CardFullImage title="Tratamientos" url="/public/Apaza/Tratamientos.jpg"
           descriptionCard="Explora diferentes tratamientos y terapias que pueden ayudar en el desarrollo y bienestar de personas con autismo."
-          link="#" />
+          link="#" data-aos="zoom-out-up"/>
       </div>
     </div>
 
@@ -89,21 +89,21 @@ onMounted(() => {
       </div>-->
 
       <div class="col-4">
-        <CardFullImage title="Sobre Nosotros" url="src/assets/Fondo-pagina-principal.jpg"
+        <CardFullImage title="Sobre Nosotros" url="/public/Apaza/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
-          link="/about" />
+          link="/about" data-aos="zoom-out-up"/>
       </div>
 
       <div class="col-4">
         <CardFullImage title="Nuestros Eventos" url="/public/Apaza/Nuestros Eventos.jpg"
           descriptionCard="Explora nuestros eventos y enterate de todas nuestras actividades para no perderte ninguna."
-          link="#" />
+          link="#" data-aos="zoom-out-up"/>
       </div>
 
       <div class="col-4">
         <CardFullImage title="Eventos Comunitarios" url="/public/Apaza/Eventos Comunitarios.jpg"
           descriptionCard="Asiste a eventos organizados para conectar a familias y personas dentro del espectro autista."
-          link="#" />
+          link="#" data-aos="zoom-out-up"/>
       </div>
     </div>
 
