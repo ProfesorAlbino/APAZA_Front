@@ -31,12 +31,14 @@ function goToEventPage(link) {
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="image">
-                    <img :src="url" :alt="title">
-                    <div id="container_text">
-                        <h2>{{ title }}</h2>
-                        <p>{{ descriptionCard }}</p>
-                        <a @click="goToEventPage(link)" class="btn btn-light mt-2">Más información</a>
+                <div class="card-container">
+                    <div class="image">
+                        <img :src="url" :alt="title">
+                        <h2 class="card-title">{{ title }}</h2>
+                        <div id="container_text">
+                            <p>{{ descriptionCard }}</p>
+                            <a @click="goToEventPage(link)" class="btn btn-light mt-2">Más información</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,16 +54,35 @@ function goToEventPage(link) {
     align-items: center;
 }
 
+.card-container {
+    position: relative;
+    width: 300px;
+}
+
+.card-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: var(--text-color-1);
+    background-color: rgba(0, 0, 0, 0);
+    padding: 10px 5px;
+    margin: 0;
+    z-index: 3;
+    font-size: 1.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .image {
     overflow: hidden;
     height: 300px;
     width: 300px;
     position: relative;
     cursor: pointer;
-    box-shadow: 0 0 25px 1px rgba(0, 0, 0, .3);
     transition: .5s;
-    background-color: #000;
-    /* Fondo oscuro para el efecto de gradiente */
 }
 
 .image::after {
@@ -73,9 +94,8 @@ function goToEventPage(link) {
     width: 500px;
     height: 500px;
     transform: translate(-140%, -50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    /* Fondo semi-transparente para el texto */
-    opacity: 0.8;
+    background-color: var(--background-color-2);
+    opacity: 0.5;
     border-radius: 50%;
     transition: .8s;
 }
@@ -103,7 +123,7 @@ img {
     top: 50%;
     left: 50%;
     transform: translate(-200%, -50%);
-    color: #fff;
+    color: var(--text-color-1);
     text-align: center;
     transition: .8s;
     transition-timing-function: ease-in;

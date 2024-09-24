@@ -84,24 +84,24 @@ onMounted(() => {
     <h1 id="title" class="text-center mt-5">Servicios y Eventos </h1>
 
     <div class="row mt-5">
-      <div class="col-4" v-for="(event, index) in events"
+      <!-- <div class="col-4" v-for="(event, index) in events"
       :key="index">
         <CardFullImage :title="event.title" :url="event.image"
           :descriptionCard="event.description"
           link="/events" />
-      </div>
+      </div> -->
 
-      <!-- <div class="col-4">
-        <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
+      <div class="col-4">
+        <CardFullImage title="Sobre Nosotros" url="src/assets/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
-          link="#" />
+          link="/about" />
       </div>
 
       <div class="col-4">
         <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
           link="#" />
-      </div> -->
+      </div>
     </div>
 
     <div class="custom-shape-divider-bottom-1721776550">
@@ -155,6 +155,40 @@ onMounted(() => {
 .custom-shape-divider-top-1721696071 .shape-fill {
   fill: var(--background-color-3);
 }
+
+
+/* .custom-shape-divider-top-1721696071 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1721696071 svg {
+  position: relative;
+  display: block;
+  width: calc(300% + 1.3px);
+  height: 84px;
+}
+
+.custom-shape-divider-top-1721696071 .shape-fill {
+  fill: var(--background-color-3);
+  animation: wave-animation 15s linear infinite;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+} */
+
+
 
 .custom-shape-divider-bottom-1721776550 {
   position: absolute;
