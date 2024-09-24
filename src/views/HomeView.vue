@@ -84,14 +84,14 @@ onMounted(() => {
     <h1 id="title" class="text-center mt-5">Servicios y Eventos </h1>
 
     <div class="row mt-5">
-      <!-- <div class="col-4" v-for="(event, index) in events"
+      <div class="col-4" v-for="(event, index) in events"
       :key="index">
         <CardFullImage :title="event.title" :url="event.image"
           :descriptionCard="event.description"
           link="/events" />
-      </div> -->
+      </div>
 
-      <div class="col-4">
+      <!-- <div class="col-4">
         <CardFullImage title="Sobre Nosotros" url="src/assets/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
           link="/about" />
@@ -101,7 +101,7 @@ onMounted(() => {
         <CardFullImage title="Recién Diagnosticado" url="src/assets/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
           link="#" />
-      </div>
+      </div> -->
     </div>
 
     <div class="custom-shape-divider-bottom-1721776550">
