@@ -16,6 +16,16 @@ function getEvent(id) {
   return axios.get(API_URL + id, defaultHeaders);
 }
 
+function addEvent(event) {
+  const eventData = new FormData();
+  eventData.append('title', event.title);
+  eventData.append('description', event.description);
+  eventData.append('date', event.date);
+  eventData.append('type', event.type);
+  eventData.append('image', event.image);
+
+  return axios.post(API_URL, eventData);
+}
 
 
-export { getEvents, getEvent };
+export { getEvents, getEvent, addEvent };

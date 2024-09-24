@@ -2,7 +2,7 @@
     <div class="events-container my-5">
         <div class="banner text-center py-5 mb-5">
             <h1 class="display-4 text-white">Eventos APAZA</h1>
-            <p class="lead text-white">¡Descubre y celebra con nosotros!</p>
+            <!-- <p class="lead text-white" @click="goToAddEvent">Agregar evento</p> -->
         </div>
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -14,11 +14,14 @@
                             <p class="card-text">{{ event.description }}</p>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">{{ event.date }}</small>
+                            <small class="text-muted">{{ format(event.date.replace('Z', ''), 'full', 'es') }}</small>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="text-center" v-if="isAdmin">
+            <button @click="goToAddEvent" class="btn btn-primary btn-lg btn-block mt-5">Agregar evento</button>
         </div>
     </div>
 </template>
@@ -27,9 +30,12 @@
 import { ref, onMounted } from 'vue';
 import { getEvents } from '@/services/EventService';
 import { useRouter } from 'vue-router';
+import { isUserLoggedAdmin } from '@/utils/Validations';
+import { format } from '@formkit/tempo';
 
 const router = useRouter();
 const events = ref([]);
+const isAdmin = ref(false);
 
 const getEvent = async () => {
     try {
@@ -47,8 +53,13 @@ function goToEventPage(event) {
     router.push(`/event`);
 }
 
+function goToAddEvent() {
+    router.push('/add-event');
+}
+
 
 onMounted(() => {
+    isAdmin.value = isUserLoggedAdmin();
     getEvent();
 });
 </script>

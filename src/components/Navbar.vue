@@ -25,7 +25,7 @@
                         <a class="nav-link" @click="goToEvents">Eventos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @click="navigateLoginOrLogout">Ingresar</a>
+                        <a class="nav-link" @click="navigateLoginOrLogout">Sesión</a>
                     </li>
                 </ul>
             </div>
