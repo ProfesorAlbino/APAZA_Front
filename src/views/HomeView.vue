@@ -38,7 +38,7 @@ onMounted(() => {
                             con los demás, y pueden tener intereses y comportamientos repetitivos."
       url="/Apaza/Que es el autismo.png" :order="false" data-aos="zoom-in-right"/>
 
-    <CardImageLeft title="Sintomas del Autismo" description="El autismo, o trastorno del espectro autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
+    <CardImageLeft title="Síntomas del Autismo" description="El autismo, o trastorno del espectro autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
                   dificultad para comunicarse o mantener contacto visual, comportamientos repetitivos como mecerse o aletear, preferencia por la rutina y 
                   resistencia al cambio, y problemas para entender emociones o interactuar socialmente."
       url="/Apaza/Primeros Sintomas.png" :order="false" data-aos="zoom-in-left"/>
@@ -58,13 +58,13 @@ onMounted(() => {
 
     <div class="row mt-5">
       <div class="col-4">
-        <CardFullImage title="Recién Diagnosticado" url="/Apaza/Recien Diagnosticado.jpg"
+        <CardFullImage title="Recién Diagnosticado" url="/Apaza/Recién Diagnosticado.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
           link="#" data-aos="zoom-out-up"/>
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Síntomas del Autismo" url="/Apaza/Sintomas del Autismo.jpg"
+        <CardFullImage title="Síntomas del Autismo" url="/Apaza/Síntomas del Autismo.jpg"
           descriptionCard="Conoce los síntomas y señales comunes del autismo para una identificación temprana y precisa."
           link="#" data-aos="zoom-out-up"/>
       </div>
@@ -96,7 +96,7 @@ onMounted(() => {
 
       <div class="col-4">
         <CardFullImage title="Nuestros Eventos" url="/Apaza/Nuestros Eventos.jpg"
-          descriptionCard="Explora nuestros eventos y enterate de todas nuestras actividades para no perderte ninguna."
+          descriptionCard="Explora nuestros eventos y entérate de todas nuestras actividades para no perderte ninguna."
           link="#" data-aos="zoom-out-up"/>
       </div>
 

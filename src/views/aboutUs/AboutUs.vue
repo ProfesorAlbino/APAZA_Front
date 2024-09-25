@@ -7,7 +7,7 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
         <div class="col-6 ms-auto d-flex align-items-center justify-content-center" id="containerText">
             <div class="text-center offset-3">
                 <p>Acerca de nosotros</p>
-                <h1>Nuestros Origenes</h1>
+                <h1>Nuestros Orígenes</h1>
                 <p>Desde nuestras raíces como un pequeño grupo de familias unidas por el amor y la esperanza,
                     hemos crecido con un solo objetivo: mejorar la calidad de vida de nuestros hijos con autismo.
                     Hoy, gracias al apoyo de organizaciones como ACOTEAMA y a la fuerza de nuestra comunidad,
@@ -18,7 +18,6 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
 
         <div class="col-6 mt-5">
             <div>
-                <!-- Al usar rutas desde public no hace falta poner el public, muestra un warning, para @ProfesorAlbino -->
                 <img src="/Apaza/AcercaDe.png" alt="Logo" class="img-fluid" />
             </div>
         </div>
