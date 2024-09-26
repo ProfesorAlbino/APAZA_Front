@@ -70,6 +70,7 @@ const modalDeleteInfo = ref({
     closeText: 'Cancelar',
     acceptText: 'Eliminar',
     onAccept: async () => {
+        if (!isAdmin.value) return;
         await deleteEvent(event.value._id);
         router.push('/events');
     }

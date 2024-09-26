@@ -3,9 +3,9 @@ import wave from '../components/Wave.vue'
 import CardImageRight from '../components/cards/CardImageRight.vue'
 import CardImageLeft from '../components/cards/CardImageLeft.vue'
 import CardFullImage from '../components/cards/CardFullImage.vue'
-import { ref, onMounted } from 'vue';
+/*import { ref, onMounted } from 'vue';
 
-import { getEvents } from '@/services/EventService';
+ import { getEvents } from '@/services/EventService';
 
 const events = ref([]);
 
@@ -22,7 +22,7 @@ const getEvent = async () => {
 // Similar al useEffect en React, se ejecuta cuando el componente se monta
 onMounted(() => {
   getEvent();
-});
+}); */
 
 
 </script>
@@ -33,15 +33,15 @@ onMounted(() => {
   </section>
 
   <section>
-    <CardImageRight title="¿Que es el autismo?" description="El autismo es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
+    <CardImageRight title="¿Que es el TEA?" description="El TEA es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
                             mundo y con las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y relacionarse
                             con los demás, y pueden tener intereses y comportamientos repetitivos."
-      url="/Apaza/Que es el autismo.png" :order="false" data-aos="zoom-in-right"/>
+      url="/Apaza/WhatIsTheAutism.png" :order="false" data-aos="zoom-in-right" />
 
-    <CardImageLeft title="Síntomas del Autismo" description="El autismo, o trastorno del espectro autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
+    <CardImageLeft title="Características del Autismo" description="El Trastorno del Espectro Autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
                   dificultad para comunicarse o mantener contacto visual, comportamientos repetitivos como mecerse o aletear, preferencia por la rutina y 
                   resistencia al cambio, y problemas para entender emociones o interactuar socialmente."
-      url="/Apaza/Primeros Sintomas.png" :order="false" data-aos="zoom-in-left"/>
+      url="/Apaza/FirstCharacteristics.png" :order="false" data-aos="zoom-in-left" />
   </section>
 
   <section id="sectionCards" class="a">
@@ -54,31 +54,8 @@ onMounted(() => {
       </svg>
     </div>
 
-    <h1 id="title" class="text-center" data-aos="fade-up" data-aos-duration="3000">Información sobre el autismo</h1>
+    <h1 id="title" class="text-center" data-aos="fade-up" data-aos-duration="3000">Información sobre el TEA y APAZA</h1>
 
-    <div class="row mt-5">
-      <div class="col-4">
-        <CardFullImage title="Recién Diagnosticado" url="/Apaza/Recién Diagnosticado.jpg"
-          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
-          link="#" data-aos="zoom-out-up"/>
-      </div>
-
-      <div class="col-4">
-        <CardFullImage title="Síntomas del Autismo" url="/Apaza/Síntomas del Autismo.jpg"
-          descriptionCard="Conoce los síntomas y señales comunes del autismo para una identificación temprana y precisa."
-          link="#" data-aos="zoom-out-up"/>
-      </div>
-
-      <div class="col-4">
-        <CardFullImage title="Tratamientos" url="/Apaza/Tratamientos.jpg"
-          descriptionCard="Explora diferentes tratamientos y terapias que pueden ayudar en el desarrollo y bienestar de personas con autismo."
-          link="#" data-aos="zoom-out-up"/>
-      </div>
-    </div>
-
-
-    <!-- SECCIÓN DE EVENTOS -->
-    <h1 id="title" class="text-center mt-5">Servicios y Eventos </h1>
 
     <div class="row mt-5">
       <!--<div class="col-4" v-for="(event, index) in events"
@@ -91,19 +68,42 @@ onMounted(() => {
       <div class="col-4">
         <CardFullImage title="Sobre Nosotros" url="/Apaza/Fondo-pagina-principal.jpg"
           descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
-          link="/about" data-aos="zoom-out-up"/>
+          link="/about" data-aos="zoom-out-up" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Nuestros Eventos" url="/Apaza/Nuestros Eventos.jpg"
+        <CardFullImage title="Síntomas del Autismo" url="/Apaza/CharacteristicsOfAutism.jpg"
+          descriptionCard="Conoce los síntomas y señales comunes del autismo para una identificación temprana y precisa."
+          link="#" data-aos="zoom-out-up" />
+      </div>
+
+      <div class="col-4">
+        <CardFullImage title="Tratamientos" url="/Apaza/Tratamientos.jpg"
+          descriptionCard="Explora diferentes tratamientos y terapias que pueden ayudar en el desarrollo y bienestar de personas con autismo."
+          link="#" data-aos="zoom-out-up" />
+      </div>
+
+    </div>
+
+    <h1 id="title" class="text-center mt-5">Servicios y Eventos </h1>
+
+    <div class="row mt-5">
+      <div class="col-4">
+        <CardFullImage title="Recién Diagnosticado" url="/Apaza/FirstDiagnostics.jpg"
+          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+          link="#" data-aos="zoom-out-up" />
+      </div>
+
+      <div class="col-4">
+        <CardFullImage title="Nuestros Eventos" url="/Apaza/NewEvents.jpg"
           descriptionCard="Explora nuestros eventos y entérate de todas nuestras actividades para no perderte ninguna."
-          link="#" data-aos="zoom-out-up"/>
+          link="#" data-aos="zoom-out-up" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Eventos Comunitarios" url="/Apaza/Eventos Comunitarios.jpg"
+        <CardFullImage title="Eventos Comunitarios" url="/Apaza/CommunityEvents.jpg"
           descriptionCard="Asiste a eventos organizados para conectar a familias y personas dentro del espectro autista."
-          link="#" data-aos="zoom-out-up"/>
+          link="#" data-aos="zoom-out-up" />
       </div>
     </div>
 
