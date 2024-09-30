@@ -25,7 +25,7 @@ const props = defineProps({
                 <div class="col-md-6">
                     <div class="text-center text-md-start">
                         <h1 class="display-4 mb-4 text-center">{{ title }}</h1>
-                        <p class="lead">
+                        <p class="lead fs-4">
                             {{ description }}
                         </p>
                     </div>

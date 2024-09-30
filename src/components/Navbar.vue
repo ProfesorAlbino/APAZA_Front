@@ -3,14 +3,14 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" @click="gotoHome">
                 <img src="/Apaza/apaza_logo.png" alt="APAZA Logo" width="60" height="60" class="me-2 navbar-logo">
-                <span id="title" class="fs-4 fw-semibold">APAZA</span>
+                <span id="title" class="fs-2 fw-semibold">APAZA</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span id="description" class="visually-hidden">Open main menu</span>
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse fs-5" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" @click="gotoHome">Inicio</a>
@@ -23,9 +23,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" @click="goToEvents">Eventos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" @click="navigateLoginOrLogout">Sesión</a>
                     </li>
                 </ul>
             </div>

@@ -3,7 +3,7 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
 </script>
 
 <template>
-    <div class="row" id="containerAcercaDe">
+    <div class="row fs-4" id="containerAcercaDe">
         <div class="col-6 ms-auto d-flex align-items-center justify-content-center" id="containerText">
             <div class="text-center offset-3">
                 <p>Acerca de nosotros</p>
@@ -25,7 +25,7 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
 
     <section>
 
-        <div class="row mt-5" id="containerMisionVision">
+        <div class="row mt-5 fs-4" id="containerMisionVision">
 
             <div class="col-6 ms-auto d-flex align-items-center justify-content-center mt-5 mb-5" id="containerText">
                 <div class="text-center">
@@ -48,7 +48,7 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
         </div>
     </section>
 
-    <div class="row">
+    <div class="row fs-4">
         <h1 class="text-center mt-5">Nuestra Historia</h1>
         <div class="col-12 mt-3">
             <Timeline />

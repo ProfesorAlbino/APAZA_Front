@@ -1,9 +1,11 @@
 <script setup>
-import wave from '../components/Wave.vue'
+import wave from '@/components/Wave.vue'
 import CardImageRight from '../components/cards/CardImageRight.vue'
 import CardImageLeft from '../components/cards/CardImageLeft.vue'
 import CardFullImage from '../components/cards/CardFullImage.vue'
-/*import { ref, onMounted } from 'vue';
+/*
+Descomentar si ocupa tres eventos 
+import { ref, onMounted } from 'vue';
 
  import { getEvents } from '@/services/EventService';
 
@@ -38,7 +40,7 @@ onMounted(() => {
                             con los demás, y pueden tener intereses y comportamientos repetitivos."
       url="/Apaza/WhatIsTheAutism.png" :order="false" data-aos="zoom-in-right" />
 
-    <CardImageLeft title="Características del Autismo" description="El Trastorno del Espectro Autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
+    <CardImageLeft title="Características del TEA" description="El Trastorno del Espectro Autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
                   dificultad para comunicarse o mantener contacto visual, comportamientos repetitivos como mecerse o aletear, preferencia por la rutina y 
                   resistencia al cambio, y problemas para entender emociones o interactuar socialmente."
       url="/Apaza/FirstCharacteristics.png" :order="false" data-aos="zoom-in-left" />

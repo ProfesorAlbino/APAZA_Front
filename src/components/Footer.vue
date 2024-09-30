@@ -15,7 +15,7 @@
                         <!-- Footer Social Area-->
                         <div class="footer_social_area">
 
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="FaceBook"
+                            <a  data-toggle="tooltip" data-placement="top" title="FaceBook"
                                 data-original-title="Facebook">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-facebook" viewBox="0 0 16 16">
@@ -24,7 +24,7 @@
                                 </svg>
                             </a>
 
-                            <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                            <a  data-toggle="tooltip" data-placement="top" title=""
                                 data-original-title="Pinterest">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-instagram" viewBox="0 0 16 16">
@@ -33,7 +33,7 @@
                                 </svg>
                             </a>
 
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
+                            <a  data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-tiktok" viewBox="0 0 16 16">
                                     <path
@@ -52,9 +52,10 @@
                         <!-- Footer Menu-->
                         <div class="footer_menu">
                             <ul>
-                                <li><a href="/about">Acerca de nosotros</a></li>
-                                <li><a href="#">Junta Directiva</a></li>
-                                <li><a href="#">Desarrolladores</a></li>
+                                <li><a @click="navigate('/about')">Acerca de nosotros</a></li>
+                                <li><a >Junta Directiva</a></li>
+                                <li><a >Desarrolladores</a></li>
+                                <li><a @click="navigate('/login')">Sesión</a></li>
                             </ul>
                         </div>
                     </div>
@@ -67,9 +68,9 @@
                         <!-- Footer Menu-->
                         <div class="footer_menu">
                             <ul>
-                                <li><a href="#">Ayuda</a></li>
-                                <li><a href="#">Informacion</a></li>
-                                <li><a href="#">Nuestros Eventos</a></li>
+                                <li><a >Ayuda</a></li>
+                                <li><a >Información</a></li>
+                                <li><a >Nuestros Eventos</a></li>
                             </ul>
                         </div>
                     </div>
@@ -82,9 +83,9 @@
                         <!-- Footer Menu-->
                         <div class="footer_menu">
                             <ul>
-                                <li><a href="#">Informacion</a></li>
-                                <li><a href="#">Correo</a></li>
-                                <li><a href="#">Whatsapp</a></li>
+                                <li><a >Información</a></li>
+                                <li><a >Correo</a></li>
+                                <li><a >WhatsApp</a></li>
                             </ul>
                         </div>
                     </div>
@@ -93,6 +94,18 @@
         </div>
     </footer>
 </template>
+
+<script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+
+function navigate(url) {
+    router.push(url);
+}
+
+</script>
 
 <style>
 body {

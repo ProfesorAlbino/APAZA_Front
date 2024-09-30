@@ -1,20 +1,24 @@
 <template>
-    <div class="events-container my-5">
-        <div class="banner text-center py-5 mb-5">
-            <h1 class="display-4 text-white">Eventos APAZA</h1>
-            <!-- <p class="lead text-white" @click="goToAddEvent">Agregar evento</p> -->
-        </div>
-        <div class="container">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <CardPresentInfoOverImage v-for="(event, index) in events" :key="index" :title="event.title"
-                    :description="event.description" :image="event.image"
-                    :date="format(event.date.replace('Z', ''), 'full', 'es')" @click="goToEventPage(event)" />
+    <BaseCarousel :images="getImagesFromEvents()" />
+
+    <section>
+        <div class="events-container mb-5">
+            <div class="banner text-center py-5 mb-5">
+                <h1 class="display-4 text-white">Eventos APAZA</h1>
+                <!-- <p class="lead text-white" @click="goToAddEvent">Agregar evento</p> -->
+            </div>
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <CardPresentInfoOverImage v-for="(event, index) in events" :key="index" :title="event.title"
+                        :description="event.description" :image="event.image"
+                        :date="format(event.date.replace('Z', ''), 'full', 'es')" @click="goToEventPage(event)" />
+                </div>
+            </div>
+            <div class="text-center" v-if="isAdmin">
+                <button @click="goToAddEvent" class="btn btn-primary btn-lg btn-block mt-5">Agregar evento</button>
             </div>
         </div>
-        <div class="text-center" v-if="isAdmin">
-            <button @click="goToAddEvent" class="btn btn-primary btn-lg btn-block mt-5">Agregar evento</button>
-        </div>
-    </div>
+    </section>
 </template>
 
 <script setup>
@@ -24,6 +28,7 @@ import { useRouter } from 'vue-router';
 import { isUserLoggedAdmin } from '@/utils/Validations';
 import { format } from '@formkit/tempo';
 import CardPresentInfoOverImage from '@/components/cards/CardPresentInfoOverImage.vue';
+import BaseCarousel from '@/components/carousel/BaseCarousel.vue';
 
 const router = useRouter();
 const events = ref([]);
@@ -39,6 +44,10 @@ const getEvent = async () => {
         router.go(0); // <-- Esto debería recargar la página ***Probar*** Según ChatGPT
     }
 };
+
+function getImagesFromEvents(){
+    return events.value.map(event => event.image);
+}
 
 function goToEventPage(event) {
     sessionStorage.setItem('event', JSON.stringify(event));
@@ -57,6 +66,46 @@ onMounted(() => {
 </script>
 
 <style scoped>
+#sectionCards {
+    background-color: var(--primary-color);
+    display: flex;
+
+    padding: 10rem;
+    position: relative;
+    height: 200%;
+    color: var(--text-color-1);
+    font-family: var(--text-font-1);
+
+    display: flex;
+    flex-direction: column;
+}
+
+#title {
+    color: var(--text-color-1);
+    font-family: var(--text-font-1);
+}
+
+.custom-shape-divider-top-1721696071 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1721696071 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 84px;
+}
+
+.custom-shape-divider-top-1721696071 .shape-fill {
+    fill: var(--background-color-3);
+}
+
 .events-container {
     /* background-color: #f8f9fa; */
     background-color: var(--background-color-3);
