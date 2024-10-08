@@ -10,7 +10,7 @@ let language = LANG_DEFAULT;
 function getConfig() {
     return {
         URL: DEV_MODE ? LOCAL_API_URL : API_URL,
-        LANG: LANG_DEFAULT
+        LANG: language
     }
 }
 
