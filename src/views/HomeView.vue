@@ -3,6 +3,7 @@ import wave from '../components/Wave.vue'
 import CardImageRight from '../components/cards/CardImageRight.vue'
 import CardImageLeft from '../components/cards/CardImageLeft.vue'
 import CardFullImage from '../components/cards/CardFullImage.vue'
+import SectionInfo from '@/components/templates/SectionInfo.vue'
 /*import { ref, onMounted } from 'vue';
 
  import { getEvents } from '@/services/EventService';
@@ -36,12 +37,24 @@ onMounted(() => {
     <CardImageRight title="¿Que es el TEA?" description="El TEA es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
                             mundo y con las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y relacionarse
                             con los demás, y pueden tener intereses y comportamientos repetitivos."
-      url="/Apaza/WhatIsTheAutism.png" :order="false" data-aos="zoom-in-right" />
+      url="/Apaza/WhatIsTheAutism.png" data-aos="zoom-in-right" />
 
     <CardImageLeft title="Características del Autismo" description="El Trastorno del Espectro Autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
                   dificultad para comunicarse o mantener contacto visual, comportamientos repetitivos como mecerse o aletear, preferencia por la rutina y 
                   resistencia al cambio, y problemas para entender emociones o interactuar socialmente."
-      url="/Apaza/FirstCharacteristics.png" :order="false" data-aos="zoom-in-left" />
+      url="/Apaza/FirstCharacteristics.png" data-aos="zoom-in-left" />
+  </section>
+
+  <section>
+    <SectionInfo title="Ven y descubre un poco más sobre nuestra historia y los miembros que forman parte de APAZA." 
+    subtitle="Estamos emocionados de compartir nuestro recorrido y todo lo que nos impulsa a seguir adelante." 
+    url="/Test/about-left-image.png"
+    count1="100" count2="2011" count3="30"
+    countTitle1="Miembros" countTitle2="Fundación" countTitle3="Junta directiva"
+    countDescription1="Contamos con un equipo de profesionales y voluntarios dedicados a brindar apoyo"
+    countDescription2="Desde nuestra fundación en 2011, hemos trabajado para crear conciencia"
+    countDescription3="Nuestra junta directiva está compuesta por un grupo de personas comprometidas con el bienestar de las personas con autismo."
+    data-aos="zoom-in-left"/>
   </section>
 
   <section id="sectionCards" class="a">
@@ -54,9 +67,8 @@ onMounted(() => {
       </svg>
     </div>
 
+
     <h1 id="title" class="text-center" data-aos="fade-up" data-aos-duration="3000">Información sobre el TEA y APAZA</h1>
-
-
     <div class="row mt-5">
       <!--<div class="col-4" v-for="(event, index) in events"
       :key="index">
