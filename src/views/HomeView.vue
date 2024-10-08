@@ -3,9 +3,10 @@ import wave from '@/components/Wave.vue'
 import CardImageRight from '../components/cards/CardImageRight.vue'
 import CardImageLeft from '../components/cards/CardImageLeft.vue'
 import CardFullImage from '../components/cards/CardFullImage.vue'
+import { getLang, language } from '@/config/BasicConfig'
+import { ref, onMounted } from 'vue';
 /*
 Descomentar si ocupa tres eventos 
-import { ref, onMounted } from 'vue';
 
  import { getEvents } from '@/services/EventService';
 
@@ -26,6 +27,14 @@ onMounted(() => {
   getEvent();
 }); */
 
+//Así se implementa el cambio de idioma, IMPORTANTE el operador condicional(o v-if) en el template para que no se caiga la página
+const lang = ref({});
+
+onMounted(async () => {
+  await getLang(language).then((data) => {
+    lang.value = data;
+  });
+});
 
 </script>
 
@@ -35,15 +44,14 @@ onMounted(() => {
   </section>
 
   <section>
-    <CardImageRight title="¿Que es el TEA?" description="El TEA es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el
-                            mundo y con las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y relacionarse
-                            con los demás, y pueden tener intereses y comportamientos repetitivos."
-      url="/Apaza/WhatIsTheAutism.png" :order="false" data-aos="zoom-in-right" />
+    <CardImageRight :title="lang.homepage?.titles?.whatIsTea || ''"
+      :description="lang.homepage?.body?.descriptionTea || ''" url="/Apaza/WhatIsTheAutism.png" :order="false"
+      data-aos="zoom-in-right" />
 
-    <CardImageLeft title="Características del TEA" description="El Trastorno del Espectro Autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen 
-                  dificultad para comunicarse o mantener contacto visual, comportamientos repetitivos como mecerse o aletear, preferencia por la rutina y 
-                  resistencia al cambio, y problemas para entender emociones o interactuar socialmente."
-      url="/Apaza/FirstCharacteristics.png" :order="false" data-aos="zoom-in-left" />
+    <!-- v-if="lang.homepage && lang.homepage.titles && lang.homepage.body" -->
+    <CardImageLeft :title="lang.homepage?.titles?.characteristicsTea || ''"
+      :description="lang.homepage?.body?.descriptionCharacteristicsTea || ''" url="/Apaza/FirstCharacteristics.png"
+      :order="false" data-aos="zoom-in-left" />
   </section>
 
   <section id="sectionCards" class="a">
@@ -56,7 +64,8 @@ onMounted(() => {
       </svg>
     </div>
 
-    <h1 id="title" class="text-center" data-aos="fade-up" data-aos-duration="3000">Información sobre el TEA y APAZA</h1>
+    <h1 id="title" class="text-center" data-aos="fade-up" data-aos-duration="3000">{{
+      lang.homepage?.titles?.informationTeaApaza || '' }}</h1>
 
 
     <div class="row mt-5">
@@ -68,43 +77,40 @@ onMounted(() => {
       </div>-->
 
       <div class="col-4">
-        <CardFullImage title="Sobre Nosotros" url="/Apaza/Fondo-pagina-principal.jpg"
-          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
-          link="/about" data-aos="zoom-out-up" />
+        <CardFullImage :title="lang?.titleAboutUs || ''" url="/Apaza/Fondo-pagina-principal.jpg"
+          :descriptionCard="lang.homepage?.body?.infoAboutUs || ''" link="/about" data-aos="zoom-out-up" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Síntomas del Autismo" url="/Apaza/CharacteristicsOfAutism.jpg"
-          descriptionCard="Conoce los síntomas y señales comunes del autismo para una identificación temprana y precisa."
-          link="#" data-aos="zoom-out-up" />
+        <CardFullImage :title="lang.homepage?.titles?.characteristicsTea || ''" url="/Apaza/CharacteristicsOfAutism.jpg"
+          :descriptionCard="lang.homepage?.body?.infoCharacteristicsTea || ''" link="#" data-aos="zoom-out-up" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Tratamientos" url="/Apaza/Tratamientos.jpg"
-          descriptionCard="Explora diferentes tratamientos y terapias que pueden ayudar en el desarrollo y bienestar de personas con autismo."
-          link="#" data-aos="zoom-out-up" />
+        <CardFullImage :title="lang.homepage?.titles?.treatmentsTitle || ''" url="/Apaza/Tratamientos.jpg"
+          :descriptionCard="lang.homepage?.body?.infoTreatments || ''" link="#" data-aos="zoom-out-up" />
       </div>
 
     </div>
 
-    <h1 id="title" class="text-center mt-5">Servicios y Eventos </h1>
+    <h1 id="title" class="text-center mt-5">{{ lang.services + ' - ' + lang.events }}</h1>
 
     <div class="row mt-5">
       <div class="col-4">
-        <CardFullImage title="Recién Diagnosticado" url="/Apaza/FirstDiagnostics.jpg"
-          descriptionCard="Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo"
+        <CardFullImage :title="lang.homepage?.titles?.recentDiagnosis || ''" url="/Apaza/FirstDiagnostics.jpg"
+          :descriptionCard="lang.homepage?.body?.descriptionHelpDiagnostic || ''"
           link="#" data-aos="zoom-out-up" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Nuestros Eventos" url="/Apaza/NewEvents.jpg"
-          descriptionCard="Explora nuestros eventos y entérate de todas nuestras actividades para no perderte ninguna."
+        <CardFullImage :title="lang?.events || ''" url="/Apaza/NewEvents.jpg"
+          :descriptionCard="lang.homepage?.body?.infoEvents || ''"
           link="#" data-aos="zoom-out-up" />
       </div>
 
       <div class="col-4">
-        <CardFullImage title="Eventos Comunitarios" url="/Apaza/CommunityEvents.jpg"
-          descriptionCard="Asiste a eventos organizados para conectar a familias y personas dentro del espectro autista."
+        <CardFullImage :title="lang?.events || ''" url="/Apaza/CommunityEvents.jpg"
+          :descriptionCard="lang.homepage?.body?.infoEvents || ''"
           link="#" data-aos="zoom-out-up" />
       </div>
     </div>

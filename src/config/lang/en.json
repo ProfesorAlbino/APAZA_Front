@@ -1,3 +1,26 @@
 {
-    
+    "title": "APAZA",
+    "loading": "Loading...",
+    "titleAboutUs": "About Us",
+    "services": "Services",
+    "events": "Events",
+    "homepage": {
+        "titles": {
+            "whatIsTea": "What is ASD?",
+            "characteristicsTea": "ASD Characteristics",
+            "treatmentsTitle": "Treatments",
+            "informationTeaApaza": "Information about us",
+            "recentDiagnosis": "Recently Diagnosed"
+        },
+        "body": {
+            "descriptionTea": "ASD is a developmental disorder that affects the way a person relates to the world and the people around them. People with autism may have difficulty communicating and interacting with others, and may have repetitive interests and behaviors.",
+            "descriptionCharacteristicsTea": "Autism Spectrum Disorder (ASD) presents symptoms that can vary in each child. Some common signs include difficulty communicating or maintaining eye contact, repetitive behaviors like rocking or flapping, preference for routines and resistance to change, and problems understanding emotions or interacting socially.",
+            "descriptionHelpDiagnostic": "This section provides information and support for people who have recently received an autism diagnosis.",
+            "infoCharacteristicsTea": "Learn about the common characteristics and signs of autism for early and accurate identification.",
+            "infoTreatments": "Explore different treatments and therapies that can help with the development and well-being of people with autism.",
+            "infoDiagnosis": "This section provides information and support for people who have recently received an autism diagnosis.",
+            "infoEvents": "Explore our events and stay updated on all our activities so you don't miss any.",
+            "infoAboutUs": "Learn more about us and our mission to support people with ASD and their families."
+        }
+    }
 }

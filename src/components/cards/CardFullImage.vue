@@ -71,7 +71,6 @@ function goToEventPage(link) {
     margin: 0;
     z-index: 3;
     font-size: 1.8rem;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
