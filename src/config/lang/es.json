@@ -10,7 +10,11 @@
             "characteristicsTea": "Características del TEA",
             "treatmentsTitle": "Tratamientos",
             "informationTeaApaza": "Información sobre nosotros",
-            "recentDiagnosis": "Recién Diagnosticado"
+            "recentDiagnosis": "Recién Diagnosticado",
+            "titleAboutUs": "Ven y descubre un poco más sobre nuestra historia y los miembros que forman parte de APAZA.",
+            "countTitle1": "Miembros",
+            "countTitle2": "Fundación",
+            "countTitle3": "Junta directiva"
         },
         "body": {
             "descriptionTea": "El TEA es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el mundo y con las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y relacionarse con los demás, y pueden tener intereses y comportamientos repetitivos.",
@@ -20,7 +24,11 @@
             "infoTreatments": "Explora diferentes tratamientos y terapias que pueden ayudar en el desarrollo y bienestar de personas con autismo.",
             "infoDiagnosis": "Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo",
             "infoEvents": "Explora nuestros eventos y entérate de todas nuestras actividades para no perderte ninguna.",
-            "infoAboutUs": "Conoce más sobre nosotros y nuestra misión de apoyar a personas con TEA y sus familias."
+            "infoAboutUs": "Conoce más sobre nosotros y nuestra misión de apoyar a personas con TEA y sus familias.",
+            "descriptionAboutUs": "Estamos emocionados de compartir nuestro recorrido y todo lo que nos impulsa a seguir adelante.",
+            "descriptionCount1": "Conoce a los miembros que forman parte de nuestra comunidad.",
+            "descriptionCount2": "Descubre nuestra historia y cómo hemos crecido a lo largo de los años.",
+            "descriptionCount3": "Conoce a los miembros de nuestra junta directiva y su compromiso con nuestra misión."
         }
     }
 }

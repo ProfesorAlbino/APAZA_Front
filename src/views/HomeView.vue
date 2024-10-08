@@ -6,6 +6,7 @@ import CardFullImage from '../components/cards/CardFullImage.vue'
 import SectionInfo from '../components/templates/SectionInfo.vue'
 import { getLang, language } from '@/config/BasicConfig'
 import { ref, onMounted } from 'vue';
+import GeneralCarousel from '../components/carousel/GeneralCarousel.vue'
 /*
 Descomentar si ocupa tres eventos 
 
@@ -56,14 +57,20 @@ onMounted(async () => {
   </section>
 
   <section>
-    <SectionInfo title="Ven y descubre un poco más sobre nuestra historia y los miembros que forman parte de APAZA." 
-    subtitle="Estamos emocionados de compartir nuestro recorrido y todo lo que nos impulsa a seguir adelante." 
+    <GeneralCarousel />
+  </section>
+  
+  <section>
+    <SectionInfo :title="lang.homepage?.titles?.titleAboutUs || ''" 
+    :subtitle="lang.homepage?.body?.descriptionAboutUs || ''"
     url="/Test/about-left-image.png"
     count1="100" count2="2011" count3="30"
-    countTitle1="Miembros" countTitle2="Fundación" countTitle3="Junta directiva"
-    countDescription1="Contamos con un equipo de profesionales y voluntarios dedicados a brindar apoyo"
-    countDescription2="Desde nuestra fundación en 2011, hemos trabajado para crear conciencia"
-    countDescription3="Nuestra junta directiva está compuesta por un grupo de personas comprometidas con el bienestar de las personas con autismo."
+    :countTitle1="lang.homepage?.titles?.countTitle1 || ''" 
+    :countTitle2="lang.homepage?.titles?.countTitle2 || ''" 
+    :countTitle3="lang.homepage?.titles?.countTitle3 || ''"
+    :countDescription1="lang.homepage?.body?.countDescription1 || ''"
+    :countDescription2="lang.homepage?.body?.countDescription2 || ''"
+    :countDescription3="lang.homepage?.body?.countDescription3 || ''"
     data-aos="zoom-in-left"/>
   </section>
 
@@ -181,8 +188,7 @@ onMounted(async () => {
   fill: var(--background-color-3);
 }
 
-
-/* .custom-shape-divider-top-1721696071 {
+.custom-shape-divider-top-1721696071 {
   position: absolute;
   top: 0;
   left: 0;
@@ -211,7 +217,7 @@ onMounted(async () => {
   100% {
     transform: translateX(-33.33%);
   }
-} */
+}
 
 
 
