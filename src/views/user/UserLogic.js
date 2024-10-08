@@ -5,6 +5,12 @@ import { createCookie } from '@/config/CookiesService';
 export async function loginUser(user) {
     const res = await login(user)
         .then(response => {
+            if (!response.data || response.data.statusCode < 200 || response.data.statusCode >= 300) {
+                return {
+                    status: false,
+                    message: getStatusCodeMessage(response.data.statusCode)
+                }
+            }
             createCookie('User', JSON.stringify(response.data.data));
             return {
                 status: true,

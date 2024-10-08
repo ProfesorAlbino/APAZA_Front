@@ -15,10 +15,10 @@ export default defineConfig(({ mode }) => {
       }
     },
     server: {
-      port: env.PORT || 3125, // Usa el puerto de la variable de entorno o 3000 como fallback
+      port: env.PORT || 3125, 
     },
     preview: {
-      port: env.PORT || 8079, // Configura el puerto para 'vite preview' en producción
+      port: env.PORT || 8079, 
     }
   }
 })

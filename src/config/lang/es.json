@@ -1,0 +1,26 @@
+{
+    "title": "APAZA",
+    "loading": "Cargando...",
+    "titleAboutUs": "Sobre nosotros",
+    "services": "Servicios",
+    "events": "Eventos",
+    "homepage": {
+        "titles": {
+            "whatIsTea": "¿Que es el TEA?",
+            "characteristicsTea": "Características del TEA",
+            "treatmentsTitle": "Tratamientos",
+            "informationTeaApaza": "Información sobre nosotros",
+            "recentDiagnosis": "Recién Diagnosticado"
+        },
+        "body": {
+            "descriptionTea": "El TEA es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el mundo y con las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y relacionarse con los demás, y pueden tener intereses y comportamientos repetitivos.",
+            "descriptionCharacteristicsTea": "El Trastorno del Espectro Autista (TEA), presenta síntomas que pueden variar en cada niño. Algunos signos comunes incluyen dificultad para comunicarse o mantener contacto visual, comportamientos repetitivos como mecerse o aletear, preferencia por la rutina y resistencia al cambio, y problemas para entender emociones o interactuar socialmente.",
+            "descriptionHelpDiagnostic": "Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo",
+            "infoCharacteristicsTea": "Conoce los características y señales comunes del autismo para una identificación temprana y precisa.",
+            "infoTreatments": "Explora diferentes tratamientos y terapias que pueden ayudar en el desarrollo y bienestar de personas con autismo.",
+            "infoDiagnosis": "Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo",
+            "infoEvents": "Explora nuestros eventos y entérate de todas nuestras actividades para no perderte ninguna.",
+            "infoAboutUs": "Conoce más sobre nosotros y nuestra misión de apoyar a personas con TEA y sus familias."
+        }
+    }
+}

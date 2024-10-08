@@ -6,6 +6,8 @@ import NotificationToast from '@/components/toasts/NotificationToast.vue';
 import { isUserLoggedAdmin } from '@/utils/Validations';
 import { removeCookie } from '@/config/CookiesService';
 import { useRouter } from 'vue-router';
+import LoadingModal from '@/components/modals/LoadingModal.vue';
+import { Modal } from 'bootstrap';
 
 const router = useRouter();
 
@@ -28,6 +30,7 @@ onMounted(() => {
 });
 
 async function loginEvent() {
+    modalLoading();
     const userForLogin = {
         email: userLogin.value.email,
         password: userLogin.value.password
@@ -37,13 +40,11 @@ async function loginEvent() {
         showNotify(res.message, 'Bienvenido');
         isLog.value = true;
         setTimeout(() => {
-            //window.location.reload(); <-- AQUÍ
             router.go(0);
         }, 1500);
     } else {
         showNotify(res ? res.message : 'Error', 'No se pudo iniciar sesión');
         setTimeout(() => {
-            //window.location.reload(); <-- AQUÍ
             router.go(0);
         }, 1500);
     }
@@ -82,6 +83,11 @@ function showNotify(header, body) {
     const toastBootstrap = Toast.getOrCreateInstance(toastLive);
     toastBootstrap.show();
 };
+
+const modalLoading = () => {
+    const myModal = Modal.getOrCreateInstance(document.getElementById('load'));
+    myModal.show();
+}
 
 function initComponent() {
     const signUpButton = document.getElementById('signUp');
@@ -169,6 +175,7 @@ function initComponent() {
         </div>
     </div>
     <NotificationToast v-bind:header="notify.header" v-bind:body="notify.body" />
+    <LoadingModal idModal="load"/>
 </template>
 
 
@@ -261,6 +268,7 @@ input {
     /* background-color: #eee; */
     background-color: var(--background-color-3);
     border: none;
+    border-bottom: 1px solid;
     padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
