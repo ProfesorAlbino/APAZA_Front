@@ -6,6 +6,8 @@ import CardFullImage from '../components/cards/CardFullImage.vue'
 import SectionInfo from '../components/templates/SectionInfo.vue'
 import { getLang, language } from '@/config/BasicConfig'
 import { ref, onMounted } from 'vue';
+import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader'
+import BaseLoader from '@/components/loaders/BaseLoader.vue'
 /*
 Descomentar si ocupa tres eventos 
 
@@ -32,8 +34,10 @@ onMounted(() => {
 const lang = ref({});
 
 onMounted(async () => {
+  initPreloader();
   await getLang(language).then((data) => {
     lang.value = data;
+    removePreloader();
   });
 });
 
@@ -41,7 +45,7 @@ onMounted(async () => {
 
 <template>
   <section>
-    <wave class="mb-20" url="/Apaza/APAZA_FONDO.jpg" title="" description="" />
+    <wave class="mb-20" url="/Apaza/APAZA_FONDO.jpg" title="" description="" data-aos="zoom-out" data-aos-duration="1000" />
   </section>
 
   <section>
@@ -112,20 +116,17 @@ onMounted(async () => {
     <div class="row mt-5">
       <div class="col-4">
         <CardFullImage :title="lang.homepage?.titles?.recentDiagnosis || ''" url="/Apaza/FirstDiagnostics.jpg"
-          :descriptionCard="lang.homepage?.body?.descriptionHelpDiagnostic || ''"
-          link="#" data-aos="zoom-out-up" />
+          :descriptionCard="lang.homepage?.body?.descriptionHelpDiagnostic || ''" link="#" data-aos="zoom-out-up" />
       </div>
 
       <div class="col-4">
         <CardFullImage :title="lang?.events || ''" url="/Apaza/NewEvents.jpg"
-          :descriptionCard="lang.homepage?.body?.infoEvents || ''"
-          link="#" data-aos="zoom-out-up" />
+          :descriptionCard="lang.homepage?.body?.infoEvents || ''" link="#" data-aos="zoom-out-up" />
       </div>
 
       <div class="col-4">
         <CardFullImage :title="lang?.events || ''" url="/Apaza/CommunityEvents.jpg"
-          :descriptionCard="lang.homepage?.body?.infoEvents || ''"
-          link="#" data-aos="zoom-out-up" />
+          :descriptionCard="lang.homepage?.body?.infoEvents || ''" link="#" data-aos="zoom-out-up" />
       </div>
     </div>
 
@@ -137,7 +138,7 @@ onMounted(async () => {
       </svg>
     </div>
   </section>
-
+  <BaseLoader />
 </template>
 
 <style scoped>
