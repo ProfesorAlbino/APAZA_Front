@@ -71,7 +71,7 @@ defineProps({
                 <div class="fact-item">
                   <div class="count-area-content">
                     <div class="icon">
-                      <img src="/public/Test/service-icon-01.png" alt="">
+                      <img src="/Test/service-icon-01.png" alt="">
                     </div>
                     <div class="count-digit">{{ count1 }}</div>
                     <div class="count-title">{{ countTitle1 }}</div>

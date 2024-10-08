@@ -3,6 +3,7 @@ import wave from '@/components/Wave.vue'
 import CardImageRight from '../components/cards/CardImageRight.vue'
 import CardImageLeft from '../components/cards/CardImageLeft.vue'
 import CardFullImage from '../components/cards/CardFullImage.vue'
+import SectionInfo from '../components/templates/SectionInfo.vue'
 import { getLang, language } from '@/config/BasicConfig'
 import { ref, onMounted } from 'vue';
 /*
