@@ -9,14 +9,7 @@ import { ref, onMounted } from 'vue';
 import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader'
 import BaseLoader from '@/components/loaders/BaseLoader.vue'
 import GeneralCarousel from '../components/carousel/GeneralCarousel.vue'
-/*
-Descomentar si ocupa tres eventos 
 
- import { getEvents } from '@/services/EventService';
-
-const events = ref([]);
-import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader';
-import BaseLoader from '@/components/loaders/BaseLoader.vue';
 import { useRouter } from 'vue-router';
 
 const PAGE = 'homepage';
