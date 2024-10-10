@@ -4,6 +4,9 @@
     "titleAboutUs": "Sobre nosotros",
     "services": "Servicios",
     "events": "Eventos",
+    "welcome": "Bienvenido",
+    "backText": "Volver",
+    "correctText": "Correcto",
     "homepage": {
         "titles": {
             "whatIsTea": "¿Que es el TEA?",
@@ -21,6 +24,26 @@
             "infoDiagnosis": "Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo",
             "infoEvents": "Explora nuestros eventos y entérate de todas nuestras actividades para no perderte ninguna.",
             "infoAboutUs": "Conoce más sobre nosotros y nuestra misión de apoyar a personas con TEA y sus familias."
+        }
+    },
+    "loginpage":{
+        "titles":{
+            "createAccountText": "Crear cuenta",
+            "nameText": "Nombre",
+            "emailText": "Correo electrónico",
+            "passwordText": "Contraseña",
+            "loginText": "Iniciar sesión",
+            "registerText": "Registrar",
+            "logoutText": "Cerrar sesión",
+            "loggedText": "Sesión iniciada",
+            "areAdminText": "Eres un administrador",
+            "createAnotherAdminText": "Crear otro administrador"
+        },
+        "messages":{
+            "cantLoginMsg": "Error, No se pudo iniciar sesión",
+            "registerSuccessMsg": "Se registró correctamente",
+            "cantRegisterMsg": "Error, No se pudo registrar",
+            "loginMessageMsg": "Inicia sesión para que puedas crear otro usuario"
         }
     }
 }

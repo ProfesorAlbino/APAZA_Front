@@ -1,42 +1,27 @@
 <script setup>
-import wave from '@/components/Wave.vue'
-import CardImageRight from '../components/cards/CardImageRight.vue'
-import CardImageLeft from '../components/cards/CardImageLeft.vue'
-import CardFullImage from '../components/cards/CardFullImage.vue'
-import { getLang, language } from '@/config/BasicConfig'
+import wave from '@/components/Wave.vue';
+import CardImageRight from '../components/cards/CardImageRight.vue';
+import CardImageLeft from '../components/cards/CardImageLeft.vue';
+import CardFullImage from '../components/cards/CardFullImage.vue';
+import { getLangForPage, getConfig } from '@/config/BasicConfig';
 import { ref, onMounted } from 'vue';
-import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader'
-import BaseLoader from '@/components/loaders/BaseLoader.vue'
-/*
-Descomentar si ocupa tres eventos 
+import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader';
+import BaseLoader from '@/components/loaders/BaseLoader.vue';
+import { useRouter } from 'vue-router';
 
- import { getEvents } from '@/services/EventService';
-
-const events = ref([]);
-
-const getEvent = async () => {
-  try {
-    const data = await getEvents(); // Obtenemos los eventos
-    //events.value = data.data.data; // Actualizamos el valor de la referencia
-    events.value = data.data.data.slice(0, 3);
-  } catch (error) {
-    console.error("Error fetching events:", error);
-  }
-};
-
-// Similar al useEffect en React, se ejecuta cuando el componente se monta
-onMounted(() => {
-  getEvent();
-}); */
+const PAGE = 'homepage';
+const router = useRouter();
 
 //Así se implementa el cambio de idioma, IMPORTANTE el operador condicional(o v-if) en el template para que no se caiga la página
 const lang = ref({});
 
 onMounted(async () => {
   initPreloader();
-  await getLang(language).then((data) => {
+  await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
     lang.value = data;
     removePreloader();
+  }).catch(() => {
+    router.go(0);
   });
 });
 
@@ -44,7 +29,8 @@ onMounted(async () => {
 
 <template>
   <section>
-    <wave class="mb-20" url="/Apaza/APAZA_FONDO.jpg" title="" description="" data-aos="zoom-out" data-aos-duration="1000" />
+    <wave class="mb-20" url="/Apaza/APAZA_FONDO.jpg" title="" description="" data-aos="zoom-out"
+      data-aos-duration="1000" />
   </section>
 
   <section>

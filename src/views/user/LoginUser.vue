@@ -8,7 +8,9 @@ import { removeCookie } from '@/config/CookiesService';
 import { useRouter } from 'vue-router';
 import LoadingModal from '@/components/modals/LoadingModal.vue';
 import { Modal } from 'bootstrap';
+import { getLangForPage, getConfig } from '@/config/BasicConfig'
 
+const PAGE = 'loginpage';
 const router = useRouter();
 
 const userLogin = ref({
@@ -18,15 +20,22 @@ const userLogin = ref({
 });
 
 const notify = ref({
-    header: 'Bienvenido',
-    body: 'Correcto'
+    header: lang.value?.welcome || '',
+    body: lang.value?.correctText || ''
 });
 
 const isLog = ref(false);
 
-onMounted(() => {
+const lang = ref({});//lang.value.loginpage?.messages?.cantLogin || ''
+
+onMounted(async () => {
     initComponent();
     if (isUserLoggedAdmin()) isLog.value = true;
+    await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
+        lang.value = data;
+    }).catch(() => {
+        router.go(0);
+    });
 });
 
 async function loginEvent() {
@@ -37,13 +46,13 @@ async function loginEvent() {
     };
     const res = await loginUser(userForLogin);
     if (res && res.status) {
-        showNotify(res.message, 'Bienvenido');
+        showNotify(res.message, lang.value?.welcome || '');
         isLog.value = true;
         setTimeout(() => {
             router.go(0);
         }, 1500);
     } else {
-        showNotify(res ? res.message : 'Error', 'No se pudo iniciar sesión');
+        showNotify(res ? res.message : (lang.value.loginpage?.messages?.cantLoginMsg || ''));
         setTimeout(() => {
             router.go(0);
         }, 1500);
@@ -56,13 +65,13 @@ async function registerEvent() {
     if (!isLog.value) return;
     const res = await registerUser(userLogin.value);
     if (res && res.status) {
-        showNotify(res.message, 'Gracias por registrarte');
+        showNotify(res.message, lang.value.loginpage?.messages?.registerSuccessMsg || '');
         setTimeout(() => {
             //window.location.reload(); <-- AQUÍ
             router.go(0);
         }, 1500);
     } else {
-        showNotify(res ? res.message : 'Error', 'No se pudo registrar');
+        showNotify(res ? res.message : (lang.value.loginpage?.messages?.cantRegisterMsg || ''));
         setTimeout(() => {
             //window.location.reload(); <-- AQUÍ
             router.go(0);
@@ -70,7 +79,7 @@ async function registerEvent() {
     }
 };
 
-function logoutEvent(){
+function logoutEvent() {
     removeCookie('User');
     isLog.value = false;
 }
@@ -113,23 +122,23 @@ function initComponent() {
             <div class="form-container sign-up-container form-floating">
                 <div class="form">
                     <div>
-                        <h1>Crear cuenta</h1>
+                        <h1>{{ lang.loginpage?.titles?.createAccountText || '' }}</h1>
                         <div class="form-floating">
                             <input class="form-control" id="nameRegister" type="text" placeholder="Nombre"
                                 v-model="userLogin.name" />
-                            <label for="nameRegister">Nombre</label>
+                            <label for="nameRegister">{{ lang.loginpage?.titles?.nameText || '' }}</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="emailRegister" type="email" placeholder="Correo electrónico"
                                 v-model="userLogin.email" />
-                            <label for="emailRegister">Correo electrónico</label>
+                            <label for="emailRegister">{{ lang.loginpage?.titles?.emailText || '' }}</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="passRegister" type="password" placeholder="Contraseña"
                                 v-model="userLogin.password" />
-                            <label for="passRegister">Contraseña</label>
+                            <label for="passRegister">{{ lang.loginpage?.titles?.passwordText || '' }}</label>
                         </div>
-                        <button @click="registerEvent()">Registrar</button>
+                        <button @click="registerEvent()">{{ lang.loginpage?.titles?.registerText || '' }}</button>
                     </div>
                 </div>
             </div>
@@ -137,23 +146,23 @@ function initComponent() {
             <div class="form-container sign-in-container">
                 <div class="form">
                     <div v-if="!isLog">
-                        <h1 class="mb-3">Iniciar Sesión</h1>
+                        <h1 class="mb-3">{{ lang.loginpage?.titles?.loginText || '' }}</h1>
                         <div class="form-floating mb-3">
                             <input class="form-control" id="emailLogin" type="email" placeholder="Correo electrónico"
                                 v-model="userLogin.email" />
-                            <label for="emailLogin">Correo electrónico</label>
+                            <label for="emailLogin">{{ lang.loginpage?.titles?.emailText || '' }}</label>
                         </div>
                         <div class="form-floating">
                             <input class="form-control" id="passLogin" type="password" placeholder="Contraseña"
                                 v-model="userLogin.password" />
-                            <label for="passLogin">Contraseña</label>
+                            <label for="passLogin">{{ lang.loginpage?.titles?.passwordText || '' }}</label>
                         </div>
                         <!-- <a href="#">Olvidó su contraseña?</a> -->
-                        <button @click="loginEvent()">Iniciar Sesión</button>
+                        <button @click="loginEvent()">{{ lang.loginpage?.titles?.loginText || '' }}</button>
                     </div>
                     <div v-if="isLog">
-                        <h1 class="mb-3">Inicio de sesión exitoso</h1>
-                        <button @click="logoutEvent()">Cerrar Sesión</button>
+                        <h1 class="mb-3">{{ lang.loginpage?.titles?.loggedText || '' }}</h1>
+                        <button @click="logoutEvent()">{{ lang.loginpage?.titles?.logoutText || '' }}</button>
                     </div>
                 </div>
             </div>
@@ -161,21 +170,21 @@ function initComponent() {
             <div class="overlay-container">
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">
-                        <h1>Hola!</h1>
-                        <p>Volver atrás</p>
-                        <button class="ghost" id="signIn">Atrás</button>
+                        <h1>{{ lang.loginpage?.titles?.areAdminText || '' }}</h1>
+                        <button class="ghost" id="signIn">{{ lang?.backText || '' }}</button>
                     </div>
                     <div class="overlay-panel overlay-right">
-                        <h1>¿Crear otro administrador?</h1>
-                        <p>Inicia sesión para que puedas crear otro usuario</p>
-                        <button class="ghost" id="signUp">Crear nuevo administrador</button>
+                        <h1>¿{{ lang.loginpage?.titles?.createAnotherAdminText || '' }}?</h1>
+                        <p>{{ lang.loginpage?.messages?.loginMessageMsg || '' }}</p>
+                        <button class="ghost" id="signUp">{{ lang.loginpage?.titles?.createAnotherAdminText || ''
+                            }}</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <NotificationToast v-bind:header="notify.header" v-bind:body="notify.body" />
-    <LoadingModal idModal="load"/>
+    <LoadingModal idModal="load" />
 </template>
 
 
