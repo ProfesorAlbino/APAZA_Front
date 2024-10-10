@@ -4,6 +4,9 @@
     "titleAboutUs": "Sobre nosotros",
     "services": "Servicios",
     "events": "Eventos",
+    "welcome": "Bienvenido",
+    "backText": "Volver",
+    "correctText": "Correcto",
     "homepage": {
         "titles": {
             "whatIsTea": "¿Que es el TEA?",
@@ -29,6 +32,26 @@
             "descriptionCount1": "Conoce a los miembros que forman parte de nuestra comunidad.",
             "descriptionCount2": "Descubre nuestra historia y cómo hemos crecido a lo largo de los años.",
             "descriptionCount3": "Conoce a los miembros de nuestra junta directiva y su compromiso con nuestra misión."
+        }
+    },
+    "loginpage":{
+        "titles":{
+            "createAccountText": "Crear cuenta",
+            "nameText": "Nombre",
+            "emailText": "Correo electrónico",
+            "passwordText": "Contraseña",
+            "loginText": "Iniciar sesión",
+            "registerText": "Registrar",
+            "logoutText": "Cerrar sesión",
+            "loggedText": "Sesión iniciada",
+            "areAdminText": "Eres un administrador",
+            "createAnotherAdminText": "Crear otro administrador"
+        },
+        "messages":{
+            "cantLoginMsg": "Error, No se pudo iniciar sesión",
+            "registerSuccessMsg": "Se registró correctamente",
+            "cantRegisterMsg": "Error, No se pudo registrar",
+            "loginMessageMsg": "Inicia sesión para que puedas crear otro usuario"
         }
     }
 }

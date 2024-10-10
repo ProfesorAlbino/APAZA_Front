@@ -21,7 +21,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { getLang, LANG_DEFAULT } from '@/config/BasicConfig';
+import { getLang, getConfig } from '@/config/BasicConfig';
 
 const title = ref('');
 
@@ -33,7 +33,7 @@ defineProps({
 });
 
 onMounted(async () => {
-    await getLang(LANG_DEFAULT).then((lang) => {
+    await getLang(getConfig().CURRENT_LANG).then((lang) => {
         title.value = lang.loading;
     });
 });

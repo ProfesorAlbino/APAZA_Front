@@ -10,10 +10,15 @@ let language = LANG_DEFAULT;
 function getConfig() {
     return {
         URL: DEV_MODE ? LOCAL_API_URL : API_URL,
-        LANG: language
+        CURRENT_LANG: language
     }
 }
 
+/**
+ * IMPORTANT, DO NOT USE IN PAGES, ONLY IN COMPONENTS, IN PAGES USE getLangForPage
+ * @param {string} lang 
+ * @returns the language object
+ */
 async function getLang(lang) {
     let language;
     try {
@@ -22,6 +27,14 @@ async function getLang(lang) {
         language = await import(`@/config/lang/${LANG_DEFAULT}.json`);
     }
     return language.default ?? language;
+}
+
+async function getLangForPage(lang, page) {
+    const language = await getLang(lang);
+    if (!language[page]) {
+        return getLang(LANG_DEFAULT);
+    }
+    return language;
 }
 
 function cookiesConfig() {
@@ -36,4 +49,4 @@ function setLang(lang) {
     language = lang;
 }
 
-export { getConfig, cookiesConfig, getLang, LANG_DEFAULT, setLang, language };
+export { getConfig, cookiesConfig, getLang, LANG_DEFAULT, setLang, getLangForPage };
