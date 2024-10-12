@@ -8,6 +8,7 @@ const LANG_DEFAULT = 'es';
 let language = LANG_DEFAULT;
 
 function getConfig() {
+    updateLang();
     return {
         URL: DEV_MODE ? LOCAL_API_URL : API_URL,
         CURRENT_LANG: language
@@ -45,8 +46,16 @@ function cookiesConfig() {
     }
 }
 
+function updateLang() {
+    const lang = localStorage.getItem('lang');
+    if (lang) {
+        language = lang;
+    }
+}
+
 function setLang(lang) {
     language = lang;
+    localStorage.setItem('lang', lang);
 }
 
 export { getConfig, cookiesConfig, getLang, LANG_DEFAULT, setLang, getLangForPage };

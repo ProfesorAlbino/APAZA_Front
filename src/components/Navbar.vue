@@ -3,7 +3,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" @click="gotoHome">
                 <img src="/Apaza/apaza_logo.png" alt="APAZA Logo" width="60" height="60" class="me-2 navbar-logo">
-                <span id="title" class="fs-2 fw-semibold">APAZA</span>
+                <span id="title" class="fs-2 fw-semibold">{{ lang.value?.title || '' }}</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,16 +13,27 @@
             <div class="collapse navbar-collapse fs-5" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" @click="gotoHome">Inicio</a>
+                        <a class="nav-link active" aria-current="page" @click="gotoHome">{{ lang.value?.navbar?.titles?.start ||
+                            ''}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Junta</a>
+                        <a class="nav-link">{{ lang.value?.navbar?.titles?.team || '' }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Colaboradores</a>
+                        <a class="nav-link">{{ lang.value?.navbar?.titles?.sponsors || '' }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @click="goToEvents">Eventos</a>
+                        <a class="nav-link" @click="goToEvents">{{ lang.value?.navbar?.titles?.events || '' }}</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ lang.value?.navbar?.languages?.language || '' }}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a id="es" class="dropdown-item" @click="changeLanguage('es')" >{{ lang.value?.navbar?.languages?.spanish || '' }}</a></li>
+                            <li><a id="en" class="dropdown-item" @click="changeLanguage('en')">{{ lang.value?.navbar?.languages?.english || '' }}</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -32,19 +43,30 @@
 
 <script>
 import { useRouter } from 'vue-router';
+import { getLangForPage, getConfig, setLang } from '@/config/BasicConfig';
+import { ref } from 'vue';
+
+const PAGE = 'navbar';
 
 export default {
     data() {
         return {
             navbarClass: 'navbar-transparent',
-            router: useRouter()
+            router: useRouter(),
+            lang: ref({}),
         };
     },
-    mounted() {
+    async mounted() {
         if (window.location.pathname !== '/') {
             this.navbarClass = 'navbar-solid';
         }
         window.addEventListener('scroll', this.handleScroll);
+        await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
+            this.lang.value = data;
+        }).catch(() => {
+            this.router.go(0);
+        });
+        this.toggleClass();
     },
     beforeUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
@@ -74,6 +96,19 @@ export default {
         },
         gotoHome() {
             this.router.push('/');
+        },
+        changeLanguage(lang) {
+            setLang(lang);
+            this.router.go(0);
+        },
+        toggleClass() {
+            if(getConfig().CURRENT_LANG === 'es') {
+                document.getElementById('es').classList.add('active');
+                document.getElementById('en').classList.remove('active');
+            } else {
+                document.getElementById('en').classList.add('active');
+                document.getElementById('es').classList.remove('active');
+            }
         }
     },
 };

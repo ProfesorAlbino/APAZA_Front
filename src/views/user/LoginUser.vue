@@ -12,6 +12,7 @@ import { getLangForPage, getConfig } from '@/config/BasicConfig'
 
 const PAGE = 'loginpage';
 const router = useRouter();
+const lang = ref({});//lang.value.loginpage?.messages?.cantLogin || ''
 
 const userLogin = ref({
     name: '',
@@ -26,7 +27,6 @@ const notify = ref({
 
 const isLog = ref(false);
 
-const lang = ref({});//lang.value.loginpage?.messages?.cantLogin || ''
 
 onMounted(async () => {
     initComponent();

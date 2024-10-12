@@ -34,8 +34,8 @@
             "descriptionCount3": "Conoce a los miembros de nuestra junta directiva y su compromiso con nuestra misión."
         }
     },
-    "loginpage":{
-        "titles":{
+    "loginpage": {
+        "titles": {
             "createAccountText": "Crear cuenta",
             "nameText": "Nombre",
             "emailText": "Correo electrónico",
@@ -47,11 +47,24 @@
             "areAdminText": "Eres un administrador",
             "createAnotherAdminText": "Crear otro administrador"
         },
-        "messages":{
+        "messages": {
             "cantLoginMsg": "Error, No se pudo iniciar sesión",
             "registerSuccessMsg": "Se registró correctamente",
             "cantRegisterMsg": "Error, No se pudo registrar",
             "loginMessageMsg": "Inicia sesión para que puedas crear otro usuario"
+        }
+    },
+    "navbar": {
+        "titles":{
+            "start": "Inicio",
+            "team": "Junta",
+            "sponsors": "Colaboradores",
+            "events": "Eventos"
+        },
+        "languages": {
+            "language": "Idioma",
+            "spanish": "Español",
+            "english": "Inglés"
         }
     }
 }
