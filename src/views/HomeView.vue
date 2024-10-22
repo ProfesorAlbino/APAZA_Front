@@ -8,7 +8,6 @@ import { getLangForPage, getConfig } from '@/config/BasicConfig';
 import { ref, onMounted } from 'vue';
 import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader'
 import BaseLoader from '@/components/loaders/BaseLoader.vue'
-import GeneralCarousel from '../components/carousel/GeneralCarousel.vue'
 
 import { useRouter } from 'vue-router';
 
@@ -45,10 +44,6 @@ onMounted(async () => {
     <CardImageLeft :title="lang.homepage?.titles?.characteristicsTea || ''"
       :description="lang.homepage?.body?.descriptionCharacteristicsTea || ''" url="/Apaza/FirstCharacteristics.png"
       :order="false" data-aos="zoom-in-left" />
-  </section>
-
-  <section>
-    <GeneralCarousel />
   </section>
   
   <section>
@@ -206,8 +201,6 @@ onMounted(async () => {
     transform: translateX(-33.33%);
   }
 }
-
-
 
 .custom-shape-divider-bottom-1721776550 {
   position: absolute;
