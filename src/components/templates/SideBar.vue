@@ -2,45 +2,26 @@
 <div class="wrapper">
             <!-- Sidebar Holder -->
             <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Bootstrap Sidebar</h3>
+                <div class="sidebar-header text-center">
+                    <h3>APAZA</h3>
                 </div>
 
                 <ul class="list-unstyled components">
-                    <p>Dummy Heading</p>
                     <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li><a href="#">Home 1</a></li>
-                            <li><a href="#">Home 2</a></li>
-                            <li><a href="#">Home 3</a></li>
-                        </ul>
+                        <a href="/">Pagina Principal</a>
                     </li>
                     <li>
-                        <a href="#">About</a>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
-                        </ul>
+                        <a href="/admin">Dashboard</a>
+                        <a href="/admin/add-gallery">Galería</a>
                     </li>
                     <li>
-                        <a href="#">Portfolio</a>
+                        <a href="#">Eventos</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="#">Otros</a>
                     </li>
-                </ul>
-
-                <ul class="list-unstyled CTAs">
-                    <li><a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a></li>
-                    <li><a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a></li>
                 </ul>
             </nav>
-
-            <!-- Page Content Holder -->
-            
         </div>
   </template>
   
@@ -90,11 +71,10 @@ export default {
 
 .navbar {
     padding: 15px 10px;
-    background: #fff;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 3px var(--black-color);
 }
 
 .navbar-btn {
@@ -106,7 +86,7 @@ export default {
 .line {
     width: 100%;
     height: 1px;
-    border-bottom: 1px dashed #ddd;
+    border-bottom: 1px dashed var(--white-color);
     margin: 40px 0;
 }
 
@@ -120,8 +100,9 @@ export default {
     left: 0;
     height: 100vh;
     z-index: 999;
-    background: #7386D5;
-    color: #fff;
+    background: var(--background-color);
+    color: var(--text-color-1);
+    font-family: var(--text-font-1);
     transition: all 0.3s;
 }
 
@@ -131,16 +112,16 @@ export default {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: var(--background-color-7);
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid var(--background-color-6);
 }
 
 #sidebar ul p {
-    color: #fff;
+    color: var(--text-color-1);
     padding: 10px;
 }
 
@@ -150,13 +131,13 @@ export default {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: var(--background-color-7);
+    background: var(--white-color);
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+    color: var(--white-color);
+    background: var(--background-color-7);
 }
 
 
@@ -169,8 +150,7 @@ a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
     display: block;
     position: absolute;
     right: 20px;
-    font-family: 'Glyphicons Halflings';
-    font-size: 0.6em;
+    font-family: var(--text-font-2);
 }
 a[aria-expanded="true"]::before {
     content: '\e260';
@@ -180,7 +160,7 @@ a[aria-expanded="true"]::before {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: var(--background-color-7);
 }
 
 ul.CTAs {
@@ -195,12 +175,12 @@ ul.CTAs a {
     margin-bottom: 5px;
 }
 a.download {
-    background: #fff;
-    color: #7386D5;
+    background: var(--white-color);
+    color: var(--background-color-7);
 }
 a.article, a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
+    background: var(--background-color-7) !important;
+    color: var(--white-color) !important;
 }
 
 
