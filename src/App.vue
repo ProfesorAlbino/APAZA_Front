@@ -1,13 +1,18 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { RouterView } from 'vue-router'
+import { setProductionMode } from '@/config/BasicConfig';
 
-const isAuthenticated = ref(false)
+const isAuthenticated = ref(false);
 
 onMounted(() => {
   //const userRole = localStorage.getItem('userRole')
-  const userRole = 'user'
-  isAuthenticated.value = !!userRole
+  const userRole = 'user';
+  isAuthenticated.value = !!userRole;
+
+  if (window.location.hostname !== 'localhost') {
+    setProductionMode();
+  }
 })
 </script>
 

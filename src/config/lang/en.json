@@ -1,27 +1,93 @@
 {
     "title": "APAZA",
     "loading": "Loading...",
-    "titleAboutUs": "About Us",
+    "titleAboutUs": "About us",
     "services": "Services",
     "events": "Events",
+    "welcome": "Welcome",
+    "backText": "Back",
+    "correctText": "Correct",
     "homepage": {
         "titles": {
             "whatIsTea": "What is ASD?",
             "characteristicsTea": "ASD Characteristics",
             "treatmentsTitle": "Treatments",
             "informationTeaApaza": "Information about us",
-            "recentDiagnosis": "Recently Diagnosed"
-            
+            "recentDiagnosis": "Recently Diagnosed",
+            "titleAboutUs": "Come and discover a little more about our history and the members who are part of APAZA.",
+            "countTitle1": "Members",
+            "countTitle2": "Foundation",
+            "countTitle3": "Board of Directors"
         },
         "body": {
-            "descriptionTea": "ASD is a developmental disorder that affects the way a person relates to the world and the people around them. People with autism may have difficulty communicating and interacting with others, and may have repetitive interests and behaviors.",
-            "descriptionCharacteristicsTea": "Autism Spectrum Disorder (ASD) presents symptoms that can vary in each child. Some common signs include difficulty communicating or maintaining eye contact, repetitive behaviors like rocking or flapping, preference for routines and resistance to change, and problems understanding emotions or interacting socially.",
+            "descriptionTea": "ASD is a developmental disorder that affects how a person relates to the world and those around them. People with autism may have difficulties in communication and social interaction, and may exhibit repetitive behaviors and interests.",
+            "descriptionCharacteristicsTea": "Autism Spectrum Disorder (ASD) presents symptoms that can vary in each child. Common signs include difficulty communicating or maintaining eye contact, repetitive behaviors like rocking or flapping, a preference for routine and resistance to change, and challenges in understanding emotions or social interaction.",
             "descriptionHelpDiagnostic": "This section provides information and support for people who have recently received an autism diagnosis.",
             "infoCharacteristicsTea": "Learn about the common characteristics and signs of autism for early and accurate identification.",
-            "infoTreatments": "Explore different treatments and therapies that can help with the development and well-being of people with autism.",
+            "infoTreatments": "Explore different treatments and therapies that can aid in the development and well-being of people with autism.",
             "infoDiagnosis": "This section provides information and support for people who have recently received an autism diagnosis.",
-            "infoEvents": "Explore our events and stay updated on all our activities so you don't miss any.",
-            "infoAboutUs": "Learn more about us and our mission to support people with ASD and their families."
+            "infoEvents": "Explore our events and stay updated with all our activities so you don’t miss any.",
+            "infoAboutUs": "Learn more about us and our mission to support people with ASD and their families.",
+            "descriptionAboutUs": "We are excited to share our journey and everything that drives us forward.",
+            "descriptionCount1": "Meet the members who are part of our community.",
+            "descriptionCount2": "Discover our history and how we have grown over the years.",
+            "descriptionCount3": "Meet the members of our board of directors and their commitment to our mission."
+        }
+    },
+    "loginpage": {
+        "titles": {
+            "createAccountText": "Create account",
+            "nameText": "Name",
+            "emailText": "Email",
+            "passwordText": "Password",
+            "loginText": "Log in",
+            "registerText": "Register",
+            "logoutText": "Log out",
+            "loggedText": "Logged in",
+            "areAdminText": "You are an administrator",
+            "createAnotherAdminText": "Create another administrator"
+        },
+        "messages": {
+            "cantLoginMsg": "Error, could not log in",
+            "registerSuccessMsg": "Successfully registered",
+            "cantRegisterMsg": "Error, could not register",
+            "loginMessageMsg": "Log in to be able to create another user"
+        }
+    },
+    "navbar": {
+        "titles": {
+            "start": "Home",
+            "team": "Board",
+            "sponsors": "Partners",
+            "events": "Events"
+        },
+        "languages": {
+            "language": "Language",
+            "spanish": "Spanish",
+            "english": "English"
+        }
+    },
+    "footer": {
+        "titles": {
+            "social": "Social networks",
+            "aboutUs": "About us",
+            "team": "Board of Directors",
+            "developers": "Developers",
+            "session": "Session",
+            "help": "Help",
+            "info": "Information",
+            "contact": "Contact",
+            "email": "Email",
+            "whatsapp": "Whatsapp"
+        },
+        "body": {
+            "phrase": "Together building a more inclusive future for people with ASD."
+        }
+    },
+    "eventhomepage": {
+        "titles": {
+            "noEvents": "No events available",
+            "addEvent": "Add event"
         }
     }
 }

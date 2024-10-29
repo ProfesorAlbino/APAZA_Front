@@ -1,4 +1,4 @@
-const DEV_MODE = true;
+let DEV_MODE = true;
 const LOCAL_API_URL = "http://localhost:3000";
 const API_URL = "https://apaza-api.onrender.com";
 const EXPIRATION_DAYS = DEV_MODE ? 160 : 30;
@@ -7,9 +7,15 @@ const SAME_SITE = 'none';
 const LANG_DEFAULT = 'es';
 let language = LANG_DEFAULT;
 
+const LANGS = {
+    ES: 'es',
+    EN: 'en'
+};
+
 function getConfig() {
     updateLang();
     return {
+        IS_DEVELOPMENT: DEV_MODE,
         URL: DEV_MODE ? LOCAL_API_URL : API_URL,
         CURRENT_LANG: language
     }
@@ -58,4 +64,8 @@ function setLang(lang) {
     localStorage.setItem('lang', lang);
 }
 
-export { getConfig, cookiesConfig, getLang, LANG_DEFAULT, setLang, getLangForPage };
+function setProductionMode(){
+    DEV_MODE = false;
+}
+
+export { getConfig, cookiesConfig, getLang, LANG_DEFAULT, setLang, getLangForPage, LANGS, setProductionMode };

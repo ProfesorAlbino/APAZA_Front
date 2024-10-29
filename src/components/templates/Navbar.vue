@@ -25,17 +25,17 @@
                     <li class="nav-item">
                         <a class="nav-link" @click="goToEvents">{{ lang.value?.navbar?.titles?.events || '' }}</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            {{ lang.value?.navbar?.languages?.language || '' }}
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a id="es" class="dropdown-item" @click="changeLanguage('es')" >{{ lang.value?.navbar?.languages?.spanish || '' }}</a></li>
-                            <li><a id="en" class="dropdown-item" @click="changeLanguage('en')">{{ lang.value?.navbar?.languages?.english || '' }}</a></li>
-                        </ul>
-                    </li>
                 </ul>
+                <div class="dropdown ms-5">
+                    <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        {{ lang.value?.navbar?.languages?.language || '' }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a id="es" class="dropdown-item" @click="changeLanguage(LANGS.ES)" >{{ lang.value?.navbar?.languages?.spanish || '' }}</a></li>
+                        <li><a id="en" class="dropdown-item" @click="changeLanguage(LANGS.EN)">{{ lang.value?.navbar?.languages?.english || '' }}</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
@@ -43,7 +43,7 @@
 
 <script>
 import { useRouter } from 'vue-router';
-import { getLangForPage, getConfig, setLang } from '@/config/BasicConfig';
+import { getLangForPage, getConfig, setLang, LANGS } from '@/config/BasicConfig';
 import { ref } from 'vue';
 
 const PAGE = 'navbar';
@@ -54,6 +54,7 @@ export default {
             navbarClass: 'navbar-transparent',
             router: useRouter(),
             lang: ref({}),
+            LANGS
         };
     },
     async mounted() {

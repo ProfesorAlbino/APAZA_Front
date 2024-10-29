@@ -7,10 +7,10 @@
                     <div class="single-footer-widget section_padding_0_130">
                         <!-- Footer Logo-->
                         <div class="footer-logo mb-3"></div>
-                        <p>Juntos construyendo un futuro más inclusivo para las personas con autismo.</p>
+                        <p>{{ lang?.footer?.body?.phrase }}</p>
                         <!-- Copywrite Text-->
                         <div class="copywrite-text mb-5">
-                            <p class="mb-0">Redes Sociales</p>
+                            <p class="mb-0">{{ lang?.footer?.titles?.social }}</p>
                         </div>
                         <!-- Footer Social Area-->
                         <div class="footer_social_area">
@@ -52,10 +52,10 @@
                         <!-- Footer Menu-->
                         <div class="footer_menu">
                             <ul>
-                                <li><a @click="navigate('/about')">Acerca de nosotros</a></li>
-                                <li><a >Junta Directiva</a></li>
-                                <li><a >Desarrolladores</a></li>
-                                <li><a @click="navigate('/login')">Sesión</a></li>
+                                <li><a @click="navigate('/about')">{{ lang?.footer?.titles?.aboutUs }}</a></li>
+                                <li><a >{{ lang?.footer?.titles?.team }}</a></li>
+                                <li><a >{{ lang?.footer?.titles?.developers }}</a></li>
+                                <li><a @click="navigate('/login')">{{ lang?.footer?.titles?.session }}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -64,13 +64,12 @@
                 <div class="col-12 col-sm-6 col-lg">
                     <div class="single-footer-widget section_padding_0_130">
                         <!-- Widget Title-->
-                        <h5 class="widget-title">Eventos</h5>
+                        <h5 class="widget-title">{{ lang?.events }}</h5>
                         <!-- Footer Menu-->
                         <div class="footer_menu">
                             <ul>
-                                <li><a >Ayuda</a></li>
-                                <li><a >Información</a></li>
-                                <li><a >Nuestros Eventos</a></li>
+                                <li><a >{{ lang?.footer?.titles?.help }}</a></li>
+                                <li><a >{{ lang?.footer?.titles?.info }}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -79,13 +78,13 @@
                 <div class="col-12 col-sm-6 col-lg">
                     <div class="single-footer-widget section_padding_0_130">
                         <!-- Widget Title-->
-                        <h5 class="widget-title">Contacto</h5>
+                        <h5 class="widget-title">{{ lang?.footer?.titles?.contact }}</h5>
                         <!-- Footer Menu-->
                         <div class="footer_menu">
                             <ul>
-                                <li><a >Información</a></li>
-                                <li><a >Correo</a></li>
-                                <li><a >WhatsApp</a></li>
+                                <li><a >{{ lang?.footer?.titles?.info }}</a></li>
+                                <li><a >{{ lang?.footer?.titles?.email }}</a></li>
+                                <li><a >{{ lang?.footer?.titles?.whatsapp }}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -97,9 +96,22 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
+import { getLangForPage, getConfig } from '@/config/BasicConfig';
+import { ref, onMounted } from 'vue';
+
+const PAGE = 'footer';
 
 const router = useRouter();
 
+const lang = ref({});
+
+onMounted(async () => {
+    await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
+        lang.value = data;
+    }).catch(() => {
+        router.go(0);
+    });
+});
 
 function navigate(url) {
     router.push(url);

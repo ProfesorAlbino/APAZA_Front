@@ -1,21 +1,39 @@
 <template>
     <BaseCarousel :images="getImagesFromEvents()" />
-
-    <section>
-        <div class="events-container mb-5">
-            <div class="banner text-center py-5 mb-5">
-                <h1 class="display-4 text-white">Eventos APAZA</h1>
+    <br/>
+    <section :class="events.length !== 0 ? '' : 'mt-5'">
+        <div class="events-container">
+            <div class="banner text-center py-5">
+                <h1 class="display-4 text-white">{{ lang?.events }}</h1>
                 <!-- <p class="lead text-white" @click="goToAddEvent">Agregar evento</p> -->
             </div>
-            <div class="container">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                    <CardPresentInfoOverImage v-for="(event, index) in events" :key="index" :title="event.title"
-                        :description="event.description" :image="event.image"
-                        :date="format(event.date.replace('Z', ''), 'full', 'es')" @click="goToEventPage(event)" />
+            <div class="events-container relative">
+                <img src="/Apaza/rompecabezas.jpg" alt="rompecabezas"
+                    class="img-fluid absolute top-0 left-0 w-full h-full object-cover opacity-50 z2"
+                    id="background" />
+
+                <div class="z1">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        <CardPresentInfoOverImage v-for="(event, index) in events" :key="index" :title="event.title"
+                            :description="event.description" :image="event.image"
+                            :date="format(event.date.replace('Z', ''), 'full', 'es')" @click="goToEventPage(event)" />
+
+                    </div>
+                    <div v-if="charge" class="m-5 p-5 d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="ms-3 fs-4">{{ lang?.loading }}</p>
+                    </div>
+
+                    <div v-if="events.length === 0 && !charge" class="text-center">
+                        <h2>{{ lang?.eventhomepage?.titles?.noEvents }}</h2>
+                    </div>
                 </div>
             </div>
             <div class="text-center" v-if="isAdmin">
-                <button @click="goToAddEvent" class="btn btn-primary btn-lg btn-block mt-5">Agregar evento</button>
+                <button @click="goToAddEvent" class="btn btn-primary btn-lg btn-block mt-5">{{
+                    lang?.eventhomepage?.titles?.addEvent }}</button>
             </div>
         </div>
     </section>
@@ -27,17 +45,23 @@ import { getEvents } from '@/services/EventService';
 import { useRouter } from 'vue-router';
 import { isUserLoggedAdmin } from '@/utils/Validations';
 import { format } from '@formkit/tempo';
+import { getLangForPage, getConfig } from '@/config/BasicConfig';
 import CardPresentInfoOverImage from '@/components/cards/CardPresentInfoOverImage.vue';
 import BaseCarousel from '@/components/carousel/BaseCarousel.vue';
 
 const router = useRouter();
 const events = ref([]);
 const isAdmin = ref(false);
+const charge = ref(true);
+const PAGE = 'eventhomepage';
+const lang = ref({});
 
 const getEvent = async () => {
     try {
-        const data = await getEvents();
-        events.value = data.data.data;
+        await getEvents().then(data => {
+            events.value = data.data.data;
+            charge.value = false;
+        });
     } catch (error) {
         //window.location.reload();
         //router.push('/events'); // <-- Estoy en la pagina de eventos, si hay un error esto debería recargar la página ***Probar***
@@ -45,7 +69,7 @@ const getEvent = async () => {
     }
 };
 
-function getImagesFromEvents(){
+function getImagesFromEvents() {
     return events.value.map(event => event.image);
 }
 
@@ -59,13 +83,58 @@ function goToAddEvent() {
 }
 
 
-onMounted(() => {
+onMounted(async () => {
     isAdmin.value = isUserLoggedAdmin();
-    getEvent();
+    await getEvent();
+    await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
+        lang.value = data;
+    }).catch(() => {
+        router.go(0);
+    });
 });
 </script>
 
 <style scoped>
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.left-0 {
+    left: 0;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.object-cover {
+    object-fit: cover;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+}
+
+.z2 {
+    z-index: -1 !important;
+}
+
+.z1 {
+    z-index: 1000 !important;
+}
+
 #sectionCards {
     background-color: var(--primary-color);
     display: flex;
@@ -108,7 +177,7 @@ onMounted(() => {
 
 .events-container {
     /* background-color: #f8f9fa; */
-    background-color: var(--background-color-3);
+    /* background-color: var(--background-color-3); */
     min-height: 100vh;
 }
 

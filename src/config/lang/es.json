@@ -55,7 +55,7 @@
         }
     },
     "navbar": {
-        "titles":{
+        "titles": {
             "start": "Inicio",
             "team": "Junta",
             "sponsors": "Colaboradores",
@@ -65,6 +65,29 @@
             "language": "Idioma",
             "spanish": "Español",
             "english": "Inglés"
+        }
+    },
+    "footer": {
+        "titles": {
+            "social": "Redes sociales",
+            "aboutUs": "Sobre nosotros",
+            "team": "Junta directiva",
+            "developers": "Desarrolladores",
+            "session": "Sesión",
+            "help": "Ayuda",
+            "info": "Información",
+            "contact": "Contacto",
+            "email": "Correo electrónico",
+            "whatsapp": "Whatsapp"
+        },
+        "body": {
+            "phrase": "Juntos construyendo un futuro más inclusivo para las personas con TEA."
+        }
+    },
+    "eventhomepage":{
+        "titles":{
+            "noEvents": "No hay eventos disponibles",
+            "addEvent": "Agregar evento"
         }
     }
 }
