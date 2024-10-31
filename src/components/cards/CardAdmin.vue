@@ -1,6 +1,5 @@
 <template>
     <div class="container-xxl py-6" id="features">
-        <a @click="goToEventPage(props.url)">
             <div class="container">
                 <div class="row g-4">
                     <div class="col-lg-12 col-md-12 wow fadeInUp" data-wow-delay="0.1s">
@@ -12,14 +11,10 @@
                     </div>
                 </div>
             </div>
-        </a>
         </div>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
-const router = useRouter();
-
 const props = defineProps({
     title: {
         type: String,
@@ -29,20 +24,13 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    url: {
-        type: String,
-        required: true,
-    }
 });
 
-function goToEventPage(link) {
-    router.push(link);
-}
 
 </script>
 
 <style scoped>
-a {
+.container {
     text-decoration: none;
     cursor: pointer;
 }

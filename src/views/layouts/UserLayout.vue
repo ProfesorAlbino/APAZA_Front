@@ -4,7 +4,7 @@ import Footer from '@/components/templates/Footer.vue'
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen">
+  <div class="flex flex-col min-h-screen container-user">
     <Navbar />
     <main class="container-fluid p-0">
       <RouterView />
@@ -12,3 +12,9 @@ import Footer from '@/components/templates/Footer.vue'
     <Footer />
   </div>
 </template>
+
+<style>
+.container-user {
+background-color: var(--background-color-3)
+}
+</style>

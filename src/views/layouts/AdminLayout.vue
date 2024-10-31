@@ -4,7 +4,7 @@ import SideBar from '@/components/templates/SideBar.vue'
 </script>
 
 <template>
-  <div class="flex min-h-screen">
+  <div class="flex min-h-screen container-admin">
     <SideBar />
     
     <div class="w-[calc(100%-250px)] ml-[250px]" id="container">
@@ -19,5 +19,9 @@ import SideBar from '@/components/templates/SideBar.vue'
 <style>
 #container {
   margin-left: 16rem;
+}
+
+.container-admin {
+background-color: var(--background-color-3)
 }
 </style>
