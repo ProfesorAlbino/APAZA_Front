@@ -27,6 +27,7 @@ onMounted(async () => {
   });
 });
 
+
 </script>
 
 <template>
@@ -57,6 +58,7 @@ onMounted(async () => {
     :countDescription1="lang.homepage?.body?.countDescription1 || ''"
     :countDescription2="lang.homepage?.body?.countDescription2 || ''"
     :countDescription3="lang.homepage?.body?.countDescription3 || ''"
+    link="/about"
     data-aos="zoom-in-left"/>
   </section>
 
@@ -171,6 +173,7 @@ onMounted(async () => {
   fill: var(--background-color-3);
 }
 
+/*
 .custom-shape-divider-top-1721696071 {
   position: absolute;
   top: 0;
@@ -197,10 +200,11 @@ onMounted(async () => {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-33.33%);
   }
-}
+} */
 
 .custom-shape-divider-bottom-1721776550 {
   position: absolute;

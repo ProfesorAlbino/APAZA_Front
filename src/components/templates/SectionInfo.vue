@@ -49,8 +49,18 @@ defineProps({
         type: String,
         required: true,
     },
+    link: {
+        type: String,
+        required: true,
+    }
 });
 
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+function goToEventPage(link) {
+    router.push(link);
+}
 </script>
 
 <template>
@@ -101,6 +111,11 @@ defineProps({
                     <div class="count-title">{{countTitle3}}</div>
                     <p>{{countDescription3}}</p>
                   </div>
+                </div>
+              </div>
+              <div class="col-lg-12 text-center">
+                <div>
+                  <input type="button" class="btn btn-primary" value="Conócenos" @click="goToEventPage(link)">
                 </div>
               </div>
             </div>
@@ -155,4 +170,19 @@ defineProps({
   padding-top: 15px;
   border-top: 1px solid var(--background-color-3);
 }
+
+input{
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: var(--background-color-2);
+  color: var(--white-color);
+  border: none;
+  cursor: pointer;
+}
+
+input:hover{
+  background-color: var(--tex-hover-2);
+}
+
 </style>

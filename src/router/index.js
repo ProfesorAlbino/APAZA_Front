@@ -9,6 +9,7 @@ import AddEventPage from '@/views/event/AddEventPage.vue'
 import AboutUs from '@/views/aboutUs/AboutUs.vue'
 import HomeViewAdmin from '@/views/HomeViewAdmin.vue'
 import GalleryAdmin from '@/views/gallery/GalleryAdmin.vue'
+import { isUserLoggedAdmin } from '@/utils/Validations'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,18 +81,21 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const userRole = getUserRole()
+  const userRole = isUserLoggedAdmin();
+  console.log("Usuario Rol: " + userRole);
   
-  if (to.meta.requiresAdmin && userRole !== 'admin') {
-    next({ name: 'home' })
+  if (to.meta.requiresAdmin) {
+    if (userRole) {
+      console.log('Acceso concedido a la ruta de administrador');
+      next();
+    } else {
+      console.log('Acceso denegado. Redirigiendo a la página de inicio');
+      next({ name: 'home' });
+    }
   } else {
-    next()
+    console.log('Acceso concedido a la ruta normal');
+    next();
   }
-})
-
-function getUserRole() {
-  //return localStorage.getItem('userRole') || 'user'
-   return 'admin'
-}
+});
 
 export default router
