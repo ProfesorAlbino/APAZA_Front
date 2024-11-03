@@ -23,7 +23,10 @@
                         <a class="nav-link">{{ lang.value?.navbar?.titles?.sponsors || '' }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @click="goToEvents">{{ lang.value?.navbar?.titles?.events || '' }}</a>
+                        <a class="nav-link" @click="goToPage('/events')">{{ lang.value?.navbar?.titles?.events || '' }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" @click="goToPage('/admin/')">{{ lang.value?.navbar?.titles?.admin || '' }}</a>
                     </li>
                 </ul>
                 <div class="dropdown ms-5">
@@ -97,6 +100,9 @@ export default {
         },
         gotoHome() {
             this.router.push('/');
+        },
+        goToPage(url){
+            this.router.push(url);
         },
         changeLanguage(lang) {
             setLang(lang);
