@@ -2,77 +2,92 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <div class="sidebar-header text-center">
-                <h3>APAZA</h3>
+            <div class="sidebar-header text-center" @click="goToPage('/')">
+                <h3>{{ lang?.sidebar?.titles?.main }}</h3>
             </div>
 
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a @click="goToEventPage('/')">Pagina Principal</a>
+                    <a @click="goToPage('/')">{{ lang?.sidebar?.menu?.home ?? '' }}</a>
                 </li>
                 <li>
-                    <a @click="goToEventPage('/admin')">Dashboard</a>
-                    <a @click="goToEventPage('/admin/add-gallery')">Galería</a>
+                    <a @click="goToPage('/admin')">{{ lang?.sidebar?.menu?.dashboard ?? '' }}</a>
+                    <a @click="goToPage('/admin/add-gallery')">{{ lang?.sidebar?.menu?.gallery ?? '' }}</a>
                 </li>
                 <li>
-                    <a @click="goToEventPage('/#')">Eventos</a>
+                    <a @click="goToPage('/admin/event-list')">{{ lang?.sidebar?.menu?.events ?? '' }}</a>
                 </li>
                 <li>
-                    <a @click="goToEventPage('/#')">Otros</a>
+                    <a @click="goToPage('/#')">{{ lang?.sidebar?.menu?.others ?? '' }}</a>
+                </li>
+                <li>
+                    <div class="dropdown ms-5">
+                        <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ lang?.sidebar?.titles?.language ?? '' }}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a id="es" class="dropdown-item" @click="changeLanguage(LANGS.ES)">{{
+                                lang?.sidebar?.languages?.spanish ?? '' }}</a></li>
+                            <li><a id="en" class="dropdown-item" @click="changeLanguage(LANGS.EN)">{{
+                                lang?.sidebar?.languages?.english ?? '' }}</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </nav>
     </div>
 </template>
 
-<script setup>
-import { useRouter } from 'vue-router';
-const router = useRouter();
 
-function goToEventPage(link) {
+<script setup>
+//------------------------------------------------------------------------------------------PARA @ProfesorAlbino POR FAVOR USAR EL SCRIPT SETUP, NO EL OTRO
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { setLang, LANGS, getLangForPage, getConfig } from '@/config/BasicConfig';
+
+const router = useRouter();
+const PAGE = 'sidebar';
+/* const sidebarActive = ref(false);
+const homeSubmenuExpanded = ref(false);
+const pageSubmenuExpanded = ref(false); */
+
+const lang = ref({});
+
+function goToPage(link) {
     router.push(link);
 }
-</script>
 
-<script>
-import { ref, onMounted } from 'vue';
+function changeLanguage(lang) {
+    setLang(lang);
+    this.router.go(0);
+}
 
-export default {
-    setup() {
-        const sidebarActive = ref(false);
-        const homeSubmenuExpanded = ref(false);
-        const pageSubmenuExpanded = ref(false);
 
-        const toggleSidebar = () => {
-            sidebarActive.value = !sidebarActive.value;
-        };
-
-        const toggleSubmenu = (submenu) => {
-            if (submenu === 'home') {
-                homeSubmenuExpanded.value = !homeSubmenuExpanded.value;
-            } else if (submenu === 'page') {
-                pageSubmenuExpanded.value = !pageSubmenuExpanded.value;
-            }
-        };
-
-        onMounted(() => {
-            // Aquí puedes agregar cualquier lógica que necesites ejecutar cuando el componente se monta
-            // Por ejemplo, configurar event listeners globales si es necesario
-        });
-
-        return {
-            sidebarActive,
-            homeSubmenuExpanded,
-            pageSubmenuExpanded,
-            toggleSidebar,
-            toggleSubmenu
-        };
-    }
+/* const toggleSidebar = () => {
+    sidebarActive.value = !sidebarActive.value;
 };
+
+const toggleSubmenu = (submenu) => {
+    if (submenu === 'home') {
+        homeSubmenuExpanded.value = !homeSubmenuExpanded.value;
+    } else if (submenu === 'page') {
+        pageSubmenuExpanded.value = !pageSubmenuExpanded.value;
+    }
+}; */
+
+onMounted(async () => {
+    await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
+        lang.value = data;
+    }).catch(() => {
+        router.go(0);
+    });
+});
+
 </script>
 
 <style scoped>
-li{
+li {
     cursor: pointer;
 }
 
