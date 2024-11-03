@@ -1,18 +1,19 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { loginUser, registerUser } from './UserLogic';
-import { Toast } from 'bootstrap';
+import { Toast, Modal } from 'bootstrap';
 import NotificationToast from '@/components/toasts/NotificationToast.vue';
 import { isUserLoggedAdmin } from '@/utils/Validations';
 import { removeCookie } from '@/config/CookiesService';
 import { useRouter } from 'vue-router';
 import LoadingModal from '@/components/modals/LoadingModal.vue';
-import { Modal } from 'bootstrap';
 import { getLangForPage, getConfig } from '@/config/BasicConfig'
 
 const PAGE = 'loginpage';
 const router = useRouter();
 const lang = ref({});//lang.value.loginpage?.messages?.cantLogin || ''
+const isLog = ref(false);
+const show = ref(false);
 
 const userLogin = ref({
     name: '',
@@ -25,11 +26,9 @@ const notify = ref({
     body: lang.value?.correctText || ''
 });
 
-const isLog = ref(false);
 
 
 onMounted(async () => {
-    initComponent();
     if (isUserLoggedAdmin()) isLog.value = true;
     await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
         lang.value = data;
@@ -67,13 +66,11 @@ async function registerEvent() {
     if (res && res.status) {
         showNotify(res.message, lang.value.loginpage?.messages?.registerSuccessMsg || '');
         setTimeout(() => {
-            //window.location.reload(); <-- AQUÍ
             router.go(0);
         }, 1500);
     } else {
         showNotify(res ? res.message : (lang.value.loginpage?.messages?.cantRegisterMsg || ''));
         setTimeout(() => {
-            //window.location.reload(); <-- AQUÍ
             router.go(0);
         }, 1500);
     }
@@ -98,26 +95,19 @@ const modalLoading = () => {
     myModal.show();
 }
 
-function initComponent() {
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
-    const container = document.getElementById('container');
+function toggleShow() {
+    show.value = !show.value;
+}
 
-    signUpButton.addEventListener('click', () => {
-        if (!isLog.value) return;
-        container.classList.add("right-panel-active");
-    });
-
-    signInButton.addEventListener('click', () => {
-        container.classList.remove("right-panel-active");
-    });
+function goToPage(url) {
+    router.push(url);
 }
 
 </script>
 
 <template>
     <div class="center">
-        <div class="container-login" id="container">
+        <div :class="show ? 'container-login right-panel-active' : 'container-login'" id="container">
             <!-- FORM REGISTER -->
             <div class="form-container sign-up-container form-floating">
                 <div class="form">
@@ -171,13 +161,21 @@ function initComponent() {
                 <div class="overlay">
                     <div class="overlay-panel overlay-left">
                         <h1>{{ lang.loginpage?.titles?.areAdminText || '' }}</h1>
-                        <button class="ghost" id="signIn">{{ lang?.backText || '' }}</button>
+                        <button class="ghost" id="signIn" @click="toggleShow">{{ lang?.backText || '' }}</button>
                     </div>
-                    <div class="overlay-panel overlay-right">
+                    <div v-if="isLog" class="overlay-panel overlay-right">
                         <h1>¿{{ lang.loginpage?.titles?.createAnotherAdminText || '' }}?</h1>
-                        <p>{{ lang.loginpage?.messages?.loginMessageMsg || '' }}</p>
-                        <button class="ghost" id="signUp">{{ lang.loginpage?.titles?.createAnotherAdminText || ''
+                        <button class="ghost mb-3" id="signUp" @click="toggleShow">{{
+                            lang.loginpage?.titles?.createAnotherAdminText || ''
                             }}</button>
+                        <button class="ghost" @click="goToPage('/admin')">{{ lang.loginpage?.messages?.goToAdminPage ||
+                            ''
+                            }}</button>
+                    </div>
+                    <div v-if="!isLog" class="overlay-panel overlay-right">
+                        <h1>{{ lang.loginpage?.titles?.welcomeNeedLog || '' }}</h1>
+                        <p>{{ lang.loginpage?.messages?.loginMessageMsg || '' }}</p>
+
                     </div>
                 </div>
             </div>
