@@ -45,13 +45,15 @@
             "logoutText": "Cerrar sesión",
             "loggedText": "Sesión iniciada",
             "areAdminText": "Eres un administrador",
-            "createAnotherAdminText": "Crear otro administrador"
+            "createAnotherAdminText": "Crear otro administrador",
+            "welcomeNeedLog": "Bienvenido, inicia sesión"
         },
         "messages": {
             "cantLoginMsg": "Error, No se pudo iniciar sesión",
             "registerSuccessMsg": "Se registró correctamente",
             "cantRegisterMsg": "Error, No se pudo registrar",
-            "loginMessageMsg": "Inicia sesión para que puedas crear otro usuario"
+            "loginMessageMsg": "Inicia sesión para que puedas crear otro usuario",
+            "goToAdminPage": "Ir a la página de administrador"
         }
     },
     "navbar": {
@@ -59,7 +61,8 @@
             "start": "Inicio",
             "team": "Junta",
             "sponsors": "Colaboradores",
-            "events": "Eventos"
+            "events": "Eventos",
+            "admin": "Administrar"
         },
         "languages": {
             "language": "Idioma",
@@ -81,13 +84,56 @@
             "whatsapp": "Whatsapp"
         },
         "body": {
-            "phrase": "Juntos construyendo un futuro más inclusivo para las personas con TEA."
+            "phrase": "Juntos construyendo un futuro más inclusivo para las personas con TEA.",
+            "infoText": "Este proyecto apoya a la organización APAZA con la colaboración del TCU-663 Guápiles. Estudiantes participantes: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca"
         }
     },
-    "eventhomepage":{
-        "titles":{
+    "eventhomepage": {
+        "titles": {
             "noEvents": "No hay eventos disponibles",
             "addEvent": "Agregar evento"
+        }
+    },
+    "eventaddpage": {
+        "titles": {
+            "main": "Crear Nuevo Evento",
+            "title": "Título del Evento",
+            "description": "Descripción",
+            "date": "Fecha del Evento",
+            "type": "Tipo de Evento",
+            "image": "Imagen del Evento"
+        },
+        "buttons": {
+            "back": "Atrás",
+            "create": "Crear Evento"
+        },
+        "validation": {
+            "title": "Por favor, ingresa un título para el evento",
+            "description": "Por favor, proporciona una descripción del evento",
+            "date": "Por favor, selecciona una fecha para el evento",
+            "type": "Por favor, selecciona un tipo de evento"
+        },
+        "options": {
+            "default": "Selecciona un tipo",
+            "family": "Familiar",
+            "cultural": "Evento Cultural"
+        }
+    },
+    "sidebar": {
+        "titles": {
+            "main": "APAZA",
+            "language": "Idioma"
+        },
+        "menu": {
+            "home": "Pagina Principal",
+            "dashboard": "Dashboard",
+            "gallery": "Galería",
+            "events": "Eventos",
+            "others": "Otros"
+        },
+        "languages": {
+            "spanish": "Español",
+            "english": "Inglés"
         }
     }
 }
