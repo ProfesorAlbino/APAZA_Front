@@ -94,7 +94,7 @@
         </div>
 
         <div class="row">
-        <p class="text-center"> Este proyecto apoya a la organización APAZA con la colaboración del TCU-663 Guápiles. Estudiantes participantes: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca</p>
+        <p class="text-center"> {{ lang?.footer?.body?.infoText }}</p>
     </div>
     
     </footer>
