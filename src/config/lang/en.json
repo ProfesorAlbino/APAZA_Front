@@ -45,13 +45,15 @@
             "logoutText": "Log out",
             "loggedText": "Logged in",
             "areAdminText": "You are an administrator",
-            "createAnotherAdminText": "Create another administrator"
+            "createAnotherAdminText": "Create another administrator",
+            "welcomeNeedLog": "Welcome, log in"
         },
         "messages": {
             "cantLoginMsg": "Error, could not log in",
             "registerSuccessMsg": "Successfully registered",
             "cantRegisterMsg": "Error, could not register",
-            "loginMessageMsg": "Log in to be able to create another user"
+            "loginMessageMsg": "Log in to be able to create another user",
+            "goToAdminPage": "Go to the admin page"
         }
     },
     "navbar": {
@@ -59,7 +61,8 @@
             "start": "Home",
             "team": "Board",
             "sponsors": "Partners",
-            "events": "Events"
+            "events": "Events",
+            "admin": "Manage"
         },
         "languages": {
             "language": "Language",
@@ -81,13 +84,56 @@
             "whatsapp": "Whatsapp"
         },
         "body": {
-            "phrase": "Together building a more inclusive future for people with ASD."
+            "phrase": "Together building a more inclusive future for people with ASD.",
+            "infoText": "This project supports the APAZA organization with the collaboration of TCU-663 Guápiles. Participating students: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca"
         }
     },
     "eventhomepage": {
         "titles": {
             "noEvents": "No events available",
             "addEvent": "Add event"
+        }
+    },
+    "eventaddpage": {
+        "titles": {
+            "main": "Create New Event",
+            "title": "Event Title",
+            "description": "Description",
+            "date": "Event Date",
+            "type": "Event Type",
+            "image": "Event Image"
+        },
+        "buttons": {
+            "back": "Back",
+            "create": "Create Event"
+        },
+        "validation": {
+            "title": "Please enter a title for the event",
+            "description": "Please provide a description for the event",
+            "date": "Please select a date for the event",
+            "type": "Please select an event type"
+        },
+        "options": {
+            "default": "Select a type",
+            "family": "Family",
+            "cultural": "Cultural Event"
+        }
+    },
+    "sidebar": {
+        "titles": {
+            "main": "APAZA",
+            "language": "Language"
+        },
+        "menu": {
+            "home": "Home Page",
+            "dashboard": "Dashboard",
+            "gallery": "Gallery",
+            "events": "Events",
+            "others": "Others"
+        },
+        "languages": {
+            "spanish": "Spanish",
+            "english": "English"
         }
     }
 }
