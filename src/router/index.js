@@ -41,6 +41,11 @@ const router = createRouter({
           path: 'add-gallery',
           name: 'add-gallery',
           component: GalleryAdmin
+        },
+        {
+          path: 'event-list',
+          name: 'event-list',
+          component: EventHomePage
         }
       ]
     },
@@ -81,19 +86,15 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const userRole = isUserLoggedAdmin();
-  console.log("Usuario Rol: " + userRole);
+  const userAdmin = isUserLoggedAdmin();
   
   if (to.meta.requiresAdmin) {
-    if (userRole) {
-      console.log('Acceso concedido a la ruta de administrador');
+    if (userAdmin) {
       next();
     } else {
-      console.log('Acceso denegado. Redirigiendo a la página de inicio');
       next({ name: 'home' });
     }
   } else {
-    console.log('Acceso concedido a la ruta normal');
     next();
   }
 });
