@@ -3,9 +3,13 @@
         <h1></h1>
     </div>
     <div class="crear-evento my-5">
-        <div class="banner text-center py-5 mb-5">
-            <h1 class="display-4 text-white">Crear Nuevo Evento</h1>
-            <!-- <p class="lead text-white">¡!</p> -->
+        <div class="banner text-center py-5 mb-5 rounded-5 rounded-top-0">
+            <h1 class="display-4 text-white">{{ lang?.eventaddpage?.titles?.main }}</h1>
+            <div class="text-center">
+                <button @click="goToPage('/admin/event-list')" class="btn btn-primary btn-lg btn-block">
+                    {{ lang?.eventaddpage?.buttons?.back }}
+                </button>
+            </div>
         </div>
         <div class="container">
             <div class="row justify-content-center">
@@ -14,53 +18,52 @@
                         <div class="card-body p-5">
                             <form @submit.prevent="crearEvento" class="needs-validation" novalidate>
                                 <div class="mb-4">
-                                    <label for="title" class="form-label">Título del Evento</label>
+                                    <label for="title" class="form-label">{{ lang?.eventaddpage?.titles?.title ?? '' }}</label>
                                     <input v-model="evento.title" type="text" class="form-control" id="title" required>
                                     <div class="invalid-feedback">
-                                        Por favor, ingresa un título para el evento.
+                                        {{ lang?.eventaddpage?.validation?.title ?? '' }}
                                     </div>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="description" class="form-label">Descripción</label>
+                                    <label for="description" class="form-label">{{ lang?.eventaddpage?.titles?.description ?? '' }}</label>
                                     <textarea v-model="evento.description" class="form-control" id="description"
                                         rows="3" required></textarea>
                                     <div class="invalid-feedback">
-                                        Por favor, proporciona una descripción del evento.
+                                        {{ lang?.eventaddpage?.validation?.description ?? '' }}
                                     </div>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="date" class="form-label">Fecha del Evento</label>
+                                    <label for="date" class="form-label">{{ lang?.eventaddpage?.titles?.date ?? '' }}</label>
                                     <input v-model="evento.date" type="date" class="form-control" id="date" required>
                                     <div class="invalid-feedback">
-                                        Por favor, selecciona una fecha para el evento.
-                                    </div>
-                                </div>
-
-                                <div class="mb-4"> 
-                                    <label for="type" class="form-label">Tipo de Evento</label>
-                                    <select v-model="evento.type" class="form-select" id="type" required>
-                                        <option value="">Selecciona un tipo</option>
-                                        <option value="concierto">Concierto</option>
-                                        <option value="conferencia">Conferencia</option>
-                                        <option value="festival">Festival</option>
-                                        <option value="deportivo">Evento Deportivo</option>
-                                        <option value="cultural">Evento Cultural</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Por favor, selecciona un tipo de evento.
+                                        {{ lang?.eventaddpage?.validation?.date ?? '' }}
                                     </div>
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="image" class="form-label">Imagen del Evento (Opcional)</label>
+                                    <label for="type" class="form-label">{{ lang?.eventaddpage?.titles?.type ?? '' }}</label>
+                                    <select v-model="evento.type" class="form-select" id="type" required>
+                                        <option value="">{{ lang?.eventaddpage?.options?.default ?? '' }}</option>
+                                        <option value="family">{{ lang?.eventaddpage?.options?.family ?? '' }}</option>
+                                        <option value="cultural">{{ lang?.eventaddpage?.options?.cultural ?? '' }}</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        {{ lang?.eventaddpage?.validation?.type ?? '' }}
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="image" class="form-label">{{ lang?.eventaddpage?.titles?.image ?? '' }}</label>
                                     <input type="file" class="form-control" id="image" @change="handleImageUpload"
                                         accept="image/*">
                                 </div>
 
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary btn-lg">Crear Evento</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        {{ lang?.eventaddpage?.buttons?.create }}
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -70,17 +73,23 @@
         </div>
         <NotificationToast v-bind:header="notify.header" v-bind:body="notify.body" />
     </div>
+    <LoadingModal idModal="load" />
 </template>
 
 <script setup>
 import NotificationToast from '@/components/toasts/NotificationToast.vue';
+import LoadingModal from '@/components/modals/LoadingModal.vue';
 import { ref, onMounted } from 'vue'
-import { Toast } from 'bootstrap'
+import { Toast, Modal } from 'bootstrap'
 import { isUserLoggedAdmin } from '@/utils/Validations';
 import { useRouter } from 'vue-router';
 import { addEvent } from '@/services/EventService';
+import { getConfig, getLangForPage } from '@/config/BasicConfig';
 
 const router = useRouter();
+const PAGE = 'eventaddpage';
+
+const lang = ref({});
 
 const notify = ref({
     header: 'Bienvenido',
@@ -93,13 +102,20 @@ const evento = ref({
     date: '',
     type: '',
     image: null
-})
+});
+
+const modalShowing = ref({});
+
 
 const handleImageUpload = (event) => {
     const file = event.target.files[0]
     if (file) {
         evento.value.image = file
     }
+}
+
+function goToPage(url){
+    router.push(url);
 }
 
 function showNotify(header, body) {
@@ -125,6 +141,7 @@ const crearEvento = () => {
 
     console.log('Evento a crear:', evento.value);
 
+    modalShowing.value.show();
     addEvent(evento.value)
         .then(() => {
             showNotify('Evento Creado', 'Tu evento ha sido creado exitosamente.');
@@ -137,7 +154,9 @@ const crearEvento = () => {
                 image: null
             }
 
-            document.querySelector('form').classList.remove('was-validated')
+            document.querySelector('form').classList.remove('was-validated');
+            document.getElementById('image').value = '';
+            modalShowing.value.hide();
         })
         .catch(() => {
             showNotify('Error', 'Hubo un error al crear el evento.');
@@ -145,8 +164,16 @@ const crearEvento = () => {
 
 }
 
-onMounted(() => {
+onMounted(async () => {
     if (!isUserLoggedAdmin()) router.push('/events');
+
+    await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
+        lang.value = data;
+    }).catch(() => {
+        router.go(0);
+    });
+
+    modalShowing.value = Modal.getOrCreateInstance(document.getElementById('load'));
 });
 </script>
 
