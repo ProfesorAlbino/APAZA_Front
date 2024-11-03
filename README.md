@@ -1,35 +1,27 @@
 # Apaza_Front
+Proyecto colaboración entre APAZA y TCU663 de la UCR Recinto de Guápiles.
 
-This template should help get you started developing with Vue 3 in Vite.
+## Desarrolladores
+- [Elías Mena Fonseca]
+- [Jeikel Medrano Montesino]
+- [Jonnathan García Loria (Backend)]
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Comando inicial
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Para ejecutar el proyecto en modo desarrollo
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Compilar para producción
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
