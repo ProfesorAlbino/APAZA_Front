@@ -15,7 +15,9 @@
                             <h5 class="card-title">Información</h5>
                             <p class="card-text"><strong>Fecha:</strong> {{ event.date }}</p>
                             <div class="my-2" v-if="isAdmin">
-                                <button class="btn btn-danger" @click="modalDelete">Eliminar</button>
+                                <button class="btn btn-secondary" @click="goToPage('/admin/event-list')">Ir a lista de
+                                    eventos admin</button>
+                                <button class="btn btn-danger ms-3" @click="modalDelete">Eliminar</button>
                             </div>
                         </div>
                     </div>
@@ -30,7 +32,7 @@
 
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <button @click="backToList" class="btn btn-secondary">Volver a la lista de eventos</button>
+                    <button @click="goToPage('/events')" class="btn btn-secondary">Volver a la lista de eventos</button>
                 </div>
             </div>
         </div>
@@ -48,6 +50,7 @@ import { format } from '@formkit/tempo';
 import { Modal } from 'bootstrap';
 import { deleteEvent } from '@/services/EventService';
 import { isUserLoggedAdmin } from '@/utils/Validations';
+import { getConfig } from '@/config/BasicConfig';
 
 const router = useRouter();
 
@@ -55,9 +58,7 @@ const isAdmin = ref(false);
 
 const event = ref({});
 
-const backToList = () => {
-    router.push('/events');
-}
+
 
 const modalDelete = () => {
     const myModal = Modal.getOrCreateInstance(document.getElementById('staticBackdrop'));
@@ -76,6 +77,10 @@ const modalDeleteInfo = ref({
     }
 });
 
+function goToPage(url) {
+    router.push(url);
+}
+
 onMounted(async () => {
     isAdmin.value = isUserLoggedAdmin();
     const item = sessionStorage.getItem('event');
@@ -83,7 +88,7 @@ onMounted(async () => {
 
     const objItem = JSON.parse(item); //objItem.date = objItem.date.replace('Z', ''); // <-- Esto es para quitar la Z del final de la fecha, si no se quita le quita un día a la fecha
 
-    objItem.date = format(new Date(objItem.date.replace('Z', '')), { date: "full" }, 'es');
+    objItem.date = format(new Date(objItem.date.replace('Z', '')), { date: "full" }, getConfig().CURRENT_LANG);
     event.value = objItem;
 });
 </script>
