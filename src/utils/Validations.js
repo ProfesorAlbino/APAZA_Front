@@ -6,3 +6,7 @@ export function isUserLoggedAdmin() {
     const userObj = JSON.parse(user);
     return userObj.role === "admin";
 }
+
+export function isInAdminPage(path){
+    return path === "/admin/event-list";
+}
