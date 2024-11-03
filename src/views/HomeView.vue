@@ -51,7 +51,7 @@ onMounted(async () => {
     <SectionInfo :title="lang.homepage?.titles?.titleAboutUs || ''" 
     :subtitle="lang.homepage?.body?.descriptionAboutUs || ''"
     url="/Test/about-left-image.png"
-    count1="100" count2="2011" count3="30"
+    :count1="100" :count2="2011" :count3="30"
     :countTitle1="lang.homepage?.titles?.countTitle1 || ''" 
     :countTitle2="lang.homepage?.titles?.countTitle2 || ''" 
     :countTitle3="lang.homepage?.titles?.countTitle3 || ''"
@@ -78,12 +78,6 @@ onMounted(async () => {
 
 
     <div class="row mt-5">
-      <!--<div class="col-4" v-for="(event, index) in events"
-      :key="index">
-        <CardFullImage :title="event.title" :url="event.image"
-          :descriptionCard="event.description"
-          link="/events" />
-      </div>-->
 
       <div class="col-4">
         <CardFullImage :title="lang?.titleAboutUs || ''" url="/Apaza/Fondo-pagina-principal.jpg"
