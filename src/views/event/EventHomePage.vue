@@ -1,22 +1,25 @@
 <template>
-    <BaseCarousel :images="getImagesFromEvents()" />
-    <br/>
-    <section :class="events.length !== 0 ? '' : 'mt-5'">
+    <BaseCarousel :images="getImagesFromEvents()" v-if="!isInAdminPage(router.currentRoute.value.path)"/>
+
+    <section :class="hasToShowMargin()">
         <div class="events-container">
-            <div class="banner text-center py-5">
+            <div class="banner text-center py-5 rounded-5 rounded-top-0">
                 <h1 class="display-4 text-white">{{ lang?.events }}</h1>
-                <!-- <p class="lead text-white" @click="goToAddEvent">Agregar evento</p> -->
+                <div class="text-center" v-if="isAdmin">
+                    <button @click="goToAddEvent" class="btn btn-primary btn-lg btn-block" v-if="isInAdminPage(router.currentRoute.value.path)">{{
+                        lang?.eventhomepage?.titles?.addEvent }}</button>
+                </div>
             </div>
-            <div class="events-container relative">
-                <img src="/Apaza/rompecabezas.jpg" alt="rompecabezas"
-                    class="img-fluid absolute top-0 left-0 w-full h-full object-cover opacity-50 z2"
+            <div class="events-container relative px-5">
+
+                <img src="/Apaza/rompecabezas.jpg" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover opacity-50 z2"
                     id="background" />
 
                 <div class="z1">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <CardPresentInfoOverImage v-for="(event, index) in events" :key="index" :title="event.title"
                             :description="event.description" :image="event.image"
-                            :date="format(event.date.replace('Z', ''), 'full', 'es')" @click="goToEventPage(event)" />
+                            :date="format(event.date.replace('Z', ''), 'full', getConfig().CURRENT_LANG)" @click="goToEventPage(event)" />
 
                     </div>
                     <div v-if="charge" class="m-5 p-5 d-flex justify-content-center">
@@ -31,10 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center" v-if="isAdmin">
-                <button @click="goToAddEvent" class="btn btn-primary btn-lg btn-block mt-5">{{
-                    lang?.eventhomepage?.titles?.addEvent }}</button>
-            </div>
+
         </div>
     </section>
 </template>
@@ -43,7 +43,7 @@
 import { ref, onMounted } from 'vue';
 import { getEvents } from '@/services/EventService';
 import { useRouter } from 'vue-router';
-import { isUserLoggedAdmin } from '@/utils/Validations';
+import { isUserLoggedAdmin, isInAdminPage } from '@/utils/Validations';
 import { format } from '@formkit/tempo';
 import { getLangForPage, getConfig } from '@/config/BasicConfig';
 import CardPresentInfoOverImage from '@/components/cards/CardPresentInfoOverImage.vue';
@@ -63,9 +63,7 @@ const getEvent = async () => {
             charge.value = false;
         });
     } catch (error) {
-        //window.location.reload();
-        //router.push('/events'); // <-- Estoy en la pagina de eventos, si hay un error esto debería recargar la página ***Probar***
-        router.go(0); // <-- Esto debería recargar la página ***Probar*** Según ChatGPT
+        router.go(0); 
     }
 };
 
@@ -79,9 +77,16 @@ function goToEventPage(event) {
 }
 
 function goToAddEvent() {
-    router.push('/add-event');
+    router.push('/admin/add-event');
 }
 
+/* function isInAdminPage(){
+    return router.currentRoute.value.path === "/admin/event-list";
+} */
+
+function hasToShowMargin(){
+    return events.value.length === 0 && !isInAdminPage(router.currentRoute.value.path) ? 'mt-3' : '';
+}
 
 onMounted(async () => {
     isAdmin.value = isUserLoggedAdmin();
@@ -128,11 +133,15 @@ onMounted(async () => {
 }
 
 .z2 {
-    z-index: -1 !important;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
 }
 
 .z1 {
-    z-index: 1000 !important;
+    position: relative;
+    z-index: 2;
 }
 
 #sectionCards {
