@@ -10,6 +10,7 @@ import AboutUs from '@/views/aboutUs/AboutUs.vue'
 import HomeViewAdmin from '@/views/HomeViewAdmin.vue'
 import GalleryAdmin from '@/views/gallery/GalleryAdmin.vue'
 import { isUserLoggedAdmin } from '@/utils/Validations'
+import { setProductionMode, getConfig } from '@/config/BasicConfig';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -86,6 +87,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  if (window.location.hostname !== 'localhost' && getConfig().IS_DEVELOPMENT) {
+    setProductionMode();
+  }
   const userAdmin = isUserLoggedAdmin();
   
   if (to.meta.requiresAdmin) {

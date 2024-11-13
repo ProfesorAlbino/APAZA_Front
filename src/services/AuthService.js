@@ -1,7 +1,11 @@
 import axios from "axios";
 import { getConfig } from "@/config/BasicConfig";
 
-const API_URL = `${getConfig().URL}/user`;
+//const API_URL = `${getConfig().URL}/user`;
+
+function getAPIUrl() {
+    return getConfig().URL + "/user";
+}
 
 const defaultHeaders = {
     headers: {
@@ -13,11 +17,11 @@ const defaultHeaders = {
 };
 
 function register(user) {
-    return axios.post(`${API_URL}/`, user, defaultHeaders);
+    return axios.post(`${getAPIUrl()}/`, user, defaultHeaders);
 }
 
 function login(user) {
-    return axios.post(`${API_URL}/login`, user, defaultHeaders);
+    return axios.post(`${getAPIUrl()}/login`, user, defaultHeaders);
 }
 
 export { login, register };

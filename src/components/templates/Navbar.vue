@@ -25,7 +25,7 @@
                     <li class="nav-item">
                         <a class="nav-link" @click="goToPage('/events')">{{ lang.value?.navbar?.titles?.events || '' }}</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" v-if="isUserLoggedAdmin()">
                         <a class="nav-link" @click="goToPage('/admin/')">{{ lang.value?.navbar?.titles?.admin || '' }}</a>
                     </li>
                 </ul>
@@ -47,6 +47,7 @@
 <script>
 import { useRouter } from 'vue-router';
 import { getLangForPage, getConfig, setLang, LANGS } from '@/config/BasicConfig';
+import { isUserLoggedAdmin } from '@/utils/Validations';
 import { ref } from 'vue';
 
 const PAGE = 'navbar';
@@ -57,7 +58,8 @@ export default {
             navbarClass: 'navbar-transparent',
             router: useRouter(),
             lang: ref({}),
-            LANGS
+            LANGS,
+            isUserLoggedAdmin
         };
     },
     async mounted() {

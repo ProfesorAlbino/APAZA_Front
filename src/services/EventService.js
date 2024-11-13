@@ -1,7 +1,10 @@
 import axios from "axios";
 import { getConfig } from "@/config/BasicConfig";
 
-const API_URL = getConfig().URL + "/event/";
+//const API_URL = getConfig().URL + "/event/";
+function getAPIUrl() {
+  return getConfig().URL + "/event/";
+}
 
 const defaultHeaders = {
   'withCredentials': false,
@@ -9,11 +12,11 @@ const defaultHeaders = {
 };
 
 function getEvents() {
-  return axios.get(API_URL, defaultHeaders);
+  return axios.get(getAPIUrl(), defaultHeaders);
 }
 
 function getEvent(id) {
-  return axios.get(API_URL + id, defaultHeaders);
+  return axios.get(getAPIUrl() + id, defaultHeaders);
 }
 
 function addEvent(event) {
@@ -24,11 +27,11 @@ function addEvent(event) {
   eventData.append('type', event.type);
   eventData.append('image', event.image);
 
-  return axios.post(API_URL, eventData);
+  return axios.post(getAPIUrl(), eventData);
 }
 
 function deleteEvent(id) {
-  return axios.delete(API_URL + id, defaultHeaders);
+  return axios.delete(getAPIUrl() + id, defaultHeaders);
 }
 
 

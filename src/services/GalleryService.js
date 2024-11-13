@@ -1,7 +1,11 @@
 import axios from "axios";
 import { getConfig } from "@/config/BasicConfig";
 
-const API_URL = getConfig().URL + "/gallery/";
+//const API_URL = getConfig().URL + "/gallery/";
+
+function getAPIUrl() {
+  return getConfig().URL + "/user";
+}
 
 const defaultHeaders = {
     'withCredentials': false,
@@ -9,7 +13,7 @@ const defaultHeaders = {
 };
 
 function getGallery() {
-    return axios.get(API_URL, defaultHeaders);
+    return axios.get(getAPIUrl(), defaultHeaders);
 }
 
 function addGallery(gallery){

@@ -79,6 +79,7 @@ async function registerEvent() {
 function logoutEvent() {
     removeCookie('User');
     isLog.value = false;
+    router.go(0);
 }
 
 function showNotify(header, body) {
