@@ -17,10 +17,10 @@
                             ''}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">{{ lang.value?.navbar?.titles?.team || '' }}</a>
+                        <a class="nav-link" @click="goToPage('/junta')">{{ lang.value?.navbar?.titles?.team || '' }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">{{ lang.value?.navbar?.titles?.sponsors || '' }}</a>
+                        <a class="nav-link" @click="goToPage('/collaborators')">{{ lang.value?.navbar?.titles?.sponsors || '' }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" @click="goToPage('/events')">{{ lang.value?.navbar?.titles?.events || '' }}</a>
