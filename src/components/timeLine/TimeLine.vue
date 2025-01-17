@@ -16,7 +16,7 @@
                 <div class="timeline-content">
                     <h5 class="title">Inicios</h5>
                     <p class="description">
-                        un grupo de padres con hijos diagnosticados con autismo se reunió por primera vez. 
+                        Un grupo de padres con hijos diagnosticados con autismo se reunió por primera vez. 
                         Este encuentro marcó el inicio de un viaje transformador en la búsqueda de mejorar la calidad de vida de sus seres queridos. 
                         A medida que el grupo crecía, se hizo evidente la necesidad de trabajar en la concienciación sobre el autismo, 
                         comenzando por los mismos padres, familiares y extendiéndose a la comunidad. El objetivo era claro: integrar a las personas con
@@ -40,7 +40,7 @@
                 <div class="timeline-content">
                     <h5 class="title">Primera Actividad</h5>
                     <p class="description">
-                        la asociación celebró su primera actividad en conmemoración del Día Mundial de la Concienciación del Autismo,
+                        La asociación celebró su primera actividad en conmemoración del Día Mundial de la Concienciación del Autismo,
                          declarado por la Asamblea General de las Naciones Unidas el 18 de diciembre de 2007.
                           Durante esta significativa conmemoración, se llevaron a cabo diversos actos culturales que destacaron la importancia de la inclusión.
                     </p>
