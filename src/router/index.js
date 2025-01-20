@@ -9,8 +9,6 @@ import AddEventPage from '@/views/event/AddEventPage.vue'
 import AboutUs from '@/views/aboutUs/AboutUs.vue'
 import HomeViewAdmin from '@/views/HomeViewAdmin.vue'
 import GalleryAdmin from '@/views/gallery/GalleryAdmin.vue'
-import JuntaHome from '@/views/junta/JuntaHome.vue'
-import CollaboratorsHome from '@/views/collaborators/CollaboratorsHome.vue'
 import { isUserLoggedAdmin } from '@/utils/Validations'
 import { setProductionMode, getConfig } from '@/config/BasicConfig';
 
@@ -82,16 +80,6 @@ const router = createRouter({
           path: 'about',
           name: 'about',
           component: AboutUs
-        },
-        {
-          path: 'junta',
-          name: 'junta',
-          component: JuntaHome
-        },
-        {
-          path: 'collaborators',
-          name: 'collaborators',
-          component: CollaboratorsHome
         }
       ]
     }
