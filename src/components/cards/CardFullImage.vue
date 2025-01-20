@@ -29,108 +29,74 @@ function goToEventPage(link) {
 
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card-container">
-                    <div class="image">
-                        <img :src="url" :alt="title">
-                        <h2 class="card-title">{{ title }}</h2>
-                        <div id="container_text">
-                            <p>{{ descriptionCard }}</p>
-                            <a @click="goToEventPage(link)" class="btn btn-light mt-2">Más información</a>
-                        </div>
-                    </div>
-                </div>
+        <div class="custom-card mx-auto">
+            <img src="/Apaza/APAZA_FONDO.jpg" alt="Card image" class="card-img img-fluid">
+            <div class="card-overlay">
+                <h5 class="card-title">Título de la Tarjeta</h5>
+                <p class="card-text">Este es un texto de ejemplo para la tarjeta. Al hacer hover sobre la tarjeta, este
+                    texto aparecerá con una animación suave.</p>
+                <button class="btn card-btn text-white">Leer más</button>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-.container {
+.custom-card {
+    position: relative;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 15px;
+    max-width: 350px;
+    height: 400px;
+    transition: transform 0.3s ease;
 }
 
-.card-container {
-    position: relative;
-    width: 300px;
+.custom-card:hover {
+    transform: scale(1.03);
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(42, 93, 127, 0.8));
+    padding: 20px;
+    color: var(--white-color);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.custom-card:hover .card-overlay {
+    transform: translateY(0);
 }
 
 .card-title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    color: var(--text-color-1);
-    background-color: rgba(0, 0, 0, 0);
-    padding: 10px 5px;
-    margin: 0;
-    z-index: 3;
-    font-size: 1.8rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: var(--white-color);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
-.image {
-    overflow: hidden;
-    height: 300px;
-    width: 300px;
-    position: relative;
-    cursor: pointer;
-    transition: .5s;
+.card-text {
+    color: var(--white-color);
+    font-size: 1rem;
 }
 
-.image::after {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    width: 500px;
-    height: 500px;
-    transform: translate(-140%, -50%);
-    background-color: var(--background-color-2);
-    opacity: 0.5;
-    border-radius: 50%;
-    transition: .8s;
+.card-btn {
+    background-color: var(--accent-color);
+    border: none;
+    transition: background-color 0.3s ease;
 }
 
-.image:hover::after {
-    transform: translate(-50%, -50%);
-}
-
-.image:hover img {
-    transform: translate(-50%, -50%) scale(1.3) rotate(20deg);
-}
-
-img {
-    position: absolute;
-    height: 110%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: .8s;
-}
-
-#container_text {
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    left: 50%;
-    transform: translate(-200%, -50%);
-    color: var(--text-color-1);
-    text-align: center;
-    transition: .8s;
-    transition-timing-function: ease-in;
-    width: 80%;
-}
-
-.image:hover #container_text {
-    transform: translate(-50%, -50%);
-    transition-timing-function: ease;
+.card-btn:hover {
+    background-color: var(--secondary-color);
 }
 </style>

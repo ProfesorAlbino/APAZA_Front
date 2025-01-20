@@ -1,9 +1,9 @@
 /* Colores Generales de la página - Modo Claro */
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-    --accent-color: #e74c3c;
-    --decorative-color: #2a5d7f;
+    --primary-color: #3498db; /* Fondo y colores principales*/
+    --secondary-color: #2ecc71; /* Fondo y colores secundarios */
+    --accent-color: #e74c3c; /* Color de acento */
+    --decorative-color: #2a5d7f; /* Color decorativo */
     --black-color: #000000;
     --white-color: #ffffff;
 
@@ -29,36 +29,6 @@
     --text-font-1: 'Prompt', sans-serif;
     --text-font-2: 'Prompt', Roboto;
 }
-
-/* Modo Oscuro */
- /* @media (prefers-color-scheme: dark) {
-    :root {
-        --primary-color: #1c3b53;
-        --secondary-color: #1d6f43;
-        --accent-color: #a8322e;
-        --decorative-color: #1a3d59;
-        --black-color: #ffffff;
-        --white-color: #000000;
-
-        --background-color: #121212;
-        --background-color-2: #1e1e1e;
-        --background-color-3: #2b2b2b;
-        --background-color-4: #37474f;
-        --background-color-5: #212121;
-        --background-color-6: #263238;
-        --background-color-7: #1c2331;
-
-        --text-color-3: #ffffff;
-        --text-hover-3: #f06292;
-        --text-color-2: #90caf9;
-        --text-hover-2: #42a5f5;
-
-        --text-fields: #37474f;
-
-        --text-color-1: #ffffff;
-        --text-hover-1: #ffcc80;
-    }
-} */
 
 * {
     margin: 0;

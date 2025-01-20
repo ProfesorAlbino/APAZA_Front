@@ -17,4 +17,8 @@ import Footer from '@/components/templates/Footer.vue'
 .container-user {
 background-color: var(--background-color-3)
 }
+
+main {
+    overflow-x: hidden;
+  }
 </style>
