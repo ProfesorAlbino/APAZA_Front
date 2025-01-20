@@ -19,8 +19,13 @@ const props = defineProps({
 
 <template>
     <section
-        class="vh-100 d-flex align-items-center justify-content-center text-center text-white position-relative overflow-hidden"
-        :style="{ backgroundSize: '100%', backgroundImage: `url(${props.url})`, backgroundPosition: 'center' }">
+    class="vh-100 d-flex align-items-center justify-content-center text-center text-white position-relative overflow-hidden"
+    :style="{ 
+        backgroundSize: 'cover', 
+        backgroundRepeat: 'no-repeat', 
+        backgroundImage: `url(${props.url})`, 
+        backgroundPosition: 'center' 
+    }">
         <div>
             <div class="row justify-content-center">
                 <div class="col-md-8">
