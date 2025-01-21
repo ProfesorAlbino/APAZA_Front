@@ -24,4 +24,10 @@ import SideBar from '@/components/templates/SideBar.vue'
 .container-admin {
 background-color: var(--background-color-3)
 }
+
+@media (max-width: 768px) {
+    #container {
+      margin-left: 0%;
+    }
+}
 </style>

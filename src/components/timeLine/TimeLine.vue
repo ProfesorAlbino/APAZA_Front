@@ -1,3 +1,27 @@
+<script setup>
+import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
+import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader'
+import { getLangForPage, getConfig } from '@/config/BasicConfig';
+
+const PAGE = 'aboutUs';
+const router = useRouter();
+
+//Así se implementa el cambio de idioma, IMPORTANTE el operador condicional(o v-if) en el template para que no se caiga la página
+const lang = ref({});
+
+onMounted(async () => {
+  initPreloader();
+  await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
+    lang.value = data;
+    removePreloader();
+  }).catch(() => {
+    router.go(0);
+  });
+});
+
+</script>
+
 <template>
     <div class="container">
         <div class="main-timeline">
@@ -8,19 +32,15 @@
                 <div class="date-content">
                     <div class="date-outer">
                         <span class="date">
-                            <span class="month">Julio</span>
+                            <span class="month">{{ lang.aboutUs?.titles?.month1 || '' }}</span>
                             <span class="year">2010</span>
                         </span>
                     </div>
                 </div>
                 <div class="timeline-content">
-                    <h5 class="title">Inicios</h5>
+                    <h5 class="title">{{ lang.aboutUs?.titles?.timelineTitle1 || ''}}</h5>
                     <p class="description">
-                        un grupo de padres con hijos diagnosticados con autismo se reunió por primera vez. 
-                        Este encuentro marcó el inicio de un viaje transformador en la búsqueda de mejorar la calidad de vida de sus seres queridos. 
-                        A medida que el grupo crecía, se hizo evidente la necesidad de trabajar en la concienciación sobre el autismo, 
-                        comenzando por los mismos padres, familiares y extendiéndose a la comunidad. El objetivo era claro: integrar a las personas con
-                         autismo en la sociedad de manera digna y respetuosa.
+                        {{ lang.aboutUs?.body?.timelineDescription1 || '' }}
                     </p>
                 </div>
             </div>
@@ -32,17 +52,15 @@
                 <div class="date-content">
                     <div class="date-outer">
                         <span class="date">
-                            <span class="month">2 de Abril</span>
+                            <span class="month">{{ lang.aboutUs?.titles?.month2 || '' }}</span>
                             <span class="year">2011</span>
                         </span>
                     </div>
                 </div>
                 <div class="timeline-content">
-                    <h5 class="title">Primera Actividad</h5>
+                    <h5 class="title">{{ lang.aboutUs?.titles?.timelineTitle2 || ''}}</h5>
                     <p class="description">
-                        la asociación celebró su primera actividad en conmemoración del Día Mundial de la Concienciación del Autismo,
-                         declarado por la Asamblea General de las Naciones Unidas el 18 de diciembre de 2007.
-                          Durante esta significativa conmemoración, se llevaron a cabo diversos actos culturales que destacaron la importancia de la inclusión.
+                        {{ lang.aboutUs?.body?.timelineDescription2 || '' }}
                     </p>
                 </div>
             </div>
@@ -54,16 +72,15 @@
                 <div class="date-content">
                     <div class="date-outer">
                         <span class="date">
-                            <span class="month">17 de Abril</span>
+                            <span class="month">{{ lang.aboutUs?.titles?.month3 || '' }}</span>
                             <span class="year">2011</span>
                         </span>
                     </div>
                 </div>
                 <div class="timeline-content">
-                    <h5 class="title">Asamblea Constitutiva</h5>
+                    <h5 class="title">{{ lang.aboutUs?.titles?.timelineTitle3 || ''}}</h5>
                     <p class="description">
-                        El 17 de abril de 2011, se realizó la Asamblea Constitutiva, donde los padres,
-                         unidos por su compromiso y pasión, dieron los primeros pasos para formalizar su esfuerzo colectivo en beneficio de sus hijos.
+                        {{ lang.aboutUs?.body?.timelineDescription3 || '' }}
                     </p>
                 </div>
             </div>
@@ -75,17 +92,15 @@
                 <div class="date-content">
                     <div class="date-outer">
                         <span class="date">
-                            <span class="month">3 de Octubre</span>
+                            <span class="month">{{ lang.aboutUs?.titles?.month4 || '' }}</span>
                             <span class="year">2011</span>
                         </span>
                     </div>
                 </div>
                 <div class="timeline-content">
-                    <h5 class="title">APAZA</h5>
+                    <h5 class="title">{{ lang.aboutUs?.titles?.timelineTitle4 || ''}}</h5>
                     <p class="description">
-                        Finalmente, el 3 de octubre de 2011, se inscribió oficialmente la Asociación de Personas con Autismo de la Zona Atlántica, 
-                        conocida por sus siglas como APAZA, como una asociación legalmente constituida bajo la ley 218
-                        Este hito marcó un importante avance en nuestra misión de promover la inclusión y brindar apoyo a las familias afectadas por el autismo en la región.
+                        {{ lang.aboutUs?.body?.timelineDescription4 || '' }}
                     </p>
                 </div>
             </div>
@@ -99,6 +114,10 @@
 
 .main-timeline {
     position: relative
+}
+
+p{
+    color: var(--text-color-3);
 }
 
 .main-timeline:before {
@@ -151,12 +170,12 @@
 
 .main-timeline .icon:before {
     background: var(--background-color);
-    border: 2px solid var(--background-color);
+    border: 2px solid var(--accent-color);
     left: -3px
 }
 
 .main-timeline .icon:after {
-    border: 2px solid var(--background-color-2);
+    border: 2px solid var(--accent-color);
     left: 3px
 }
 
@@ -211,13 +230,13 @@
 }
 
 .main-timeline .date-outer:before {
-    background: var(--background-color-3);
+    background: var(--accent-color);
     border: 2px solid var(--background-color);
     left: -6px
 }
 
 .main-timeline .date-outer:after {
-    border: 2px solid var(--background-color-2);
+    border: 2px solid var(--accent-color);
     left: 6px
 }
 

@@ -1,3 +1,7 @@
+<script setup>
+import ButtonDarkMode from '../ButtonDarkMode.vue';
+</script>
+
 <template>
     <nav ref="navbar" :class="['navbar', 'navbar-expand-lg', 'fixed-top', navbarClass]">
         <div class="container">
@@ -22,12 +26,18 @@
                     <li class="nav-item">
                         <a class="nav-link">{{ lang.value?.navbar?.titles?.sponsors || '' }}</a>
                     </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" @click="goToPage('/events')">{{ lang.value?.navbar?.titles?.events || '' }}</a>
                     </li>
                     <li class="nav-item" v-if="isUserLoggedAdmin()">
                         <a class="nav-link" @click="goToPage('/admin/')">{{ lang.value?.navbar?.titles?.admin || '' }}</a>
                     </li>
+
+                    <li class="nav-item">
+                        <ButtonDarkMode />
+                    </li>
+                    
                 </ul>
                 <div class="dropdown ms-5">
                     <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
@@ -176,5 +186,9 @@ export default {
     .nav-link:hover {
         color: var(--text-hover-1) !important;
     }
+}
+
+li{
+    cursor: pointer;
 }
 </style>

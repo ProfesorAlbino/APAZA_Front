@@ -1,5 +1,26 @@
 <script setup>
 import Timeline from '../../components/timeLine/TimeLine.vue'
+import { useRouter } from 'vue-router';
+import { ref, onMounted } from 'vue';
+import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader'
+import { getLangForPage, getConfig } from '@/config/BasicConfig';
+
+const PAGE = 'aboutUs';
+const router = useRouter();
+
+//Así se implementa el cambio de idioma, IMPORTANTE el operador condicional(o v-if) en el template para que no se caiga la página
+const lang = ref({});
+
+onMounted(async () => {
+  initPreloader();
+  await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
+    lang.value = data;
+    removePreloader();
+  }).catch(() => {
+    router.go(0);
+  });
+});
+
 </script>
 
 <template>
@@ -9,17 +30,15 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 about-content">
-                        <p class="about-subtitle">Acerca de nosotros</p>
-                        <h1 class="about-title">Nuestros Orígenes</h1>
+                        <p class="about-subtitle">{{ lang.aboutUs?.titles?.aboutUs || ''}}</p>
+                        <h1 class="about-title">{{ lang.aboutUs?.titles?.ourOrigins || ''}}</h1>
                         <div class="about-text">
-                            <p>Desde nuestras raíces como un pequeño grupo de <span class="highlight">familias unidas
-                                    por el amor y la esperanza</span>, hemos crecido con un solo objetivo: mejorar la
-                                calidad
-                                de vida de nuestros hijos con autismo.</p>
+                            <p>{{ lang.aboutUs?.body?.aboutDescription1 || ''}} <span class="highlight">{{ lang.aboutUs?.body?.aboutDescription2 || ''}} </span>, 
+                                {{ lang.aboutUs?.body?.aboutDescription3 || ''}} </p>
 
-                            <p>Hoy, gracias al apoyo de organizaciones como <span class="highlight">ACOTEAMA</span> y
-                                a la fuerza de nuestra comunidad, seguimos construyendo juntos un futuro lleno de
-                                <span class="highlight">inclusión, comprensión y oportunidades</span> para todos.
+                            <p>{{ lang.aboutUs?.body?.aboutDescription4 || ''}}  <span class="highlight">{{ lang.aboutUs?.body?.aboutDescription5 || ''}} </span> y
+                                {{ lang.aboutUs?.body?.aboutDescription6 || ''}} 
+                                <span class="highlight">{{ lang.aboutUs?.body?.aboutDescription7 || ''}} </span> {{ lang.aboutUs?.body?.aboutDescription8 || ''}} 
                             </p>
                         </div>
                     </div>
@@ -47,30 +66,23 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
         <div class="mission-vision-section w-100">
             <div class="decorative-circle circle-2"></div>
             <div class="container-fluid">
-                <h2 class="section-title">Nuestra Misión y Visión</h2>
+                <h2 class="section-title">{{lang.aboutUs?.titles?.ourMissionVision || ''}}</h2>
                 <div class="row">
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <div class="card-custom">
                             <i class="fas fa-rocket card-icon"></i>
-                            <h3 class="card-title">Misión</h3>
+                            <h3 class="card-title">{{lang.aboutUs?.titles?.mision || ''}}</h3>
                             <div class="card-text">
-                                <p>Nuestra misión es <span class="highlight">fortalecer todas las capacidades</span> de
-                                    las personas con Trastorno
-                                    del Espectro Autista, con respeto y tolerancia, trabajando en equipo en la defensa y
-                                    promoción de sus derechos para tener así una participación más solidaria y justa en
-                                    la sociedad.</p>
+                                <p>{{ lang.aboutUs?.body?.misionDescription1 || ''}}  <span class="highlight">{{ lang.aboutUs?.body?.misionDescription2 || ''}}</span> {{ lang.aboutUs?.body?.misionDescription3 || ''}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="card-custom">
                             <i class="fas fa-eye card-icon"></i>
-                            <h3 class="card-title">Visión</h3>
+                            <h3 class="card-title">{{lang.aboutUs?.titles?.vision || ''}}</h3>
                             <div class="card-text">
-                                <p>Aspiramos a <span class="highlight">Mejorar la calidad de vida</span> de las personas
-                                    con autismo y sus familias. Creando desde
-                                    su inicio un espacio formador, donde se brinden las herramientas necesarias para la
-                                    inclusión en la sociedad de una manera efectiva.</p>
+                                <p>{{ lang.aboutUs?.body?.visionDescription1 || ''}} <span class="highlight">{{lang.aboutUs?.body?.visionDescription2}}</span> {{lang.aboutUs?.body?.visionDescription3}}</p>
                             </div>
                         </div>
                     </div>
@@ -91,7 +103,7 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
         </svg>
 
         <div class="row fs-4">
-            <h1 class="text-center mt-5">Nuestra Historia</h1>
+            <h1 class="text text-center mt-5">{{lang.aboutUs?.titles?.ourHistory || ''}}</h1>
             <div class="col-12 mt-3">
                 <Timeline />
             </div>
@@ -103,12 +115,13 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
 .about-section {
     padding: 6rem 0;
     font-family: var(--text-font-1);
+    color: var(--text-color-1);
     overflow: hidden;
     margin-top: 60px;
 }
 
 .about-subtitle {
-    color: var(--background-color-2);
+    color: var(--text-color-2);
     font-size: 1.5rem;
     font-weight: 500;
     margin-bottom: 1rem;
@@ -117,7 +130,7 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
 }
 
 .about-title {
-    color: var(--background-color);
+    color: var(--text-color-2);
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
@@ -131,18 +144,18 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
     left: 0;
     width: 80px;
     height: 4px;
-    background-color: var(--background-color-2);
+    background-color: var(--accent-color);
 }
 
 .about-text {
-    color: var(--background-color);
+    color: var(--text-color-3);
     font-size: 1.2rem;
     line-height: 1.8;
     margin-bottom: 2rem;
 }
 
 .highlight {
-    color: var(--background-color-2);
+    color: var(--accent-color) !important;
     font-weight: 500;
 }
 
@@ -158,7 +171,7 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
     left: -20px;
     width: 100%;
     height: 100%;
-    border: 4px solid var(--background-color-2);
+    border: 4px solid var(--accent-color);
     z-index: -1;
     border-radius: 20px;
     transition: transform 0.3s ease;
@@ -166,7 +179,7 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
 
 .about-image {
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--accent-color);
     transition: transform 0.3s ease;
 }
 
@@ -214,6 +227,7 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
     font-family: var(--text-font-1);
     position: relative;
     overflow: hidden;
+    margin-top: -10px;
 }
 
 .section-title {
@@ -232,13 +246,13 @@ import Timeline from '../../components/timeLine/TimeLine.vue'
     transform: translateX(-50%);
     width: 100px;
     height: 3px;
-    background-color: var(--background-color-2);
+    background-color: var(--accent-color);
 }
 
 .card-custom {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--accent-color);
     border-radius: 20px;
     padding: 2rem;
     height: 100%;

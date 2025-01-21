@@ -28,7 +28,7 @@ onMounted(async () => {
 });
 
 function navigate(url) {
-    router.push(url);
+  router.push(url);
 }
 
 
@@ -58,22 +58,23 @@ function navigate(url) {
         <img src="/Apaza/APAZA_FONDO.jpg" alt="Acerca de Nosotros" class="img-fluid about-image">
       </div>
       <div class="col-lg-6">
-        <h2 class="about-title">Acerca de Nosotros</h2>
+        <h2 class="about-title">{{ lang.homepage?.titles?.informationTeaApaza || '' }}</h2>
         <div class="about-text">
-          <p>Somos una empresa dedicada a la <span class="highlight-text">excelencia e innovación</span>,
-            comprometida con brindar soluciones de alta calidad a nuestros clientes desde hace más de una década.</p>
-
-          <p>Nuestro equipo de profesionales altamente capacitados trabaja incansablemente para
-            garantizar que cada proyecto cumpla con los más altos estándares de calidad y satisfacción del cliente.</p>
-
-          <p>Con una visión clara hacia el futuro y un compromiso inquebrantable con la
-            <span class="highlight-text">mejora continua</span>, seguimos expandiendo nuestros horizontes y
-            adaptándonos a las necesidades cambiantes del mercado.
+          <p>
+            {{ lang.homepage?.body?.aboutDescription1 || '' }}
+            <span class="highlight-text">{{ lang.homepage?.body?.aboutDescription2 || '' }}</span>,
+            {{ lang.homepage?.body?.aboutDescription3 || '' }}
           </p>
-          <a @click="navigate('/about')" class="btn_about btn btn-primary" >¡Conócenos!</a>
+
+          <p>{{lang.homepage?.body?.aboutDescription4 || ''}}</p>
+
+          <p>{{ lang.homepage?.body?.aboutDescription5 || ''}}
+            <span class="highlight-text">{{ lang.homepage?.body?.aboutDescription6 || '' }}</span> {{ lang.homepage?.body?.aboutDescription7 || '' }}
+          </p>
+          <a @click="navigate('/about')" class="btn_about btn btn-primary">{{ lang.homepage?.body?.btnAboutUs || '' }}</a>
         </div>
       </div>
-      
+
     </div>
   </section>
 
@@ -90,42 +91,42 @@ function navigate(url) {
     </path>
   </svg>
   <section id="sectionCards" class="py-4">
-    <h1 class="title text-center mb-5">Nuestros Servicios</h1>
+    <h1 class="title text-center mb-5">{{ lang.homepage?.titles?.ourServices || ''}}</h1>
 
     <div class="row g-4">
       <div class="col-12 col-md-4">
         <CardFullImage :title="lang.homepage?.titles?.events || ''"
-          :descriptionCard="lang.homepage?.body?.descriptionEvents || ''" url="/Apaza/Events.png" link="/events"
+          :descriptionCard="lang.homepage?.body?.infoEvents || ''" url="/Apaza/APAZA_FONDO.jpg" link="/events" :btn="lang.homepage?.titles?.titleButton || ''"
           data-aos="zoom-in" />
       </div>
       <div class="col-12 col-md-4">
         <CardFullImage :title="lang.homepage?.titles?.events || ''"
-          :descriptionCard="lang.homepage?.body?.descriptionEvents || ''" url="/Apaza/Events.png" link="/events"
+          :descriptionCard="lang.homepage?.body?.infoEvents || ''" url="/Apaza/APAZA_FONDO.jpg" link="/events" :btn="lang.homepage?.titles?.titleButton || ''"
           data-aos="zoom-in" />
       </div>
       <div class="col-12 col-md-4">
         <CardFullImage :title="lang.homepage?.titles?.events || ''"
-          :descriptionCard="lang.homepage?.body?.descriptionEvents || ''" url="/Apaza/Events.png" link="/events"
+          :descriptionCard="lang.homepage?.body?.infoEvents || ''" url="/Apaza/APAZA_FONDO.jpg" link="/events" :btn="lang.homepage?.titles?.titleButton || ''"
           data-aos="zoom-in" />
       </div>
     </div>
 
-    <h1 class="title text-center mt-5 mb-5">Nuestros Eventos</h1>
+    <h1 class="title text-center mt-5 mb-5">{{ lang.homepage?.titles?.ourEvents || ''}}</h1>
 
     <div class="row g-4">
       <div class="col-12 col-md-4">
         <CardFullImage :title="lang.homepage?.titles?.events || ''"
-          :descriptionCard="lang.homepage?.body?.descriptionEvents || ''" url="/Apaza/Events.png" link="/events"
+          :descriptionCard="lang.homepage?.body?.infoEvents || ''" url="/Apaza/APAZA_FONDO.jpg" link="/events" :btn="lang.homepage?.titles?.titleButton || ''"
           data-aos="zoom-in" />
       </div>
       <div class="col-12 col-md-4">
         <CardFullImage :title="lang.homepage?.titles?.events || ''"
-          :descriptionCard="lang.homepage?.body?.descriptionEvents || ''" url="/Apaza/Events.png" link="/events"
+          :descriptionCard="lang.homepage?.body?.infoEvents || ''" url="/Apaza/APAZA_FONDO.jpg" link="/events" :btn="lang.homepage?.titles?.titleButton || ''"
           data-aos="zoom-in" />
       </div>
       <div class="col-12 col-md-4">
         <CardFullImage :title="lang.homepage?.titles?.events || ''"
-          :descriptionCard="lang.homepage?.body?.descriptionEvents || ''" url="/Apaza/Events.png" link="/events"
+          :descriptionCard="lang.homepage?.body?.infoEvents || ''" url="/Apaza/APAZA_FONDO.jpg" link="/events" :btn="lang.homepage?.titles?.titleButton || ''"
           data-aos="zoom-in" />
       </div>
     </div>
@@ -166,7 +167,7 @@ function navigate(url) {
   left: 0;
   width: 80px;
   height: 3px;
-  background-color: var(--background-color-2);
+  background-color: var(--accent-color);
 }
 
 .about-text {
@@ -186,7 +187,7 @@ function navigate(url) {
 }
 
 .highlight-text {
-  color: var(--background-color-2);
+  color: var(--accent-color);
   font-weight: 600;
 }
 
@@ -200,8 +201,8 @@ function navigate(url) {
   }
 }
 
-.btn_about{
-  background-color: var(--background-color-2);
+.btn_about {
+  background-color: var(--accent-color);
   color: var(--text-color-1);
   font-family: var(--text-font-1);
   font-weight: 600;
@@ -211,9 +212,8 @@ function navigate(url) {
   transition: background-color 0.3s ease;
 }
 
-.btn_about:hover{
+.btn_about:hover {
   background-color: var(--background-color);
 
 }
-
 </style>

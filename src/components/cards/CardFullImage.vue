@@ -19,7 +19,11 @@ defineProps({
     link: {
         type: String,
         required: true,
-    }
+    },
+    btn: {
+        type: String,
+        required: true,
+    },
 });
 
 function goToEventPage(link) {
@@ -30,12 +34,11 @@ function goToEventPage(link) {
 <template>
     <div class="container">
         <div class="custom-card mx-auto">
-            <img src="/Apaza/APAZA_FONDO.jpg" alt="Card image" class="card-img img-fluid">
+            <img :src="url" alt="Card image" class="card-img img-fluid">
             <div class="card-overlay">
-                <h5 class="card-title">Título de la Tarjeta</h5>
-                <p class="card-text">Este es un texto de ejemplo para la tarjeta. Al hacer hover sobre la tarjeta, este
-                    texto aparecerá con una animación suave.</p>
-                <button class="btn card-btn text-white">Leer más</button>
+                <h5 class="card-title">{{ title }}</h5>
+                <p class="card-text">{{ descriptionCard }}</p>
+                <button class="btn card-btn text-white" @click="goToEventPage(link)">{{ btn }}</button>
             </div>
         </div>
     </div>

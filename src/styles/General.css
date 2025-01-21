@@ -2,7 +2,7 @@
 :root {
     --primary-color: #3498db; /* Fondo y colores principales*/
     --secondary-color: #2ecc71; /* Fondo y colores secundarios */
-    --accent-color: #e74c3c; /* Color de acento */
+    --accent-color: #3498db; /* Color de acento */
     --decorative-color: #2a5d7f; /* Color decorativo */
     --black-color: #000000;
     --white-color: #ffffff;
@@ -33,4 +33,36 @@
 * {
     margin: 0;
     padding: 0;
+}
+
+body.dark-mode {
+    --primary-color: #1e3a5f; /* Fondo principal */
+--secondary-color: #2a6f4e; /* Fondo y colores secundarios */
+--accent-color: #e63946; /* Color de acento */
+--decorative-color: #1c4e7f; /* Color decorativo */
+--black-color: #000000;
+--white-color: #e5e5e5; /* Blanco más tenue para modo oscuro */
+
+--background-color: #0d1117; /* Fondo general oscuro */
+--background-color-2: #161b22; /* Segundo plano */
+--background-color-3: #1f2631; /* Tercer plano */
+--background-color-4: #1c2734; /* Fondo decorativo */
+--background-color-5: #2b3a4b; /* Fondo más claro */
+--background-color-6: #22303f; /* Fondo de contraste menor */
+--background-color-7: #2d3748; /* Alternativa para hover */
+
+--text-color-3: #f0f0f0; /* Texto principal */
+--text-hover-3: #e63946; /* Hover en texto de acento */
+
+--text-color-2: #ffffff; /* Texto secundario */
+--text-hover-2: #58a6ff; /* Hover en texto enlazado */
+
+--text-fields: #ffffff; /* Campos de entrada */
+
+--text-color-1: #ffffff; /* Texto más visible */
+--text-hover-1: #d69e2e; /* Hover cálido */
+
+
+    --text-font-1: 'Prompt', sans-serif;
+    --text-font-2: 'Prompt', Roboto;
 }

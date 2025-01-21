@@ -14,25 +14,6 @@ const gallery = ref({
     year: '',
     images: []
 });
-
-const createGallery = () => {
-
-    console.log('Evento a crear:', gallery.value);
-
-    addGallery(gallery.value)
-        .then(() => {
-            gallery.value = {
-                description: '',
-                year: '',
-                images: []
-            }
-
-            document.querySelector('form').classList.remove('was-validated')
-        })
-        .catch(() => {
-            console.log('Error al crear el evento');
-        });
-}
 </script>
 
 <script>
@@ -40,7 +21,7 @@ export default {
     name: 'ImageDragDrop',
     data() {
         return {
-            images: [], // Array para almacenar las imágenes
+            images: [],
             isDragging: false
         }
     },
@@ -56,16 +37,21 @@ export default {
         },
         processFiles(files) {
             for (const file of files) {
+                console.log(file);
                 if (file.type.startsWith('image/')) {
-                    const reader = new FileReader()
+                    console.log('Es una imagen');
+                    const reader = new FileReader();
                     reader.onload = (e) => {
-                        this.images.push({
+                        const imageObject = {
                             name: file.name,
                             url: e.target.result,
-                            file: file
-                        })
-                    }
-                    reader.readAsDataURL(file)
+                            file: file,
+                        };
+
+                        // Actualizar el array local de imágenes
+                        this.images.push(imageObject);
+                    };
+                    reader.readAsDataURL(file);
                 }
             }
         },
@@ -74,6 +60,23 @@ export default {
         }
     }
 }
+
+const createGallery = () => {
+    
+addGallery(gallery.value)
+    .then(() => {
+        gallery.value = {
+            description: '',
+            year: '',
+            images: []
+        }
+        document.querySelector('form').classList.remove('was-validated')
+    })
+    .catch(() => {
+        console.log('Error al crear el evento');
+    });
+}
+
 </script>
 
 <template>
@@ -81,14 +84,14 @@ export default {
         <h1>Galería</h1>
     </div>
 
-    <div class="row">
-        <div class="col-4">
+    <div class="row ">
+        <div class="col-12 col-md-4 mb-3">
             <CardAdmin description="Crea un album con imágenes" title="Crear Album" @click="updateNum(1)" />
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4 mb-3">
             <CardAdmin description="Edita o Elimina imágenes de un album" title="Editar Album" @click="updateNum(2)" />
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4 mb-3">
             <CardAdmin description="Agrega imágenes a un album existente" title="Agregar Imágenes"
                 @click="updateNum(3)" />
         </div>
@@ -100,17 +103,19 @@ export default {
             <div v-if="num == 1" class="col-12">
                 <h1>Agregar Imágenes</h1>
 
-                <form class="mt-5" @submit.prevent="createGallery" >
+                <form class="mt-5" @submit.prevent="createGallery">
                     <div class="row">
 
                         <!-- Campos -->
                         <div class="col-6 form-floating">
-                            <input v-model="gallery.description" type="text" class="form-control" id="floatingDescription" placeholder="descripción">
+                            <input v-model="gallery.description" type="text" class="form-control"
+                                id="floatingDescription" placeholder="descripción">
                             <label class="ms-3" for="floatingDescription">Descripción</label>
                         </div>
 
                         <div class="col-6 form-floating mb-3">
-                            <input v-model="gallery.year" type="number" class="form-control" id="floatingNumber" placeholder="año">
+                            <input v-model="gallery.year" type="number" class="form-control" id="floatingNumber"
+                                placeholder="año">
                             <label class="ms-3" for="floatingNumber">Año</label>
                         </div>
 

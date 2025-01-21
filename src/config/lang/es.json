@@ -12,12 +12,15 @@
             "whatIsTea": "¿Que es el TEA?",
             "characteristicsTea": "Características del TEA",
             "treatmentsTitle": "Tratamientos",
-            "informationTeaApaza": "Información sobre nosotros",
+            "informationTeaApaza": "Sobre nosotros",
             "recentDiagnosis": "Recién Diagnosticado",
-            "titleAboutUs": "Ven y descubre un poco más sobre nuestra historia y los miembros que forman parte de APAZA.",
             "countTitle1": "Miembros",
             "countTitle2": "Fundación",
-            "countTitle3": "Junta directiva"
+            "countTitle3": "Junta directiva",
+            "ourServices": "Nuestros Servicios",
+            "ourEvents": "Nuestros Eventos",
+            "events": "Eventos",
+            "titleButton": "Ver más"
         },
         "body": {
             "descriptionTea": "El TEA es un trastorno del desarrollo que afecta la forma en que una persona se relaciona con el mundo y con las personas que lo rodean. Las personas con autismo pueden tener dificultades para comunicarse y relacionarse con los demás, y pueden tener intereses y comportamientos repetitivos.",
@@ -28,10 +31,20 @@
             "infoDiagnosis": "Esta sección ofrece información y apoyo para personas que han recibido recientemente un diagnóstico de autismo",
             "infoEvents": "Explora nuestros eventos y entérate de todas nuestras actividades para no perderte ninguna.",
             "infoAboutUs": "Conoce más sobre nosotros y nuestra misión de apoyar a personas con TEA y sus familias.",
+
             "descriptionAboutUs": "Estamos emocionados de compartir nuestro recorrido y todo lo que nos impulsa a seguir adelante.",
             "descriptionCount1": "Conoce a los miembros que forman parte de nuestra comunidad.",
             "descriptionCount2": "Descubre nuestra historia y cómo hemos crecido a lo largo de los años.",
-            "descriptionCount3": "Conoce a los miembros de nuestra junta directiva y su compromiso con nuestra misión."
+            "descriptionCount3": "Conoce a los miembros de nuestra junta directiva y su compromiso con nuestra misión.",
+
+            "aboutDescription1": "¡Hola! Somos APAZA, una asociación formada por familias unidas por un propósito común: apoyar a las personas con TEA, comprometida con ",
+            "aboutDescription2": "brindar orientación y apoyo emocional,",
+            "aboutDescription3": "con el objetivo de mejorar la calidad de vida de las personas con TEA y sus familias a través de consejos, experiencias compartidas y un espacio de ayuda mutua.",
+            "aboutDescription4": "Nuestra asociación nace del esfuerzo y la solidaridad de familias que decidieron unirse para marcar la diferencia y crear un entorno de apoyo y comprensión.",
+            "aboutDescription5": "Con una visión enfocada en construir comunidades más inclusivas y un compromiso inquebrantable con la",
+            "aboutDescription6": "mejora de la calidad de vida, ",
+            "aboutDescription7": "seguimos trabajando juntos para ofrecer recursos, consejos prácticos y un espacio donde las familias puedan sentirse acompañadas.",
+            "btnAboutUs": "¡Conócenos!"
         }
     },
     "loginpage": {
@@ -134,6 +147,50 @@
         "languages": {
             "spanish": "Español",
             "english": "Inglés"
+        }
+    },
+    "aboutUs":{
+        "titles": {
+            "aboutUs": "Sobre nosotros",
+            "ourOrigins": "Nuestros Orígenes",
+            "ourMissionVision": "Nuestra Misión y Visión",
+            "mision": "Misión",
+            "vision": "Visión",
+            "ourHistory": "Nuestra Historia",
+
+            "month1": "Julio",
+            "month2": "2 de Abril",
+            "month3": "17 de Abril",
+            "month4": "3 de Octubre",
+
+            "timelineTitle1": "Inicios",
+            "timelineTitle2": "Primera Actividad",
+            "timelineTitle3": "Asamblea Constitutiva",
+            "timelineTitle4": "APAZA"
+        },
+        "body": {
+            "aboutDescription1": "Desde nuestras raíces como un pequeño grupo de ",
+            "aboutDescription2": "familias unidas por el amor y la esperanza",
+            "aboutDescription3": "hemos crecido con un solo objetivo: mejorar la calidad de vida de nuestros hijos con autismo. ",
+            "aboutDescription4": "Hoy, gracias al apoyo de organizaciones como ",
+            "aboutDescription5": "ACOTEAMA ",
+            "aboutDescription6": "y a la fuerza de nuestra comunidad, seguimos construyendo juntos un futuro lleno de ",
+            "aboutDescription7": "inclusión, comprensión y oportunidades ",
+            "aboutDescription8": "para todos. ",
+
+            "misionDescription1": "Nuestra misión es ",
+            "misionDescription2": "fortalecer todas las capacidades ",
+            "misionDescription3": "de las personas con Trastorno del Espectro Autista, con respeto y tolerancia, trabajando en equipo en la defensa y promoción de sus derechos para tener así una participación más solidaria y justa en la sociedad. ",
+
+            "visionDescription1": "Aspiramos a ",
+            "visionDescription2": "Mejorar la calidad de vida ",
+            "visionDescription3": "de las personas con autismo y sus familias. Creando desde su inicio un espacio formador, donde se brinden las herramientas necesarias para la inclusión en la sociedad de una manera efectiva. ",
+
+            "timelineDescription1": "un grupo de padres con hijos diagnosticados con autismo se reunió por primera vez. Este encuentro marcó el inicio de un viaje transformador en la búsqueda de mejorar la calidad de vida de sus seres queridos. A medida que el grupo crecía, se hizo evidente la necesidad de trabajar en la concienciación sobre el autismo, comenzando por los mismos padres, familiares y extendiéndose a la comunidad. El objetivo era claro: integrar a las personas con autismo en la sociedad de manera digna y respetuosa.",
+            "timelineDescription2": "la asociación celebró su primera actividad en conmemoración del Día Mundial de la Concienciación del Autismo, declarado por la Asamblea General de las Naciones Unidas el 18 de diciembre de 2007. Durante esta significativa conmemoración, se llevaron a cabo diversos actos culturales que destacaron la importancia de la inclusión.",
+            "timelineDescription3": "El 17 de abril de 2011, se realizó la Asamblea Constitutiva, donde los padres, unidos por su compromiso y pasión, dieron los primeros pasos para formalizar su esfuerzo colectivo en beneficio de sus hijos.",
+            "timelineDescription4": "Finalmente, el 3 de octubre de 2011, se inscribió oficialmente la Asociación de Personas con Autismo de la Zona Atlántica, conocida por sus siglas como APAZA, como una asociación legalmente constituida bajo la ley 218 Este hito marcó un importante avance en nuestra misión de promover la inclusión y brindar apoyo a las familias afectadas por el autismo en la región."
+
         }
     }
 }

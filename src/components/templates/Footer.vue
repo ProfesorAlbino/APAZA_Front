@@ -8,10 +8,10 @@
                     <div class="single-footer-widget section_padding_0_130">
                         <!-- Footer Logo-->
                         <div class="footer-logo mb-3"></div>
-                        <p>{{ lang?.footer?.body?.phrase }}</p>
+                        <p class="text">{{ lang?.footer?.body?.phrase }}</p>
                         <!-- Copywrite Text-->
                         <div class="copywrite-text mb-5">
-                            <p class="mb-0">{{ lang?.footer?.titles?.social }}</p>
+                            <p class="text mb-0">{{ lang?.footer?.titles?.social }}</p>
                         </div>
                         <!-- Footer Social Area-->
                         <div class="footer_social_area">
@@ -49,7 +49,7 @@
                 <div class="col-12 col-sm-6 col-lg">
                     <div class="single-footer-widget section_padding_0_130">
                         <!-- Widget Title-->
-                        <h5 class="widget-title">Apaza</h5>
+                        <h5 class="title widget-title">Apaza</h5>
                         <!-- Footer Menu-->
                         <div class="footer_menu">
                             <ul>
@@ -65,7 +65,7 @@
                 <div class="col-12 col-sm-6 col-lg">
                     <div class="single-footer-widget section_padding_0_130">
                         <!-- Widget Title-->
-                        <h5 class="widget-title">{{ lang?.events }}</h5>
+                        <h5 class="title widget-title">{{ lang?.events }}</h5>
                         <!-- Footer Menu-->
                         <div class="footer_menu">
                             <ul>
@@ -79,7 +79,7 @@
                 <div class="col-12 col-sm-6 col-lg">
                     <div class="single-footer-widget section_padding_0_130">
                         <!-- Widget Title-->
-                        <h5 class="widget-title">{{ lang?.footer?.titles?.contact }}</h5>
+                        <h5 class="title widget-title">{{ lang?.footer?.titles?.contact }}</h5>
                         <!-- Footer Menu-->
                         <div class="footer_menu">
                             <ul>
@@ -94,7 +94,7 @@
         </div>
 
         <div class="row">
-        <p class="text-center"> {{ lang?.footer?.body?.infoText }}</p>
+        <p class="text text-center"> {{ lang?.footer?.body?.infoText }}</p>
     </div>
     
     </footer>
@@ -134,8 +134,8 @@ body {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    webkit-box-shadow: 0 8px 48px 8px rgba(47, 91, 234, 0.175);
-    box-shadow: 0 8px 48px 8px rgba(47, 91, 234, 0.175);
+    webkit-box-shadow: 0 8px 48px 8px rgba(253, 0, 0, 0.175);
+    box-shadow: 0 8px 30px 3px var(--accent-color);
     padding: 60px;
 }
 
@@ -224,21 +224,22 @@ body {
 }
 
 .single-footer-widget .copywrite-text a {
-    color: #747794;
+    color: var(--accent-color);
     font-size: 1rem;
 }
 
 .single-footer-widget .copywrite-text a:hover,
 .single-footer-widget .copywrite-text a:focus {
-    color: #3f43fd;
+    color: var(--accent-color);
 }
 
 .single-footer-widget .widget-title {
     margin-bottom: 1.5rem;
+    color: var(--text-color-3);
 }
 
 .single-footer-widget .footer_menu li a {
-    color: #747794;
+    color: var(--text-color-3);
     margin-bottom: 1rem;
     display: block;
     font-size: 1rem;
@@ -246,7 +247,7 @@ body {
 
 .single-footer-widget .footer_menu li a:hover,
 .single-footer-widget .footer_menu li a:focus {
-    color: #3f43fd;
+    color: var(--accent-color);
 }
 
 .single-footer-widget .footer_menu li:last-child a {
@@ -264,7 +265,7 @@ body {
     text-align: center;
     width: 40px;
     display: inline-block;
-    background-color: #f5f5ff;
+    background-color: var(--accent-color);
     line-height: 40px;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -278,6 +279,14 @@ body {
 .footer_social_area a:hover,
 .footer_social_area a:focus {
     color: #ffffff;
+}
+
+.text{
+    color: var(--text-color-3);
+}
+
+li{
+    cursor: pointer;
 }
 
 @-webkit-keyframes bi-cycle {

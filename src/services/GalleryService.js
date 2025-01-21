@@ -21,6 +21,11 @@ function addGallery(gallery){
   eventData.append('year', gallery.year);
   eventData.append('description', gallery.description);
   eventData.append('images', gallery.images);
+
+  return fetch('/gallery', {
+    method: 'POST',
+    body: eventData
+});
 }
 
 export {getGallery, addGallery};
