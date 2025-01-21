@@ -36,7 +36,7 @@ function navigate(url) {
 </script>
 
 <template>
-  <section>
+  <section id="hero">
     <wave class="mb-20" url="/Apaza/APAZA_FONDO.jpg" title="" description="" data-aos="zoom-out"
       data-aos-duration="1000" />
   </section>
@@ -137,6 +137,10 @@ function navigate(url) {
 </template>
 
 <style scoped>
+#hero{
+  margin-top: -3%;
+}
+
 #sectionCards {
   margin-top: -5px;
   background-color: var(--primary-color);

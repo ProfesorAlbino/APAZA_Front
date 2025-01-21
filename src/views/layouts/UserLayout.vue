@@ -18,6 +18,10 @@ import Footer from '@/components/templates/Footer.vue'
 background-color: var(--background-color-3)
 }
 
+main{
+  margin-top: 2%;
+}
+
 main {
     overflow-x: hidden;
   }

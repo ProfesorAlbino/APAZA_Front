@@ -3,7 +3,7 @@ import ButtonDarkMode from '../ButtonDarkMode.vue';
 </script>
 
 <template>
-    <nav ref="navbar" :class="['navbar', 'navbar-expand-lg', 'fixed-top', navbarClass]">
+    <nav ref="navbar" :class="['navbar', 'navbar-solid', 'navbar-expand-lg', 'fixed-top', navbarClass]">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" @click="gotoHome">
                 <img src="/Apaza/apaza_logo.png" alt="APAZA Logo" width="60" height="60" class="me-2 navbar-logo">
@@ -65,7 +65,6 @@ const PAGE = 'navbar';
 export default {
     data() {
         return {
-            navbarClass: 'navbar-transparent',
             router: useRouter(),
             lang: ref({}),
             LANGS,
@@ -73,9 +72,6 @@ export default {
         };
     },
     async mounted() {
-        if (window.location.pathname !== '/') {
-            this.navbarClass = 'navbar-solid';
-        }
         window.addEventListener('scroll', this.handleScroll);
         await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
             this.lang.value = data;
@@ -88,19 +84,6 @@ export default {
         window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
-        handleScroll() {
-            const navbar = this.$refs.navbar;
-            const navbarHeight = navbar.offsetHeight;
-            if (window.scrollY >= navbarHeight) {
-                this.navbarClass = 'navbar-solid';
-            } else {
-                this.navbarClass = 'navbar-transparent';
-            }
-
-            if (window.location.pathname !== '/') {
-                this.navbarClass = 'navbar-solid';
-            }
-        },
         navigateLoginOrLogout() {
             //window.location.href = '/login';
             this.router.push('/login');
@@ -137,10 +120,6 @@ export default {
 .navbar {
     font-family: var(--text-font-1);
     transition: background-color 0.8s ease;
-}
-
-.navbar-transparent {
-    background-color: rgba(255, 255, 255, 0);
 }
 
 .navbar-solid {
