@@ -75,12 +75,13 @@
             "team": "Junta",
             "sponsors": "Colaboradores",
             "events": "Eventos",
-            "admin": "Administrar"
+            "admin": "Administrar",
+            "darkMode": "Modo oscuro"
         },
         "languages": {
             "language": "Idioma",
             "spanish": "Español",
-            "english": "Inglés"
+            "english": "English"
         }
     },
     "footer": {
