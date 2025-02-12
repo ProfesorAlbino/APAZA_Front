@@ -1,11 +1,12 @@
 <script setup>
-import Navbar from '@/components/templates/NavbarComponent.vue'
+import OffcanvasNav from '@/components/templates/OffcanvasNav.vue';
+//import Navbar from '@/components/templates/NavbarComponent.vue'
 import Footer from '@/components/templates/Footer.vue'
 </script>
 
 <template>
   <div class="flex flex-col min-h-screen container-user">
-    <Navbar />
+    <OffcanvasNav />
     <main class="container-fluid p-0">
       <RouterView />
     </main>

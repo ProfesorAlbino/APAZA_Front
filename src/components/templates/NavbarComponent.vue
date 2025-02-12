@@ -15,7 +15,7 @@ import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" @click="gotoHome">
         <img
-          src="/Apaza/apaza_logo.png"
+          src="/Apaza/.webp/apaza_logo.webp"
           alt="APAZA Logo"
           width="60"
           height="60"
@@ -192,6 +192,16 @@ const rippleEffect = () => {
 </script>
 
 <style scoped lang="scss">
+
+img {
+  height: auto;
+  width: 50px;
+  padding: 2px;
+  background: linear-gradient(to right, white, #1b91e0);
+  box-shadow: 0 4px 8px rgba(247, 24, 161, 0.486) inset, ;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
 :deep(.ripple-effect) {
   position: absolute;
   background: #fff;
@@ -227,6 +237,7 @@ const rippleEffect = () => {
 }
 
 .navbar-logo:hover {
+  opacity: 1;
   cursor: pointer;
   transform: scale(1.2);
 }
@@ -245,7 +256,7 @@ li label {
   width: max-content;
 }
 
-#title::after {
+/* #title::after {
   content: ' ';
   background: linear-gradient(to right, white, #1b91e0);
   height: 3px;
@@ -254,7 +265,7 @@ li label {
   left: 0;
   position: absolute;
   border-radius: 2px;
-}
+} */
 
 .navbar-toggler:focus {
   box-shadow: none;

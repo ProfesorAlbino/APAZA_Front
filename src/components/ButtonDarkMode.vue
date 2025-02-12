@@ -2,12 +2,7 @@
 import DarkModeIcon from './icons/MenuIcons/DarkModeIcon.vue'
 </script>
 <template>
-  <!--     <div class="d-flex align-items-center justify-content-center gap-2 mt-1 px-4">
-        <label class="theme-switch">
-            <input type="checkbox" v-model="isDarkMode" @change="toggleTheme" />
-            <span class="slider"></span>
-        </label>
-    </div> -->
+
   <div class="d-flex justify-content-between align-items-center mg-left">
     <div class="theme-label">
       <DarkModeIcon class="menu-icon"></DarkModeIcon>
@@ -40,6 +35,7 @@ export default {
       this.isDarkMode = true
       document.body.classList.add('dark-mode')
     }
+    this.$emit('theme-change', this.isDarkMode);
   },
   methods: {
     toggleTheme() {
@@ -50,6 +46,7 @@ export default {
         document.body.classList.remove('dark-mode')
         localStorage.setItem('darkMode', 'disabled')
       }
+      this.$emit('theme-change', this.isDarkMode);
     }
   }
 }

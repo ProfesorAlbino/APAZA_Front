@@ -10,7 +10,7 @@ defineProps({
 <template>
     <div id="carouselFade" class="carousel slide carousel-fade">
         <div class="carousel-inner">
-            <div v-for="(image, index) in images" :key="index" :class="['carousel-item', index === 0 ? 'active' : '']">
+            <div v-for="(image, index) in images" :key="index" :class="['carousel-item', {'active': index === 0}]">
                 <img :src="image" class="d-block img" alt="imagen">
             </div>
         </div>

@@ -12,7 +12,7 @@
             </div>
             <div class="events-container relative px-5">
 
-                <img src="/Apaza/rompecabezas.jpg" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover opacity-50 z2"
+                <img src="/Apaza/.webp/rompecabezas.webp" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover opacity-50 z2"
                     id="background" />
 
                 <div class="z1">

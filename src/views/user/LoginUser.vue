@@ -14,6 +14,7 @@ const router = useRouter()
 const lang = ref({}) //lang.value.loginpage?.messages?.cantLogin || ''
 const isLog = ref(false)
 const show = ref(false)
+const showPswd = ref(true)
 
 const userLogin = ref({
   name: '',
@@ -98,6 +99,10 @@ function toggleShow() {
   show.value = !show.value
 }
 
+const handleShowPswd = () => {
+  showPswd.value = !showPswd.value
+}
+
 function goToPage(url) {
   router.push(url)
 }
@@ -151,7 +156,7 @@ function goToPage(url) {
       <div class="form-container sign-in-container">
         <div class="form">
           <div v-if="!isLog">
-            <h1 class="mb-3">{{ lang.loginpage?.titles?.loginText || '' }}</h1>
+            <h1 class="mb-4">{{ lang.loginpage?.titles?.loginText || '' }}</h1>
             <div class="form-floating mb-3">
               <input
                 class="form-control"
@@ -166,10 +171,44 @@ function goToPage(url) {
               <input
                 class="form-control"
                 id="passLogin"
-                type="password"
+                :type="showPswd ? 'password' : 'text'"
                 placeholder="Contraseña"
                 v-model="userLogin.password"
               />
+              <span class="showPswd" @click="handleShowPswd">
+                <svg
+                  v-if="showPswd"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3 14C3 9.02944 7.02944 5 12 5C16.9706 5 21 9.02944 21 14M17 14C17 16.7614 14.7614 19 12 19C9.23858 19 7 16.7614 7 14C7 11.2386 9.23858 9 12 9C14.7614 9 17 11.2386 17 14Z"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <svg
+                  v-else
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.60997 9.60714C8.05503 10.4549 7 12.1043 7 14C7 16.7614 9.23858 19 12 19C13.8966 19 15.5466 17.944 16.3941 16.3878M21 14C21 9.02944 16.9706 5 12 5C11.5582 5 11.1238 5.03184 10.699 5.09334M3 14C3 11.0069 4.46104 8.35513 6.70883 6.71886M3 3L21 21"
+                    stroke="#000000"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
               <label for="passLogin">{{ lang.loginpage?.titles?.passwordText || '' }}</label>
             </div>
             <!-- <a href="#">Olvidó su contraseña?</a> -->
@@ -216,15 +255,22 @@ function goToPage(url) {
   box-sizing: border-box;
 }
 
+.showPswd {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  cursor: pointer;
+}
+
 .dark-mode .form {
-    color: #fff;
-    background-color: #ffffff1a;
+  color: #fff;
+  background-color: #ffffff1a;
 }
 .dark-mode input {
-    color: #fff;
+  color: #fff;
 }
 .dark-mode input:focus {
-    color: #000;
+  color: #000;
 }
 
 @media (max-width: 768px) {
@@ -312,6 +358,17 @@ button.ghost {
   border-color: var(--text-color-1);
 }
 
+@media(max-width: 768px){
+  .form-floating{
+    width: 250px;
+  }
+
+  .container-login {
+    min-height: 410px;
+    margin-bottom: 100px;
+  }
+}
+
 .form {
   /* background-color: #FFFFFF; */
   background-color: var(--background-color-3);
@@ -319,7 +376,7 @@ button.ghost {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 50px;
+  padding: 0 16px;
   height: 100%;
   text-align: center;
 }
@@ -337,13 +394,19 @@ input {
 .container-login {
   background-color: var(--background-color-3);
   border-radius: 10px;
-  box-shadow: 0 4px 12px var(--background-color), 0 4px 6px var(--primary-color);
+  box-shadow:
+    0 4px 12px var(--background-color),
+    0 4px 6px var(--primary-color);
   position: relative;
   border: 1px solid var(--background-color);
   overflow: hidden;
   width: 768px;
-  min-height: 480px;
+
+  @media (min-width: 769px){
+    min-height: 480px;
+  }
 }
+
 
 .form-container {
   position: absolute;
@@ -479,4 +542,5 @@ input {
   height: 40px;
   width: 40px;
 }
+
 </style>
