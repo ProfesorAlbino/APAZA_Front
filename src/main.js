@@ -2,10 +2,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import './styles/General.css'
-import 'bootstrap/dist/css/bootstrap.css'
-
 import 'aos/dist/aos.css'
 import AOS from "aos"
+import 'bootstrap/dist/css/bootstrap.css'
 
 const app = createApp(App)
 

@@ -76,7 +76,8 @@
             "team": "Board",
             "sponsors": "Partners",
             "events": "Events",
-            "admin": "Manage"
+            "admin": "Manage",
+            "darkMode": "Dark Mode"
         },
         "languages": {
             "language": "Language",

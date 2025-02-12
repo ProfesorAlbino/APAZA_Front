@@ -36,8 +36,8 @@ function navigate(url) {
 </script>
 
 <template>
-  <section id="hero">
-    <wave class="mb-20" url="/Apaza/APAZA_FONDO.jpg" title="" description="" data-aos="zoom-out"
+  <section id="hero" >
+    <wave class="mb-20" url="/Apaza/.webp/APAZA_FONDO.webp" title="" description="Asociación de Personas con Autismo de la Zona Atlántica" data-aos="zoom-out"
       data-aos-duration="1000" />
   </section>
 
@@ -54,10 +54,10 @@ function navigate(url) {
 
   <section class="about-section">
     <div class="row align-items-center">
-      <div class="col-lg-6 mb-4 mb-lg-0">
+      <div class="col-lg-6 mb-4 mb-lg-0 px-4">
         <img src="/Apaza/APAZA_FONDO.jpg" alt="Acerca de Nosotros" class="img-fluid about-image">
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 px-4">
         <h2 class="about-title">{{ lang.homepage?.titles?.informationTeaApaza || '' }}</h2>
         <div class="about-text">
           <p>
@@ -213,11 +213,14 @@ function navigate(url) {
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease-in-out;
 }
 
 .btn_about:hover {
   background-color: var(--background-color);
 
+}
+.btn_about:active{
+  transform: scale(0.94);
 }
 </style>
