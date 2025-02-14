@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+SAS:wght@100..400&family=Rubik+80s+Fade&display=swap');
 h1,
 p,
 .navbar {
@@ -37,6 +37,8 @@ p,
   --text-font-1: 'Prompt', sans-serif;
   --text-font-2: 'Prompt', Roboto;
   --color-active-light: rgb(255, 136, 0); /* para el navbar option */
+
+  --divider-color: #a2ada2;
 }
 
 * {
@@ -44,9 +46,6 @@ p,
   padding: 0;
 }
 
-html {
-  font-family: Poppins;
-}
 
 body.dark-mode {
   --primary-color: #1e3a5f; /* Fondo principal */
@@ -79,4 +78,6 @@ body.dark-mode {
   --text-font-2: 'Prompt', Roboto;
 
   --color-active-dark: #1b91e0; /* para el navbar option */
+
+  --divider-color: #92929244;
 }

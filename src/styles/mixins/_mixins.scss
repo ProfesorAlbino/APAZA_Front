@@ -1,0 +1,15 @@
+@mixin respond-to($breakpoint){
+    @if $breakpoint == "desktop" {
+        @media (min-width: 769px) {
+            @content;
+        }
+    } @else if $breakpoint == "mobile" {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+}
+
+@mixin display-control($display: none) {
+    display: $display !important;
+}

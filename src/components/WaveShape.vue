@@ -51,16 +51,15 @@ const props = defineProps({
 </template>
 
 <style scoped>
-
-@media(min-width: 769px){
-    .custom-height{
-        min-height: 100vh;
-    }
+@media (min-width: 769px) {
+  .custom-height {
+    min-height: 100vh;
+  }
 }
-@media(max-width: 768px){
-    .custom-height{
-        min-height: 70vh;
-    }
+@media (max-width: 768px) {
+  .custom-height {
+    min-height: 70vh;
+  }
 }
 .custom-shape-divider-bottom-1721350035 {
   position: absolute;
@@ -88,7 +87,18 @@ const props = defineProps({
 }
 
 .lead {
-  margin-top: 84%;
-  filter: drop-shadow(4px 8px 12px rgb(20, 65, 212));
+  font-family: 'Rubik 80s Fade', serif !important;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.9rem;
+  margin-top: 60%;
+  color: #fff;
+  filter: drop-shadow(4px 4px 10px var(--background-color));
+
+  @media (max-width: 768px) {
+    margin-top: 85%;
+    font-weight: 200;
+    font-size: 1.5rem;
+  }
 }
 </style>
