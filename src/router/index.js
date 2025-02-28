@@ -11,6 +11,7 @@ import HomeViewAdmin from '@/views/HomeViewAdmin.vue'
 import GalleryAdmin from '@/views/gallery/GalleryAdmin.vue'
 import { isUserLoggedAdmin } from '@/utils/Validations'
 import { setProductionMode, getConfig } from '@/config/BasicConfig';
+import DashboardPanel from '@/views/dashboard/DashboardPanel.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -47,6 +48,11 @@ const router = createRouter({
           path: 'event-list',
           name: 'event-list',
           component: EventHomePage
+        },
+        {
+          path: 'dashboard',
+          name: 'dashboard',
+          component:DashboardPanel
         }
       ]
     },

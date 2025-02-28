@@ -118,7 +118,7 @@ function goToPage(url) {
       <div class="form-container sign-up-container form-floating">
         <div class="form">
           <div>
-            <h1 class="my-4">{{ lang.loginpage?.titles?.createAccountText || '' }}</h1>
+            <h1 id="cs-h1" class="my-4">{{ lang.loginpage?.titles?.createAccountText || '' }}</h1>
             <div class="divider"></div>
             <div class="form-floating">
               <input
@@ -165,7 +165,7 @@ function goToPage(url) {
       <div class="form-container sign-in-container" :class="{ 'hide-element': isLog }">
         <div class="form">
           <div v-if="!isLog">
-            <h1 class="mb-4">{{ lang.loginpage?.titles?.loginText || '' }}</h1>
+            <h1 id="cs-h1" class="mb-4">{{ lang.loginpage?.titles?.loginText || '' }}</h1>
             <div class="form-floating mb-3">
               <input
                 class="form-control"
@@ -198,7 +198,7 @@ function goToPage(url) {
             <button @click="loginEvent()">{{ lang.loginpage?.titles?.loginText || '' }}</button>
           </div>
           <div v-if="isLog">
-            <h1 class="mb-3">{{ lang.loginpage?.titles?.loggedText || '' }}</h1>
+            <h1 id="cs-h1" class="mb-3">{{ lang.loginpage?.titles?.loggedText || '' }}</h1>
             <button @click="logoutEvent()">{{ lang.loginpage?.titles?.logoutText || '' }}</button>
           </div>
         </div>
@@ -207,7 +207,7 @@ function goToPage(url) {
       <div class="overlay-container hide-element" :class="{ 'show-element': isLog }">
         <div class="overlay">
           <div class="overlay-panel overlay-left">
-            <h1>{{ lang.loginpage?.titles?.areAdminText || '' }}</h1>
+            <h1 id="cs-h1">{{ lang.loginpage?.titles?.areAdminText || '' }}</h1>
             <button class="ghost" id="signIn" @click="toggleShow">
               {{ lang?.backText || '' }}
             </button>
@@ -217,7 +217,7 @@ function goToPage(url) {
             <button class="ghost mb-3" id="signUp" @click="toggleShow">
               {{ lang.loginpage?.titles?.createAnotherAdminText || '' }}
             </button>
-            <button class="ghost" @click="goToPage('/admin')">
+            <button class="ghost" @click="goToPage('/admin/dashboard')">
               {{ lang.loginpage?.messages?.goToAdminPage || '' }}
             </button>
             <button class="ghost hide--element" @click="logoutEvent()">
@@ -239,17 +239,6 @@ function goToPage(url) {
 <style scoped lang="scss">
 * {
   box-sizing: border-box;
-}
-
-.showPswd {
-  position: absolute;
-  top: 20px;
-  right: 10px;
-  cursor: pointer;
-}
-
-.divider {
-  @include display-control;
 }
 
 /* width <= 768px */
@@ -276,8 +265,8 @@ function goToPage(url) {
         justify-content: flex-start;
       }
     }
-    .sign-in-container{
-      .form{
+    .sign-in-container {
+      .form {
         justify-content: center;
       }
     }
@@ -291,10 +280,10 @@ function goToPage(url) {
       box-shadow: 0 2px 10px var(--background-color);
 
       .tape-btn-back {
-        border-color: var(--white-color);
         border-radius: 50%;
         padding: 10px;
-        color: var(--white-color);
+        width: fit-content;
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.250), 0 0 6px rgba(255, 255, 255, 0.250);
       }
     }
 
@@ -320,7 +309,7 @@ function goToPage(url) {
 /* width >= 769px */
 @include respond-to('desktop') {
   .container-login {
-    min-height: 480px;
+    min-height: 440px;
   }
   .container-login.right-panel-active .sign-up-container {
     transform: translateX(100%);
@@ -348,121 +337,134 @@ function goToPage(url) {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 100px 0 50px;
+  background-image: url('/Background/bg-admin.webp');
+  background-size: cover;
+
+  .container-login {
+    border-radius: 10px;
+    box-shadow: 0 0 5px var(--background-color-4);
+    position: relative;
+    border: 1px solid var(--background-color);
+    overflow: hidden;
+    width: 768px;
+    margin: 100px 0 100px;
+
+    .showPswd {
+      position: absolute;
+      top: 20px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    .divider {
+      @include display-control;
+    }
+    .sign-up-container {
+      left: 0;
+      opacity: 0;
+      z-index: 1;
+      transition: display 0.5ms ease;
+    }
+    .sign-in-container {
+      left: 0;
+      z-index: 2;
+    }
+
+    .sign-in-container, .sign-up-container {
+      background-color: rgba(0,0,0,0.200);
+      backdrop-filter: blur(2px);
+    }
+    .form-container {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      transition: all 0.6s ease;
+      .form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        text-align: center;
+      }
+    }
+  }
+  h1 {
+    font-weight: bold;
+    margin: 0;
+  }
+  #cs-h1{
+    color: var(--white-color);
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+  }
+  span {
+    font-size: 12px;
+  }
+
+  a {
+    /* color: #333; */
+    color: var(--text-color-3);
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+  }
+  button {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 20px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--background-color);
+    color: var(--text-color-1);
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+
+  button:focus {
+    outline: none;
+  }
+
+  button.ghost {
+    background-color: transparent;
+    border-color: var(--text-color-1);
+  }
 }
 
-h1 {
-  font-weight: bold;
-  margin: 0;
-}
-
-h2 {
-  text-align: center;
-}
-
-p {
-  font-size: 14px;
-  font-weight: 100;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-  margin: 20px 0 30px;
-}
-
-span {
-  font-size: 12px;
-}
-
-a {
-  /* color: #333; */
-  color: var(--text-color-3);
-  font-size: 14px;
-  text-decoration: none;
-  margin: 15px 0;
-}
-
-button {
-  margin-top: 10px;
-  border-radius: 20px;
-  border: 1px solid var(--primary-color);
-  background-color: var(--background-color);
-  color: var(--text-color-1);
-  font-size: 12px;
-  font-weight: bold;
-  padding: 12px 45px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: transform 80ms ease-in;
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
-button:focus {
-  outline: none;
-}
-
-button.ghost {
-  background-color: transparent;
-  border-color: var(--text-color-1);
-}
-
-.form {
-  background-color: var(--background-color-3);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 0 16px;
-  height: 100%;
-  text-align: center;
-}
-
-.dark-mode .form {
+.dark-mode .center .container-login .form-container .form {
   color: var(--white-color);
   background-color: #ffffff1a;
+
+  input {
+    color: var(--white-color);
+  }
+  input:focus {
+    color: var(--black-color);
+  }
 }
 input {
-  /* background-color: #eee; */
   background-color: var(--background-color-3);
   border: none;
   border-bottom: 1px solid;
   padding: 12px 15px;
   margin: 8px 0;
   width: 100%;
-}
-.dark-mode input {
-  color: #fff;
-}
-.dark-mode input:focus {
-  color: #000;
-}
-
-.container-login {
-  background-color: var(--background-color-3);
-  border-radius: 10px;
-  box-shadow: 0 10px 20px var(--background-color);
-  position: relative;
-  border: 1px solid var(--background-color);
-  overflow: hidden;
-  width: 768px;
-}
-
-.form-container {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease;
-}
-
-.sign-up-container {
-  left: 0;
-  opacity: 0;
-  z-index: 1;
-  transition: display 0.5ms ease;
-}
-.sign-in-container {
-  left: 0;
-  z-index: 2;
 }
 
 .container-login.right-panel-active .sign-in-container {
@@ -497,63 +499,48 @@ input {
   overflow: hidden;
   transition: transform 0.6s ease-in-out;
   z-index: 100;
+  .overlay {
+    background-image: linear-gradient(to right, var(--primary-color), var(--background-color));
+    background-position: 0 0;
+    color: var(--text-color-1);
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out, background-image 0.5s ease;
+
+    .overlay-panel {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0 40px;
+      text-align: center;
+      top: 0;
+      height: 100%;
+      width: 50%;
+      transform: translateX(0);
+      transition: transform 0.6s ease-in-out;
+
+      &.overlay-right {
+        right: 0;
+        transform: translateX(0);
+      }
+    }
+  }
 }
 
 .container-login.right-panel-active .overlay-container {
   transform: translateX(-100%);
 }
 
-.overlay {
-  /* background: #FF416C; 
-    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-    background: linear-gradient(to right, #FF4B2B, #FF416C);
-    */
-  background: var(--background-color);
-  background: -webkit-linear-gradient(to right, var(--primary-color), var(--background-color));
-  background: linear-gradient(to right, var(--primary-color), var(--background-color));
-  /* <-- la combinación de colores de izq a der del panel */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
-  /* color: #FFFFFF; */
-  color: var(--text-color-1);
-  position: relative;
-  left: -100%;
-  height: 100%;
-  width: 200%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
-}
-
 .container-login.right-panel-active .overlay {
   transform: translateX(50%);
 }
 
-.overlay-panel {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 40px;
-  text-align: center;
-  top: 0;
-  height: 100%;
-  width: 50%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
-}
-
-.overlay-left {
-  transform: translateX(-20%);
-}
-
 .container-login.right-panel-active .overlay-left {
-  transform: translateX(0);
-}
-
-.overlay-right {
-  right: 0;
   transform: translateX(0);
 }
 

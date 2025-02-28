@@ -101,14 +101,13 @@ input {
   }
   /* estilo de iconos de tema */
   .toggle {
-    background-color: var(--background-color);
-    width: 36px;
-    height: 36px;
+    background-color:rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: grid;
     place-items: center;
     cursor: pointer;
-    box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.1);
     line-height: 1;
   }
 

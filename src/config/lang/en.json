@@ -67,7 +67,7 @@
             "registerSuccessMsg": "Successfully registered",
             "cantRegisterMsg": "Error, could not register",
             "loginMessageMsg": "Log in to be able to create another user",
-            "goToAdminPage": "Go to the admin page"
+            "goToAdminPage": "Manage"
         }
     },
     "navbar": {

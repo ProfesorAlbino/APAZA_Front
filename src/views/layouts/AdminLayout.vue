@@ -4,11 +4,11 @@ import SideBar from '@/components/templates/SideBar.vue'
 </script>
 
 <template>
-  <div class="flex min-h-screen container-admin">
+  <div class="flex min-h-screen">
     <SideBar />
     
-    <div class="w-[calc(100%-250px)] ml-[250px]" id="container">
-      <main class="container-fluid">
+    <div class="main-wrapper ml-250">
+      <main class="container-fluid mt-0 gx-0">
         <RouterView />
       </main>
       <!-- <Footer /> -->
@@ -16,17 +16,19 @@ import SideBar from '@/components/templates/SideBar.vue'
   </div>
 </template>
 
-<style>
-#container {
-  margin-left: 16rem;
+<style scoped>
+.main-wrapper {
+  width: calc(100%-250px);
 }
-
-.container-admin {
-background-color: var(--background-color-3)
+.ml-250{
+  margin-left: 250px;
+}
+main{
+  background-color: #edf2f9;
 }
 
 @media (max-width: 768px) {
-    #container {
+    .ml-250 {
       margin-left: 0%;
     }
 }

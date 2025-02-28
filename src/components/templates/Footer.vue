@@ -84,7 +84,7 @@
                         <div class="footer_menu">
                             <ul>
                                 <li><a >{{ lang?.footer?.titles?.info }}</a></li>
-                                <li><a >{{ lang?.footer?.titles?.email }}</a></li>
+                                <li><a >{{ EMAIL_ADRESS }}</a></li>
                                 <li><a >{{ lang?.footer?.titles?.whatsapp }}</a></li>
                             </ul>
                         </div>
@@ -103,6 +103,7 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { getLangForPage, getConfig } from '@/config/BasicConfig';
+import { EMAIL_ADRESS } from '@/const/information';
 import { ref, onMounted } from 'vue';
 
 const PAGE = 'footer';
@@ -270,6 +271,7 @@ body {
     -webkit-box-shadow: none;
     box-shadow: none;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .footer_social_area a i {
