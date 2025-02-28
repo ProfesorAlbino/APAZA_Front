@@ -1,8 +1,8 @@
 <script setup>
 import ButtonDarkMode from '../ButtonDarkMode.vue'
 import LightMenuIcon from '../icons/LightMenuIcon.vue'
-import IconHome from '../icons/MenuIcons/IconHome.vue'
-import ManagementBoard from '../icons/MenuIcons/ManagementBoard.vue'
+import HomeIcon from '../icons/MenuIcons/HomeIcon.vue'
+import GroupIcon from '../icons/MenuIcons/GroupIcon.vue'
 import PartnerIcon from '../icons/MenuIcons/PartnerIcon.vue'
 import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
 import AdminIcon from '../icons/MenuIcons/AdminIcon.vue'
@@ -47,16 +47,16 @@ import AdminIcon from '../icons/MenuIcons/AdminIcon.vue'
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li
-              :class="[{ active: $route.path === '/' }, 'nav-item']"
+              :class="[{ 'active': $route.path === '/' }, 'nav-item']"
               aria-current="page"
               @click="gotoHome"
               data-bs-dismiss="offcanvas"
             >
-              <IconHome class="menu-icon"></IconHome>
+              <HomeIcon class="menu-icon"/>
               <label>{{ lang.value?.navbar?.titles?.start || '' }}</label>
             </li>
             <li class="nav-item" data-bs-dismiss="offcanvas">
-              <ManagementBoard class="menu-icon"></ManagementBoard>
+              <GroupIcon class="menu-icon"/>
               <label>{{ lang.value?.navbar?.titles?.team || '' }}</label>
             </li>
             <li class="nav-item" data-bs-dismiss="offcanvas">
@@ -75,7 +75,7 @@ import AdminIcon from '../icons/MenuIcons/AdminIcon.vue'
               <EventsIcon class="menu-icon"></EventsIcon>
               <label>{{ lang.value?.navbar?.titles?.events || '' }}</label>
             </li>
-            <li class="nav-item" v-if="isUserLoggedAdmin()" @click="goToPage('/admin/')">
+            <li class="nav-item" v-if="isUserLoggedAdmin()" @click="goToPage('/admin/dashboard')">
               <AdminIcon class="menu-icon"/>
               <label>{{ lang.value?.navbar?.titles?.admin || '' }}</label>
             </li>
@@ -121,6 +121,7 @@ import AdminIcon from '../icons/MenuIcons/AdminIcon.vue'
 import { useRouter } from 'vue-router'
 import { getLangForPage, getConfig, setLang, LANGS } from '@/config/BasicConfig'
 import { isUserLoggedAdmin } from '@/utils/Validations'
+import { rippleEffect } from '@/composables/rippleEffect'
 import { ref } from 'vue'
 
 const PAGE = 'navbar'
@@ -187,56 +188,18 @@ export default {
   }
 }
 
-/* ripple animation on click menu link */
-const rippleEffect = () => {
-  const buttons = document.querySelectorAll('li')
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', function (e) {
-      const rect = this.getBoundingClientRect()
-      let x = e.clientX - rect.left
-      let y = e.clientY - rect.top
-
-      let ripple = document.createElement('span')
-      ripple.classList.add('ripple-effect')
-      ripple.style.left = x + 'px'
-      ripple.style.top = y + 'px'
-      this.appendChild(ripple)
-
-      setTimeout(() => ripple.remove(), 400)
-    })
-  })
-}
 </script>
 
 <style scoped lang="scss">
-:deep(.ripple-effect) {
-  position: absolute;
-  background: var(--accent-color);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  animation: wave 0.3s linear;
-}
-@keyframes wave {
-  0% {
-    width: 0px;
-    height: 0px;
-    opacity: 0.2;
-  }
-  100% {
-    height: 300px;
-    width: 300px;
-    opacity: 0;
-  }
-}
+ @include ripple-effect();
+ 
 .navbar {
   transition: background-color 0.8s ease;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .offcanvas-light {
-  color: #fff;
+  color: var(--white-color);
   background-color: var(--background-color);
 }
 .offcanvas.offcanvas-end {
@@ -256,10 +219,10 @@ img {
   height: auto;
   width: 50px;
   padding: 2px;
-  background: linear-gradient(to right, white, #1b91e0);
+  background: linear-gradient(to right, var(--white-color), #1b91e0);
   border-radius: 50%;
   margin-right: 0.5rem;
-  border: 3px solid #fff;
+  border: 3px solid var(--white-color);
 
   &.navbar-logo {
     transition: transform 0.3s ease;
@@ -330,7 +293,7 @@ li:not(.active) {
 
 @media (min-width: 990px) {
   .menu-icon {
-    display: none;
+    @include display-control();
   }
   .navbar .nav-item {
     position: relative;
@@ -396,8 +359,7 @@ li:not(.active) {
     padding: 10px;
   }
   .menu-icon {
-    display: block;
-    margin-right: 10px;
+    @include menuIcon();
   }
 
   .divider-div {

@@ -1,8 +1,8 @@
 <script setup>
 import ButtonDarkMode from '../ButtonDarkMode.vue'
 import LightMenuIcon from '../icons/LightMenuIcon.vue'
-import IconHome from '../icons/MenuIcons/IconHome.vue'
-import ManagementBoard from '../icons/MenuIcons/ManagementBoard.vue'
+import IconHome from '../icons/MenuIcons/HomeIcon.vue'
+import ManagementBoard from '../icons/MenuIcons/GroupIcon.vue'
 import PartnerIcon from '../icons/MenuIcons/PartnerIcon.vue'
 import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
 </script>

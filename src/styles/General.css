@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+SAS:wght@100..400&family=Rubik+80s+Fade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+SAS:wght@400&family=Rubik+80s+Fade&display=swap');
 h1,
 p,
 .navbar {
@@ -13,7 +13,10 @@ p,
   --accent-color: #3498db; /* Color de acento */
   --decorative-color: #2a5d7f; /* Color decorativo */
   --black-color: #000000;
+  --black-color-rgb: 0,0,0;
   --white-color: #ffffff;
+  --white-color-rgb: 255,255,255;
+
 
   --background-color: #002161;
   --background-color-2: #fc7b0b;
@@ -39,6 +42,7 @@ p,
   --color-active-light: rgb(255, 136, 0); /* para el navbar option */
 
   --divider-color: #a2ada2;
+  --border-color: #75767a;
 }
 
 * {
@@ -80,4 +84,6 @@ body.dark-mode {
   --color-active-dark: #1b91e0; /* para el navbar option */
 
   --divider-color: #92929244;
+  --border-color: #5f626d;
+
 }

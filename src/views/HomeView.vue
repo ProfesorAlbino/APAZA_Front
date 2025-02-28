@@ -37,7 +37,7 @@ function navigate(url) {
 
 <template>
   <section id="hero" >
-    <wave class="mb-20" url="/Apaza/.webp/APAZA_FONDO.webp" title="" description="Asociación de Personas con Autismo de la Zona Atlántica" data-aos="zoom-out"
+    <wave class="mb-20" url="/Background/bg-shape.webp" title="" description="Asociación de Personas con Autismo de la Zona Atlántica" data-aos="zoom-out"
       data-aos-duration="1000" />
   </section>
 

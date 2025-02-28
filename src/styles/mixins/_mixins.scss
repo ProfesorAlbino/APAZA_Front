@@ -1,15 +1,45 @@
-@mixin respond-to($breakpoint){
-    @if $breakpoint == "desktop" {
-        @media (min-width: 769px) {
-            @content;
-        }
-    } @else if $breakpoint == "mobile" {
-        @media (max-width: 768px) {
-            @content;
-        }
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'desktop' {
+    @media (min-width: 769px) {
+      @content;
     }
+  } @else if $breakpoint == 'mobile' {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
 }
 
 @mixin display-control($display: none) {
-    display: $display !important;
+  display: $display !important;
+}
+@mixin ripple-effect() {
+  :deep(.ripple-effect) {
+    position: absolute;
+    background: var(--accent-color);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    animation: wave 0.3s linear;
+  }
+
+  @keyframes wave {
+    0% {
+      width: 0px;
+      height: 0px;
+      opacity: 0.350;
+    }
+    100% {
+      height: 300px;
+      width: 300px;
+      opacity: 0;
+    }
+  }
+}
+
+@mixin menuIcon($margin: 10px){
+  display: block;
+  margin-right: $margin;
 }

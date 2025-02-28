@@ -66,7 +66,7 @@
             "registerSuccessMsg": "Se registró correctamente",
             "cantRegisterMsg": "Error, No se pudo registrar",
             "loginMessageMsg": "Inicia sesión para que puedas crear otro usuario",
-            "goToAdminPage": "Ir a la página de administrador"
+            "goToAdminPage": "Administrar"
         }
     },
     "navbar": {

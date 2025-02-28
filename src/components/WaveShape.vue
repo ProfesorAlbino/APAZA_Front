@@ -27,10 +27,11 @@ const props = defineProps({
   >
     <div>
       <div class="row justify-content-center">
-        <div class="col-md-8">
-          <h1 class="display-4 mb-3">{{ title }}</h1>
-          <p class="lead">{{ description }}</p>
-        </div>
+        <div class="d-flex flex-column align-items-center justify-content-evenly">
+            <h1 class="display-4 mb-3">{{ title }}</h1>
+            <img src="/Apaza/.webp/apaza_logo.webp" alt="" class="p-3"/>
+            <p class="lead mt-3">{{ description }}</p>
+          </div>
       </div>
     </div>
 
@@ -86,12 +87,19 @@ const props = defineProps({
   fill: var(--background-color-3);
 }
 
+img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid var(--white-color);
+  box-shadow: 4px 4px 10px rgba(0,0,0, 0.500), -4px -4px 10px rgba(0,0,0, 0.500); 
+}
+
 .lead {
   font-family: 'Rubik 80s Fade', serif !important;
   font-weight: 400;
   font-style: normal;
   font-size: 1.9rem;
-  margin-top: 60%;
   color: #fff;
   filter: drop-shadow(4px 4px 10px var(--background-color));
 

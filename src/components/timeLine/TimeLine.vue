@@ -110,7 +110,7 @@ onMounted(async () => {
     </div>
 </template>
 
-<style>
+<style scoped>
 
 .main-timeline {
     position: relative
