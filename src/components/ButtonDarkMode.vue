@@ -1,11 +1,11 @@
 <script setup>
-import DarkModeIcon from './icons/MenuIcons/DarkModeIcon.vue'
+import MoonIcon from './icons/theme/MoonIcon.vue'
+import SunIcon from './icons/theme/SunIcon.vue'
 </script>
 <template>
-
   <div class="d-flex justify-content-between align-items-center mg-left">
     <div class="theme-label">
-      <DarkModeIcon class="menu-icon"></DarkModeIcon>
+      <MoonIcon class="menu-icon"/>
       <label for="bs-switch">{{ themeLabel.value?.navbar?.titles?.darkMode || '' }}</label>
     </div>
     <div class="form-check form-switch">
@@ -18,6 +18,14 @@ import DarkModeIcon from './icons/MenuIcons/DarkModeIcon.vue'
         @change="toggleTheme"
       />
     </div>
+    <label class="toggle" :class="{'theme-icon-effect': isDarkMode}">
+      <div class="icon icon--moon">
+        <MoonIcon/>
+      </div>
+      <div class="icon icon--sun">
+        <SunIcon/>
+      </div>
+    </label>
   </div>
 </template>
 
@@ -35,7 +43,7 @@ export default {
       this.isDarkMode = true
       document.body.classList.add('dark-mode')
     }
-    this.$emit('theme-change', this.isDarkMode);
+    this.$emit('theme-change', this.isDarkMode)
   },
   methods: {
     toggleTheme() {
@@ -46,13 +54,20 @@ export default {
         document.body.classList.remove('dark-mode')
         localStorage.setItem('darkMode', 'disabled')
       }
-      this.$emit('theme-change', this.isDarkMode);
+      this.$emit('theme-change', this.isDarkMode)
     }
   }
 }
 </script>
 
 <style scoped>
+.form-check-input:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+.form-check-input:focus {
+  box-shadow: none;
+}
 .theme-label {
   display: none;
 }
@@ -70,6 +85,10 @@ export default {
   .menu-icon {
     margin-right: 10px;
   }
+
+  .toggle{
+    display: none;
+  }
 }
 /* bs switch */
 input {
@@ -79,6 +98,41 @@ input {
 @media (min-width: 990px) {
   .mg-left {
     margin-left: 10px;
+  }
+  /* estilo de iconos de tema */
+  .toggle {
+    background-color: var(--background-color);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 50px 20px rgba(0, 0, 0, 0.1);
+    line-height: 1;
+  }
+
+  .icon {
+    grid-area: 1 / 1;
+    transition: transform 500ms ease-in-out;
+  }
+
+  .icon--moon {
+    transition-delay: 200ms;
+  }
+
+  .icon--sun {
+    transform: scale(0);
+  }
+
+  .toggle.theme-icon-effect .icon--moon {
+    transform: rotate(360deg) scale(0);
+    transition-delay: 0ms;
+  }
+
+  .toggle.theme-icon-effect .icon--sun {
+    transition-delay: 200ms;
+    transform: scale(1) rotate(360deg);
   }
 }
 

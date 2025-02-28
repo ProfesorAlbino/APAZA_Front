@@ -8,6 +8,9 @@ import { removeCookie } from '@/config/CookiesService'
 import { useRouter } from 'vue-router'
 import LoadingModal from '@/components/modals/LoadingModal.vue'
 import { getLangForPage, getConfig } from '@/config/BasicConfig'
+import ShowPswdIcon from '@/components/icons/others/ShowPswdIcon.vue'
+import HidePswdIcon from '@/components/icons/others/HidePswdIcon.vue'
+import BackIcon from '@/components/icons/others/BackIcon.vue'
 
 const PAGE = 'loginpage'
 const router = useRouter()
@@ -115,7 +118,8 @@ function goToPage(url) {
       <div class="form-container sign-up-container form-floating">
         <div class="form">
           <div>
-            <h1>{{ lang.loginpage?.titles?.createAccountText || '' }}</h1>
+            <h1 class="my-4">{{ lang.loginpage?.titles?.createAccountText || '' }}</h1>
+            <div class="divider"></div>
             <div class="form-floating">
               <input
                 class="form-control"
@@ -150,10 +154,15 @@ function goToPage(url) {
               {{ lang.loginpage?.titles?.registerText || '' }}
             </button>
           </div>
+          <div class="tape hide--element mt-3">
+            <button class="tape-btn-back ms-2 mb-2" @click="toggleShow">
+              <BackIcon></BackIcon>
+            </button>
+          </div>
         </div>
       </div>
       <!-- FORM LOGIN -->
-      <div class="form-container sign-in-container">
+      <div class="form-container sign-in-container" :class="{ 'hide-element': isLog }">
         <div class="form">
           <div v-if="!isLog">
             <h1 class="mb-4">{{ lang.loginpage?.titles?.loginText || '' }}</h1>
@@ -176,38 +185,12 @@ function goToPage(url) {
                 v-model="userLogin.password"
               />
               <span class="showPswd" @click="handleShowPswd">
-                <svg
-                  v-if="showPswd"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 14C3 9.02944 7.02944 5 12 5C16.9706 5 21 9.02944 21 14M17 14C17 16.7614 14.7614 19 12 19C9.23858 19 7 16.7614 7 14C7 11.2386 9.23858 9 12 9C14.7614 9 17 11.2386 17 14Z"
-                    stroke="#000000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <svg
-                  v-else
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M9.60997 9.60714C8.05503 10.4549 7 12.1043 7 14C7 16.7614 9.23858 19 12 19C13.8966 19 15.5466 17.944 16.3941 16.3878M21 14C21 9.02944 16.9706 5 12 5C11.5582 5 11.1238 5.03184 10.699 5.09334M3 14C3 11.0069 4.46104 8.35513 6.70883 6.71886M3 3L21 21"
-                    stroke="#000000"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+                <div v-if="showPswd">
+                  <ShowPswdIcon />
+                </div>
+                <div v-else>
+                  <HidePswdIcon />
+                </div>
               </span>
               <label for="passLogin">{{ lang.loginpage?.titles?.passwordText || '' }}</label>
             </div>
@@ -221,7 +204,7 @@ function goToPage(url) {
         </div>
       </div>
       <!-- PANELES CON MENSAJES -->
-      <div class="overlay-container hide">
+      <div class="overlay-container hide-element" :class="{ 'show-element': isLog }">
         <div class="overlay">
           <div class="overlay-panel overlay-left">
             <h1>{{ lang.loginpage?.titles?.areAdminText || '' }}</h1>
@@ -237,6 +220,9 @@ function goToPage(url) {
             <button class="ghost" @click="goToPage('/admin')">
               {{ lang.loginpage?.messages?.goToAdminPage || '' }}
             </button>
+            <button class="ghost hide--element" @click="logoutEvent()">
+              {{ lang.loginpage?.titles?.logoutText || '' }}
+            </button>
           </div>
           <div v-if="!isLog" class="overlay-panel overlay-right">
             <h1>{{ lang.loginpage?.titles?.welcomeNeedLog || '' }}</h1>
@@ -250,7 +236,7 @@ function goToPage(url) {
   <LoadingModal idModal="load" />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 * {
   box-sizing: border-box;
 }
@@ -262,34 +248,101 @@ function goToPage(url) {
   cursor: pointer;
 }
 
-.dark-mode .form {
-  color: #fff;
-  background-color: #ffffff1a;
-}
-.dark-mode input {
-  color: #fff;
-}
-.dark-mode input:focus {
-  color: #000;
+.divider {
+  @include display-control;
 }
 
-@media (max-width: 768px) {
-  .hide {
-    display: none;
+/* width <= 768px */
+@include respond-to($breakpoint: 'mobile') {
+  .divider {
+    @include display-control(block);
+    border-bottom: 1px solid var(--divider-color);
+    margin-bottom: 2rem;
+  }
+  .hide-element {
+    @include display-control;
+  }
+  .show-element {
+    @include display-control($display: block);
   }
   .container-login {
+    min-height: 460px;
+    margin-bottom: 100px;
     margin: 30px;
     max-width: calc(100% - 60px); /* reserva espacio para el margen*/
-  }
-  .sign-in-container,
-  .sign-up-container {
-    width: 100% !important;
-  }
 
-  .form {
-    padding: 0;
+    .sign-up-container {
+      .form {
+        justify-content: flex-start;
+      }
+    }
+    .sign-in-container{
+      .form{
+        justify-content: center;
+      }
+    }
+    .sign-up-container,
+    .sign-in-container {
+      width: 100%;
+    }
+    .sign-up-container .tape {
+      width: 100%;
+      background-color: var(--background-color);
+      box-shadow: 0 2px 10px var(--background-color);
+
+      .tape-btn-back {
+        border-color: var(--white-color);
+        border-radius: 50%;
+        padding: 10px;
+        color: var(--white-color);
+      }
+    }
+
+    .sign-up-container,
+    .sign-in-container {
+      .form {
+        padding: 0;
+        .form-floating {
+          width: 250px;
+        }
+      }
+    }
+    .overlay-container {
+      left: 0;
+      width: 100%;
+    }
+  }
+  .container-login.right-panel-active .sign-up-container {
+    transform: translateX(0);
   }
 }
+
+/* width >= 769px */
+@include respond-to('desktop') {
+  .container-login {
+    min-height: 480px;
+  }
+  .container-login.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+  }
+
+  .sign-up-container,
+  .sign-in-container {
+    width: 50%;
+    .form {
+      justify-content: center;
+    }
+  }
+
+  .overlay-container {
+    left: 50%;
+    width: 50%;
+  }
+  .hide--element {
+    @include display-control;
+  }
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -328,11 +381,8 @@ a {
 }
 
 button {
-  margin-top: 20px;
+  margin-top: 10px;
   border-radius: 20px;
-  /* border: 1px solid #FF4B2B;
-    background-color: #FF4B2B; 
-    color: #FFFFFF;*/
   border: 1px solid var(--primary-color);
   background-color: var(--background-color);
   color: var(--text-color-1);
@@ -354,33 +404,23 @@ button:focus {
 
 button.ghost {
   background-color: transparent;
-  /* border-color: #FFFFFF; */
   border-color: var(--text-color-1);
 }
 
-@media(max-width: 768px){
-  .form-floating{
-    width: 250px;
-  }
-
-  .container-login {
-    min-height: 410px;
-    margin-bottom: 100px;
-  }
-}
-
 .form {
-  /* background-color: #FFFFFF; */
   background-color: var(--background-color-3);
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   padding: 0 16px;
   height: 100%;
   text-align: center;
 }
 
+.dark-mode .form {
+  color: var(--white-color);
+  background-color: #ffffff1a;
+}
 input {
   /* background-color: #eee; */
   background-color: var(--background-color-3);
@@ -390,34 +430,38 @@ input {
   margin: 8px 0;
   width: 100%;
 }
+.dark-mode input {
+  color: #fff;
+}
+.dark-mode input:focus {
+  color: #000;
+}
 
 .container-login {
   background-color: var(--background-color-3);
   border-radius: 10px;
-  box-shadow:
-    0 4px 12px var(--background-color),
-    0 4px 6px var(--primary-color);
+  box-shadow: 0 10px 20px var(--background-color);
   position: relative;
   border: 1px solid var(--background-color);
   overflow: hidden;
   width: 768px;
-
-  @media (min-width: 769px){
-    min-height: 480px;
-  }
 }
-
 
 .form-container {
   position: absolute;
   top: 0;
   height: 100%;
-  transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease;
 }
 
+.sign-up-container {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+  transition: display 0.5ms ease;
+}
 .sign-in-container {
   left: 0;
-  width: 50%;
   z-index: 2;
 }
 
@@ -426,15 +470,7 @@ input {
   opacity: 0;
 }
 
-.sign-up-container {
-  left: 0;
-  width: 50%;
-  opacity: 0;
-  z-index: 1;
-}
-
 .container-login.right-panel-active .sign-up-container {
-  transform: translateX(100%);
   opacity: 1;
   z-index: 5;
   animation: show 0.6s;
@@ -457,8 +493,6 @@ input {
 .overlay-container {
   position: absolute;
   top: 0;
-  left: 50%;
-  width: 50%;
   height: 100%;
   overflow: hidden;
   transition: transform 0.6s ease-in-out;
@@ -542,5 +576,4 @@ input {
   height: 40px;
   width: 40px;
 }
-
 </style>

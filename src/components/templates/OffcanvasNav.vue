@@ -5,6 +5,7 @@ import IconHome from '../icons/MenuIcons/IconHome.vue'
 import ManagementBoard from '../icons/MenuIcons/ManagementBoard.vue'
 import PartnerIcon from '../icons/MenuIcons/PartnerIcon.vue'
 import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
+import AdminIcon from '../icons/MenuIcons/AdminIcon.vue'
 </script>
 
 <template>
@@ -65,7 +66,7 @@ import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
 
             <li
               :class="[
-                { active: $route.path === '/events' || $route.path === '/event' },
+                { 'active': $route.path === '/events' || $route.path === '/event' },
                 'nav-item'
               ]"
               @click="goToPage('/events')"
@@ -75,6 +76,7 @@ import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
               <label>{{ lang.value?.navbar?.titles?.events || '' }}</label>
             </li>
             <li class="nav-item" v-if="isUserLoggedAdmin()" @click="goToPage('/admin/')">
+              <AdminIcon class="menu-icon"/>
               <label>{{ lang.value?.navbar?.titles?.admin || '' }}</label>
             </li>
           </ul>
@@ -85,6 +87,7 @@ import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
             @theme-change="handleThemeChange"
             data-bs-dismiss="offcanvas"
           />
+          <div class="divider"></div>
           <div class="dropdown">
             <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               {{ lang.value?.navbar?.languages?.language || '' }}
@@ -208,7 +211,7 @@ const rippleEffect = () => {
 <style scoped lang="scss">
 :deep(.ripple-effect) {
   position: absolute;
-  background: #fff;
+  background: var(--accent-color);
   transform: translate(-50%, -50%);
   pointer-events: none;
   width: 0;
@@ -312,10 +315,7 @@ li label {
 }
 
 li.active {
-  color: var(--color-active-light) !important;
-}
-.dark-mode li.active {
-  color: var(--color-active-dark) !important;
+  color: var(--accent-color) !important;
 }
 
 li:not(.active) {
@@ -348,11 +348,12 @@ li:not(.active) {
     left: 50%;
     height: 3px;
     width: 0;
-    background-color: #1b91e0;
+    background-color: var(--accent-color);
     transition:
       width 0.3s ease,
       left 0.3s ease;
   }
+
 
   .navbar li:hover::after {
     width: 100%;
@@ -370,8 +371,14 @@ li:not(.active) {
   button:not(.btn-close, .btn-close-white):active {
     border: none;
   }
+
+  .divider{
+    margin: 6px 0;
+    margin-left: 2.5rem;
+    border-right: 1px solid var(--divider-color);
+  }
   .dropdown {
-    margin-left: 3rem;
+    margin-left: 0.5rem;
     display: flex;
     align-items: center;
 

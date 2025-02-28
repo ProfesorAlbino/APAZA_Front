@@ -1,5 +1,5 @@
 <script setup>
-import wave from '@/components/Wave.vue';
+import wave from '@/components/WaveShape.vue';
 import CardImageRight from '../components/cards/CardImageRight.vue';
 import CardImageLeft from '../components/cards/CardImageLeft.vue';
 import CardFullImage from '@/components/cards/CardFullImage.vue';
