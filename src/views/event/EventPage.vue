@@ -12,12 +12,11 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Información</h5>
-                            <p class="card-text"><strong>Fecha:</strong> {{ event.date }}</p>
+                            <h5 class="card-title">{{ lang?.eventpage?.titles?.main}}</h5>
+                            <p class="card-text"><strong>{{lang?.eventpage?.titles?.date}}:</strong> {{ event.date }}</p>
                             <div class="my-2" v-if="isAdmin">
-                                <button class="btn btn-secondary" @click="goToPage('/admin/event-list')">Ir a lista de
-                                    eventos admin</button>
-                                <button class="btn btn-danger ms-3" @click="modalDelete">Eliminar</button>
+                                <button class="btn btn-secondary" @click="goToPage('/admin/event-list')">{{ lang?.eventpage?.actions?.listAdmin }}</button>
+                                <button class="btn btn-danger ms-3" @click="modalDelete">{{ lang?.eventpage?.actions?.delete }}</button>
                             </div>
                         </div>
                     </div>
@@ -25,14 +24,14 @@
             </div>
             <div class="row mb-5">
                 <div class="col-12">
-                    <h2>Descripción</h2>
+                    <h2>{{ lang?.eventpage?.titles?.description }}</h2>
                     <p>{{ event.description }}</p>
                 </div>
             </div>
 
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <button @click="goToPage('/events')" class="btn btn-secondary">Volver a la lista de eventos</button>
+                    <button @click="goToPage('/events')" class="btn btn-secondary">{{lang?.eventpage?.actions?.list}}</button>
                 </div>
             </div>
         </div>
@@ -44,19 +43,22 @@
 
 <script setup>
 import BaseModal from '@/components/modals/BaseModal.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import { format } from '@formkit/tempo';
 import { Modal } from 'bootstrap';
 import { deleteEvent } from '@/services/EventService';
 import { isUserLoggedAdmin } from '@/utils/Validations';
-import { getConfig } from '@/config/BasicConfig';
+import { getConfig, getLangForPage } from '@/config/BasicConfig';
 
 const router = useRouter();
 
 const isAdmin = ref(false);
 
 const event = ref({});
+const lang = ref({});
+const PAGE = 'eventpage';
+const infModal = ref({});
 
 
 
@@ -66,10 +68,10 @@ const modalDelete = () => {
 }
 
 const modalDeleteInfo = ref({
-    title: 'Eliminar evento',
-    body: '¿Estás seguro de que deseas eliminar este evento?',
-    closeText: 'Cancelar',
-    acceptText: 'Eliminar',
+    title: infModal.value.title,
+    body: infModal.value.message,
+    closeText: infModal.value.cancel,
+    acceptText: infModal.value.delete,
     onAccept: async () => {
         if (!isAdmin.value) return;
         await deleteEvent(event.value._id);
@@ -81,6 +83,16 @@ function goToPage(url) {
     router.push(url);
 }
 
+watchEffect(() => {
+    if (infModal.value) {
+        modalDeleteInfo.value.title = infModal.value.title;
+        modalDeleteInfo.value.body = infModal.value.message;
+        modalDeleteInfo.value.closeText = infModal.value.cancel;
+        modalDeleteInfo.value.acceptText = infModal.value.delete;
+
+    }
+});
+
 onMounted(async () => {
     isAdmin.value = isUserLoggedAdmin();
     const item = sessionStorage.getItem('event');
@@ -90,6 +102,14 @@ onMounted(async () => {
 
     objItem.date = format(new Date(objItem.date.replace('Z', '')), { date: "full" }, getConfig().CURRENT_LANG);
     event.value = objItem;
+
+    await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
+        lang.value = data;
+        infModal.value = lang.value.eventpage.modal;
+    }).catch(() => {
+        router.go(0);
+    });
+
 });
 </script>
 

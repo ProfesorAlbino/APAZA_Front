@@ -1,25 +1,42 @@
 <script setup>
 import CardAdmin from '@/components/cards/CardAdmin.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { addGallery } from '@/services/GalleryService'
 import AddPhotoIcon from '@/components/icons/others/AddPhotoIcon.vue'
 import EditAlbumIcon from '@/components/icons/others/EditAlbumIcon.vue'
 import AlbumIcon from '@/components/icons/others/AlbumIcon.vue'
+import { getLangForPage, getConfig } from '@/config/BasicConfig'
+import router from '@/router'
+import { isUserLoggedAdmin } from '@/utils/Validations'
 
 const num = ref(0)
+const isAdmin = ref(false)
+const lang = ref({})
+const PAGE = 'galleryadminpage'
 
 const updateNum = (value) => {
   num.value = value
 }
 
+onMounted(async () => {
+  isAdmin.value = isUserLoggedAdmin()
+  await getLangForPage(getConfig().CURRENT_LANG, PAGE)
+    .then((data) => {
+      lang.value = data
+    })
+    .catch(() => {
+      router.go(0)
+    })
+})
+</script>
+
+<script>
 const gallery = ref({
   description: '',
   year: '',
   images: []
 })
-</script>
 
-<script>
 export default {
   name: 'ImageDragDrop',
   data() {
@@ -82,31 +99,37 @@ const createGallery = () => {
 
 <template>
   <div class="container">
+    <div v-if="charge" class="m-5 p-5 d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="ms-3 fs-4">{{ lang?.loading }}</p>
+    </div>
     <div class="text-center mt-3 shadow p-3 mb-5 bg-body rounded">
-      <h1>Galería</h1>
+      <h1>{{ lang?.galleryadminpage?.titles?.gallery }}</h1>
     </div>
 
     <div class="row gx-2">
       <div class="col-12 col-md-4 mb-3">
         <CardAdmin
-          description="Crea un album con imágenes"
-          title="Crear Album"
+          :description="lang?.galleryadminpage?.descriptions?.createAlbumImages"
+          :title="lang?.galleryadminpage?.titles?.addAlbum"
           :icon="AlbumIcon"
           @click="updateNum(1)"
         />
       </div>
       <div class="col-12 col-md-4 mb-3">
         <CardAdmin
-          description="Edita o Elimina imágenes de un album"
-          title="Editar Album"
+          :description="lang?.galleryadminpage?.descriptions?.editDeleteAlbum"
+          :title="lang?.galleryadminpage?.titles?.editAlbum"
           :icon="EditAlbumIcon"
           @click="updateNum(2)"
         />
       </div>
       <div class="col-12 col-md-4 mb-3">
         <CardAdmin
-          description="Agrega imágenes a un album existente"
-          title="Agregar Imágenes"
+          :description="lang?.galleryadminpage?.descriptions?.addImageAlbum"
+          :title="lang?.galleryadminpage?.titles?.addImage"
           :icon="AddPhotoIcon"
           @click="updateNum(3)"
         />
@@ -117,7 +140,7 @@ const createGallery = () => {
       <div class="text-center mt-5 shadow p-3 mb-5 bg-body rounded">
         <!-- Agregar Imágenes -->
         <div v-if="num == 1" class="col-12">
-          <h1>Agregar Imágenes</h1>
+          <h1>{{ lang?.galleryadminpage?.titles?.addAlbum }}</h1>
 
           <form class="mt-5" @submit.prevent="createGallery">
             <div class="row">
@@ -128,9 +151,11 @@ const createGallery = () => {
                   type="text"
                   class="form-control"
                   id="floatingDescription"
-                  placeholder="descripción"
+                  :placeholder="lang?.galleryadminpage?.titles?.description"
                 />
-                <label class="ms-3" for="floatingDescription">Descripción</label>
+                <label class="ms-3" for="floatingDescription">{{
+                  lang?.galleryadminpage?.titles?.description
+                }}</label>
               </div>
 
               <div class="col-6 form-floating mb-3">
@@ -139,9 +164,11 @@ const createGallery = () => {
                   type="number"
                   class="form-control"
                   id="floatingNumber"
-                  placeholder="año"
+                  :placeholder="lang?.galleryadminpage?.titles?.year"
                 />
-                <label class="ms-3" for="floatingNumber">Año</label>
+                <label class="ms-3" for="floatingNumber">{{
+                  lang?.galleryadminpage?.titles?.year
+                }}</label>
               </div>
 
               <!-- Drop Zone -->
@@ -155,9 +182,9 @@ const createGallery = () => {
               >
                 <div class="text-center">
                   <i class="bi bi-cloud-upload fs-1"></i>
-                  <p class="mb-0">Arrastra y suelta imágenes aquí o</p>
+                  <p class="mb-0">{{ lang?.galleryadminpage?.descriptions?.dropImage }}</p>
                   <label class="btn btn-primary mt-2 btn-label" for="fileInput">
-                    Selecciona archivos
+                    {{ lang?.galleryadminpage?.titles?.selectFile }}
                     <input
                       type="file"
                       id="fileInput"
@@ -177,7 +204,9 @@ const createGallery = () => {
                     <img :src="image.url" class="card-img-top" alt="Preview" />
                     <div class="card-body">
                       <p class="card-text">{{ image.name }}</p>
-                      <p class="btn btn-danger btn-sm" @click="removeImage(index)">Eliminar</p>
+                      <p class="btn btn-danger btn-sm" @click="removeImage(index)">
+                        {{ lang?.galleryadminpage?.titles?.delete }}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -186,23 +215,25 @@ const createGallery = () => {
 
             <!-- Botón -->
             <div class="text-center mt-5">
-              <button type="submit" class="btn btn-primary btn-submit">Guardar</button>
+              <button type="submit" class="btn btn-primary btn-submit">
+                {{ lang?.galleryadminpage?.titles?.save }}
+              </button>
             </div>
           </form>
         </div>
 
         <!-- Editar Imágenes -->
         <div v-if="num == 2">
-          <h1>Editar</h1>
+          <h1>{{ lang?.galleryadminpage?.titles?.edit }}</h1>
         </div>
 
         <!-- Crear Album -->
         <div v-if="num == 3">
-          <h1>Crear Album</h1>
+          <h1>{{ lang?.galleryadminpage?.titles?.addImage }}</h1>
         </div>
 
         <div v-else>
-          <h1>Otro</h1>
+          <h1>{{ lang?.galleryadminpage?.titles?.other }}</h1>
         </div>
       </div>
     </div>

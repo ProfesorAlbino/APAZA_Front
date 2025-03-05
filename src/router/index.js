@@ -12,6 +12,9 @@ import GalleryAdmin from '@/views/gallery/GalleryAdmin.vue'
 import { isUserLoggedAdmin } from '@/utils/Validations'
 import { setProductionMode, getConfig } from '@/config/BasicConfig';
 import DashboardPanel from '@/views/dashboard/DashboardPanel.vue'
+import BoardHomePage from '@/views/board/BoardHomePage.vue'
+import AddMemberPage from '@/views/board/AddMemberPage.vue'
+import MemberPage from '@/views/board/MemberPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -53,6 +56,16 @@ const router = createRouter({
           path: 'dashboard',
           name: 'dashboard',
           component:DashboardPanel
+        },
+        {
+          path: 'board-list',
+          name: 'board-list',
+          component: BoardHomePage
+        },
+        {
+          path: 'add-member',
+          name: 'add-member',
+          component: AddMemberPage
         }
       ]
     },
@@ -86,6 +99,16 @@ const router = createRouter({
           path: 'about',
           name: 'about',
           component: AboutUs
+        },
+        {
+          path: 'board',
+          name: 'board',
+          component: BoardHomePage
+        },
+        {
+          path: 'member',
+          name: 'member',
+          component: MemberPage
         }
       ]
     }

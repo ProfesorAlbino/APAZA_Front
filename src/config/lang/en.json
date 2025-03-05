@@ -21,7 +21,6 @@
             "ourEvents": "Our Events",
             "events": "Events",
             "titleButton": "See More"
-            
         },
         "body": {
             "descriptionTea": "ASD is a developmental disorder that affects how a person relates to the world and those around them. People with autism may have difficulties in communication and social interaction, and may exhibit repetitive behaviors and interests.",
@@ -32,12 +31,10 @@
             "infoDiagnosis": "This section provides information and support for people who have recently received an autism diagnosis.",
             "infoEvents": "Explore our events and stay updated with all our activities so you don’t miss any.",
             "infoAboutUs": "Learn more about us and our mission to support people with ASD and their families.",
-
             "descriptionAboutUs": "We are excited to share our journey and everything that drives us forward.",
             "descriptionCount1": "Meet the members who are part of our community.",
             "descriptionCount2": "Discover our history and how we have grown over the years.",
             "descriptionCount3": "Meet the members of our board of directors and their commitment to our mission.",
-
             "aboutDescription1": "Hello! We are APAZA, an association formed by families united by a common purpose: supporting people with ASD, committed to",
             "aboutDescription2": "providing guidance and emotional support,",
             "aboutDescription3": "with the goal of improving the quality of life for people with ASD and their families through advice, shared experiences, and a mutual help space.",
@@ -100,7 +97,29 @@
         },
         "body": {
             "phrase": "Together building a more inclusive future for people with ASD.",
-            "infoText": "This project supports the APAZA organization with the collaboration of TCU-663 Guápiles. Participating students: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca"
+            "infoText": "This project supports the APAZA organization with the collaboration of TCU-663 Guápiles. Participating students: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca - Diego Ríos Saborío"
+        }
+    },
+    "galleryadminpage": {
+        "titles": {
+            "gallery": "Gallery",
+            "noImages": "No images available",
+            "addImage": "Add Image",
+            "addAlbum": "Create Album",
+            "editAlbum": "Edit Album",
+            "delete": "Delete",
+            "save": "Save",
+            "edit": "Edit",
+            "other": "Other",
+            "description": "Description",
+            "year": "Year",
+            "selectFile": "Select Files"
+        },
+        "descriptions": {
+            "createAlbumImages": "Create an album with images",
+            "editDeleteAlbum": "Edit or delete images from an album",
+            "addImageAlbum": "Add images to an existing album",
+            "dropImage": "Drag and drop images here or"
         }
     },
     "eventhomepage": {
@@ -134,6 +153,65 @@
             "cultural": "Cultural Event"
         }
     },
+    "eventpage": {
+        "titles": {
+            "main": "Event Information",
+            "date": "Date",
+            "description": "Description"
+        },
+        "actions": {
+            "main": "Actions",
+            "list": "Go to event list",
+            "listAdmin": "Go to admin event list",
+            "delete": "Delete event"
+        },
+        "modal": {
+            "title": "Delete event",
+            "message": "Are you sure you want to delete this event?",
+            "cancel": "Cancel",
+            "delete": "Delete"
+        }
+    },
+    "boardhomepage": {
+        "titles": {
+            "boards": "Board Members",
+            "addmember": "Add Member",
+            "nomembers": "No members available"
+        }
+    },
+    "memberpage": {
+        "titles": {
+            "main": "Member's details"
+        },
+        "actions": {
+            "main": "Actions",
+            "listAdmin": "Go to the admin members list",
+            "list": "Go to the members list",
+            "delete": "Delete member"
+        },
+        "modal": {
+            "title": "Delete member",
+            "message": "Are you sure you want to delete this member?",
+            "cancel": "Cancel",
+            "delete": "Delete"
+        }
+    },
+    "memberaddpage": {
+        "titles": {
+            "main": "Add New Member",
+            "name": "Member Name",
+            "role": "Position",
+            "photo": "Profile Picture"
+        },
+        "buttons": {
+            "back": "Back",
+            "create": "Add Member"
+        },
+        "validation": {
+            "name": "Please enter a name for the member",
+            "role": "Please enter a position for the member"
+        }
+    },
     "sidebar": {
         "titles": {
             "main": "APAZA",
@@ -151,7 +229,7 @@
             "english": "English"
         }
     },
-    "aboutUs":{
+    "aboutUs": {
         "titles": {
             "aboutUs": "About Us",
             "ourOrigins": "Our Origins",
@@ -159,12 +237,10 @@
             "mision": "Mission",
             "vision": "Vision",
             "ourHistory": "Our History",
-
             "month1": "July",
             "month2": "April 2nd",
             "month3": "April 17th",
             "month4": "October 3rd",
-
             "timelineTitle1": "Beginnings",
             "timelineTitle2": "First Activity",
             "timelineTitle3": "Constitutive Assembly",
@@ -179,20 +255,21 @@
             "aboutDescription6": "and the strength of our community, we continue building together a future filled with ",
             "aboutDescription7": "inclusion, understanding, and opportunities ",
             "aboutDescription8": "for everyone. ",
-
             "misionDescription1": "Our mission is ",
             "misionDescription2": "to strengthen all the abilities ",
             "misionDescription3": "of people with Autism Spectrum Disorder, with respect and tolerance, working as a team to defend and promote their rights, ensuring a more supportive and fair participation in society. ",
-
             "visionDescription1": "We aspire to ",
             "visionDescription2": "improve the quality of life ",
             "visionDescription3": "of people with autism and their families. From the beginning, creating a formative space where the necessary tools are provided for effective inclusion in society. ",
-
             "timelineDescription1": "a group of parents with children diagnosed with autism met for the first time. This gathering marked the beginning of a transformative journey in the search for improving their loved ones' quality of life. As the group grew, the need to raise awareness about autism became evident, starting with the parents and families themselves and extending to the community. The goal was clear: to integrate people with autism into society with dignity and respect.",
             "timelineDescription2": "the association held its first activity in commemoration of World Autism Awareness Day, declared by the United Nations General Assembly on December 18, 2007. During this significant commemoration, various cultural events were held to highlight the importance of inclusion.",
             "timelineDescription3": "On April 17, 2011, the Constitutive Assembly was held, where parents, united by their commitment and passion, took the first steps to formalize their collective effort for the benefit of their children.",
             "timelineDescription4": "Finally, on October 3, 2011, the Association of People with Autism of the Atlantic Zone, known by its acronym as APAZA, was officially registered as a legally constituted association under Law 218. This milestone marked an important advancement in our mission to promote inclusion and provide support to families affected by autism in the region."
         }
-
+    },
+    "dashboard": {
+        "titles": {
+            "welcome": "Welcome to the Administration Panel!"
+        }
     }
 }

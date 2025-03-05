@@ -44,7 +44,10 @@ import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
             <IconHome class="menu-icon"></IconHome>
             <label>{{ lang.value?.navbar?.titles?.start || '' }}</label>
           </li>
-          <li class="nav-item">
+          <li  
+            :class="[{ active: $route.path === '/board' }, 'nav-item']" 
+            @click="goToPage('/board')"
+            >
             <ManagementBoard class="menu-icon"></ManagementBoard>
             <label>{{ lang.value?.navbar?.titles?.team || '' }}</label>
           </li>

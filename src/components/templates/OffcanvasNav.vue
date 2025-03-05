@@ -55,7 +55,12 @@ import AdminIcon from '../icons/MenuIcons/AdminIcon.vue'
               <HomeIcon class="menu-icon"/>
               <label>{{ lang.value?.navbar?.titles?.start || '' }}</label>
             </li>
-            <li class="nav-item" data-bs-dismiss="offcanvas">
+            <li :class="[
+                { 'active': $route.path === '/board' },
+                'nav-item'
+              ]"
+              @click="goToPage('/board')"
+              data-bs-dismiss="offcanvas">
               <GroupIcon class="menu-icon"/>
               <label>{{ lang.value?.navbar?.titles?.team || '' }}</label>
             </li>

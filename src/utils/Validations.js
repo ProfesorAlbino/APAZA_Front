@@ -8,5 +8,6 @@ export function isUserLoggedAdmin() {
 }
 
 export function isInAdminPage(path){
-    return path === "/admin/event-list";
+    return path.includes("/admin/");
 }
+
