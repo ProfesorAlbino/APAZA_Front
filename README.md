@@ -5,6 +5,7 @@ Proyecto colaboración entre APAZA y TCU663 de la UCR Recinto de Guápiles.
 - [Elías Mena Fonseca]
 - [Jeikel Medrano Montesino]
 - [Jonnathan García Loria (Backend)]
+- [Diego Ríos Saborío]
 
 
 ## Comando inicial

@@ -54,7 +54,7 @@
                         <div class="footer_menu">
                             <ul>
                                 <li><a @click="navigate('/about')">{{ lang?.footer?.titles?.aboutUs }}</a></li>
-                                <li><a >{{ lang?.footer?.titles?.team }}</a></li>
+                                <li><a @click="navigate('/board')">{{ lang?.footer?.titles?.team }}</a></li>
                                 <li><a >{{ lang?.footer?.titles?.developers }}</a></li>
                                 <li><a @click="navigate('/login')">{{ lang?.footer?.titles?.session }}</a></li>
                             </ul>

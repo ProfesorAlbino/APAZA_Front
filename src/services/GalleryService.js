@@ -4,7 +4,7 @@ import { getConfig } from "@/config/BasicConfig";
 //const API_URL = getConfig().URL + "/gallery/";
 
 function getAPIUrl() {
-  return getConfig().URL + "/user";
+  return getConfig().URL + "/gallery";
 }
 
 const defaultHeaders = {
@@ -22,7 +22,7 @@ function addGallery(gallery){
   eventData.append('description', gallery.description);
   eventData.append('images', gallery.images);
 
-  return fetch('/gallery', {
+  return fetch(getAPIUrl(), {
     method: 'POST',
     body: eventData
 });

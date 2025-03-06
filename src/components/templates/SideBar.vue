@@ -41,8 +41,15 @@
         </li>
         <li
           class="d-flex flex-row aside-item"
-          :class="{ active: activeRoute === '/#' }"
-          @click="goToPage($event, '/#')"
+          :class="{ active: activeRoute === '/admin/board-list' }"
+          @click="goToPage( '/admin/board-list')"
+        >
+        <BoardIcon class="menu-icon"></BoardIcon>
+        <label>{{ lang?.navbar?.titles?.team || '' }}</label>
+        </li>
+        <li
+          class="d-flex flex-row aside-item"
+          
         >
           <OtherIcon class="menu-icon" />
           <label>{{ lang?.sidebar?.menu?.others ?? '' }}</label>
@@ -84,6 +91,7 @@ import GalleryIcon from '../icons/MenuIcons/GalleryIcon.vue'
 import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
 import OtherIcon from '../icons/MenuIcons/OtherIcon.vue'
 import ToHomeIcon from '../icons/MenuIcons/ToHomeIcon.vue'
+import BoardIcon from '../icons/MenuIcons/BoardIcon.vue'
 
 const router = useRouter();
 const activeRoute = ref(router.currentRoute.value.path)

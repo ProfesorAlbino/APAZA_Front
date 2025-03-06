@@ -63,6 +63,7 @@ async function loginEvent() {
 }
 
 async function registerEvent() {
+  modalLoading()
   if (!isLog.value) return
   const res = await registerUser(userLogin.value)
   if (res && res.status) {
