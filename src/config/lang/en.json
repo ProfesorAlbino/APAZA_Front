@@ -163,13 +163,23 @@
             "main": "Actions",
             "list": "Go to event list",
             "listAdmin": "Go to admin event list",
-            "delete": "Delete event"
+            "delete": "Delete event",
+            "edit": "Edit event"
         },
         "modal": {
             "title": "Delete event",
             "message": "Are you sure you want to delete this event?",
             "cancel": "Cancel",
             "delete": "Delete"
+        },
+        "editModal": {
+            "title": "Edit event",
+            "titleEvent": "Title",
+            "description": "Description",
+            "image": "Event photo",
+            "cancel": "Cancel",
+            "save": "Save",
+            "saving": "Saving..."
         }
     },
     "boardhomepage": {
@@ -187,13 +197,23 @@
             "main": "Actions",
             "listAdmin": "Go to the admin members list",
             "list": "Go to the members list",
-            "delete": "Delete member"
+            "delete": "Delete member",
+            "edit": "Edit member"
         },
         "modal": {
             "title": "Delete member",
             "message": "Are you sure you want to delete this member?",
             "cancel": "Cancel",
             "delete": "Delete"
+        },
+        "editModal": {
+            "title": "Edit Member",
+            "name": "Name",
+            "role": "Role",
+            "photo": "Profile Photo",
+            "cancel": "Cancel",
+            "save": "Save",
+            "saving": "Saving..."
         }
     },
     "memberaddpage": {

@@ -163,13 +163,23 @@
             "main": "Acciones",
             "list": "Ir a la lista de eventos",
             "listAdmin": "Ir a la lista de eventos admin",
-            "delete": "Eliminar evento"
+            "delete": "Eliminar evento",
+            "edit": "Editar evento"
         },
         "modal": {
             "title": "Eliminar evento",
             "message": "¿Estás seguro de que deseas eliminar este evento?",
             "cancel": "Cancelar",
             "delete": "Eliminar"
+        },
+        "editModal": {
+            "title": "Editar evento",
+            "titleEvent": "Titulo",
+            "description": "Descripción",
+            "image": "Foto del evento",
+            "cancel": "Cancelar",
+            "save": "Guardar",
+            "saving": "Guardando..."
         }
     },
     "boardhomepage": {
@@ -187,13 +197,23 @@
             "main": "Acciones",
             "listAdmin": "Ir a la lista de miembros admin",
             "list": "Ir a la lista de miembros",
-            "delete": "Eliminar miembro"
+            "delete": "Eliminar miembro",
+            "edit": "Editar miembro"
         },
         "modal": {
             "title": "Eliminar miembro",
             "message": "¿Estás seguro de que deseas eliminar este miembro?",
             "cancel": "Cancelar",
             "delete": "Eliminar"
+        },
+        "editModal": {
+            "title": "Editar miembro",
+            "name": "Nombre",
+            "role": "Puesto",
+            "photo": "Foto de perfil",
+            "cancel": "Cancelar",
+            "save": "Guardar",
+            "saving": "Guardando..."
         }
     },
     "memberaddpage": {
