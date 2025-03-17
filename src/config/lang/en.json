@@ -97,7 +97,7 @@
         },
         "body": {
             "phrase": "Together building a more inclusive future for people with ASD.",
-            "infoText": "This project supports the APAZA organization with the collaboration of TCU-663 Guápiles. Participating students: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca - Diego Ríos Saborío"
+            "infoText": "This project supports the APAZA organization with the collaboration of TCU-663 and TCU-751 Guápiles. Participating students: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca - Diego Ríos Saborío"
         }
     },
     "galleryadminpage": {
@@ -120,6 +120,46 @@
             "editDeleteAlbum": "Edit or delete images from an album",
             "addImageAlbum": "Add images to an existing album",
             "dropImage": "Drag and drop images here or"
+        },
+        "bottoms": {
+            "cancel": "Cancel",
+            "delete": "Delete",
+            "save": "Save",
+            "update": "Update",
+            "addImages": "Add Images",
+            "close": "Close"
+        },
+        "pagination": {
+            "prev": "Previous",
+            "next": "Next",
+            "page": "Page",
+            "of": "of",
+            "elements": "elements"
+        },
+        "modal": {
+        "title": "Delete Album",
+        "message": "Are you sure you want to delete this album?",
+        "cancel": "Cancel",
+        "delete": "Delete"
+        }
+    },
+    "gallerydetailpage":
+    { "bottoms": {
+        "delete": "Delete",
+        "download": "Download",
+        "save": "Save changes",
+        "goGallery": "Go to the gallery"
+        },
+        "titles": {
+        "main": "Update Information",
+        "description": "Description",
+        "year": "Year"
+        },
+        "modal": {
+        "title": "Delete Image",
+        "message": "Are you sure you want to delete this image?",
+        "cancel": "Cancel",
+        "delete": "Delete"
         }
     },
     "eventhomepage": {

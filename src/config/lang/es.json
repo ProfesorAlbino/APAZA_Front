@@ -97,7 +97,7 @@
         },
         "body": {
             "phrase": "Juntos construyendo un futuro más inclusivo para las personas con TEA.",
-            "infoText": "Este proyecto apoya a la organización APAZA con la colaboración del TCU-663 Guápiles. Estudiantes participantes: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca - Diego Ríos Saborío"
+            "infoText": "Este proyecto apoya a la organización APAZA con la colaboración del TCU-663 y TCU-751 Guápiles. Estudiantes participantes: - Jeikel Medrano Montesino - Jonnathan García Loria - Elías Mena Fonseca - Diego Ríos Saborío"
         }
     },
     "galleryadminpage": {
@@ -120,8 +120,49 @@
             "editDeleteAlbum": "Edita o Elimina imágenes de un album",
             "addImageAlbum": "Agrega imágenes a un album existente",
             "dropImage": "Arrastra y suelta imágenes aquí o"
+        },
+        "bottoms": {
+            "cancel": "Cancelar",
+            "delete": "Eliminar",
+            "save": "Guardar",
+            "update": "Actualizar",
+            "addImages": "Agregar imagenes",
+            "close": "Cerrar"
+        },
+        "pagination": {
+            "prev": "Anterior",
+            "next": "Siguiente",
+            "page": "Página",
+            "of": "de",
+            "elements": "elementos"
+        },
+        "modal": {
+            "title": "Eliminar Álbum",
+            "message": "¿Estás seguro de que deseas eliminar este álbum?",
+            "cancel": "Cancelar",
+            "delete": "Eliminar"
         }
     },
+    "gallerydetailpage":
+    { "bottoms": {
+        "delete": "Eliminar",
+        "download": "Descargar",
+        "save": "Guardar cambios",
+        "goGallery": "Ir a la galería"
+    },
+    "titles":{
+        "main": "Actualizar Información",
+        "description": "Descripción",
+        "year": "Año"
+    },
+    "modal": {
+        "title": "Eliminar Imagen",
+        "message": "¿Estás seguro de que deseas eliminar esta imagen?",
+        "cancel": "Cancelar",
+        "delete": "Eliminar"
+    }
+    }
+    ,
     "eventhomepage": {
         "titles": {
             "noEvents": "No hay eventos disponibles",

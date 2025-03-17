@@ -1,10 +1,11 @@
 import axios from "axios";
 import { getConfig } from "@/config/BasicConfig";
 
+
 //const API_URL = getConfig().URL + "/gallery/";
 
 function getAPIUrl() {
-  return getConfig().URL + "/gallery";
+  return getConfig().URL + "/gallery/";
 }
 
 const defaultHeaders = {
@@ -12,20 +13,43 @@ const defaultHeaders = {
     'responseType': 'json'
 };
 
-function getGallery() {
-    return axios.get(getAPIUrl(), defaultHeaders);
+function getGallery(page) {
+  const limit = 5;
+  return axios.get(getAPIUrl(), {
+    params: { page, limit }, 
+    ...defaultHeaders
+  });
 }
 
 function addGallery(gallery){
   const eventData = new FormData();
   eventData.append('year', gallery.year);
   eventData.append('description', gallery.description);
-  eventData.append('images', gallery.images);
+  // Recorrer y agregar cada imagen al FormData
+  gallery.images.forEach((image) => {
+    eventData.append('images', image);
+  });
 
-  return fetch(getAPIUrl(), {
-    method: 'POST',
-    body: eventData
-});
+  return axios.post(getAPIUrl(), eventData);
 }
 
-export {getGallery, addGallery};
+function updateGallery(gallery){
+  const eventData = new FormData();
+  eventData.append('id', gallery.id);
+  //eventData.append('year', gallery.year);
+  eventData.append('description', gallery.description);
+  // Recorrer y agregar cada imagen al FormData
+  gallery.images.forEach((image) => {
+    eventData.append('newImages', image);
+  });
+
+  eventData.append('trashImages', gallery.trashImages);
+
+  return axios.put(getAPIUrl() , eventData);
+}
+
+function deleteGallery(id){
+  return axios.delete(getAPIUrl() + id);
+}
+
+export {getGallery, addGallery,deleteGallery,updateGallery};
