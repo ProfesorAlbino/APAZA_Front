@@ -13,7 +13,8 @@ const router = useRouter();
           jobTitle: 'Fullstack Developer',
           description: 'Informático Empresarial graduado de la UCR. Especializado en desarrollo backend y móvil, con capacidad full-stack para soluciones integrales.',
           image: './devs/diego.jpeg',
-          linkedin: 'www.linkedin.com/in/diegoríos',
+          email: 'diegoerios10@gmail.com',
+          linkedin: 'https://www.linkedin.com/in/diegoríos',
           github: 'https://github.com/DiegoERS'
         },
         {
