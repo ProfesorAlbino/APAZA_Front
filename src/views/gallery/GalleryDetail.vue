@@ -26,12 +26,12 @@
                             <div class="my-2" v-if="isAdmin">
                                 <div class="mb-3">
                                     <label for="title" class="form-label">{{ lang?.gallerydetailpage?.titles?.description }}</label>
-                                    <input v-model="updateGallerys.description" type="text" class="form-control"
+                                    <input v-model="updatedGallerys.description" type="text" class="form-control"
                                         id="description" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="description" class="form-label">{{ lang?.gallerydetailpage?.titles?.year }} </label>
-                                    <input v-model="updateGallerys.year" type="number" class="form-control" id="year" />
+                                    <input v-model="updatedGallerys.year" type="number" class="form-control" id="year" />
                                 </div>
                                 <button class="btn btn-success ms-3" @click="saveChanges">{{ lang?.gallerydetailpage?.bottoms?.save }}</button>
                                 <button @click="goToPage('/admin/add-gallery')" class="btn btn-secondary">
