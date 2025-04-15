@@ -7,6 +7,34 @@
     "welcome": "Welcome",
     "backText": "Back",
     "correctText": "Correct",
+    "developers": {
+    "title": "Developers",
+    "Diego": {
+        "name": "Diego Ríos Saborío",
+        "role": "Full Stack Developer",
+        "description": "Business IT graduate from UCR. Specialized in backend and mobile development, with full-stack capabilities for comprehensive solutions."
+    },
+    "elias": {
+        "name": "Elias Mena",
+        "role": "Front-end Developer",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+    },
+    "Jona": {
+        "name": "Jonathan",
+        "role": "Front-end Developer",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+    },
+    "Yeikel": {
+        "name": "Yeikel",
+        "role": "Front-end Developer",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+    },
+    "Jafeth": {
+        "name": "Jafeth",
+        "role": "Front-end Developer",
+        "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+    }
+},
     "homepage": {
         "titles": {
             "whatIsTea": "What is ASD?",

@@ -61,16 +61,16 @@
                         </div>
                         <div class="mb-3">
                             <label for="title" class="form-label">{{ lang?.eventpage?.editModal?.titleEvent }}</label>
-                            <input v-model="event.title" type="text" class="form-control" id="title" />
+                            <input v-model="updateEvents.title" type="text" class="form-control" id="title" />
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">{{ lang?.eventpage?.editModal?.description
                                 }}</label>
-                            <textarea v-model="event.description" class="form-control" id="description"></textarea>
+                            <textarea v-model="updateEvents.description" class="form-control" id="description"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="type" class="form-label">{{ lang?.eventaddpage?.titles?.type ?? '' }}</label>
-                            <select v-model="event.type" class="form-select" id="type" required>
+                            <select v-model="updateEvents.type" class="form-select" id="type" required>
                                 <option value="family">{{ lang?.eventaddpage?.options?.family ?? '' }}</option>
                                 <option value="cultural">{{ lang?.eventaddpage?.options?.cultural ?? '' }}</option>
                             </select>
@@ -109,6 +109,11 @@ const router = useRouter();
 const isAdmin = ref(false);
 
 const event = ref({});
+const updateEvents = ref({
+    title: "",
+    description: "",
+    type: ""
+});
 const lang = ref({});
 const PAGE = 'eventpage';
 const infModal = ref({});
@@ -171,10 +176,10 @@ const editEvent = async () => {
         isLoading.value = true;
         const editedEvent = {
             id: event.value._id,
-            title: event.value.title,
-            type: event.value.type,
+            title: updateEvents.value.title,
+            type: updateEvents.value.type,
             date: date.value,
-            description: event.value.description,
+            description: updateEvents.value.description,
             image: event.value.image,
             newImage: previewImage.value || null
         };
@@ -184,6 +189,9 @@ const editEvent = async () => {
             closeModalEdit();
             if (previewImage.value)
                 event.value.image = imagePresent.value;
+            event.value.title = updateEvents.value.title;
+            event.value.description = updateEvents.value.description;
+            event.value.type = updateEvents.value.type;
             sessionStorage.setItem('event', JSON.stringify(event.value));
             imagePresent.value = null;
         }, 1500);
@@ -204,6 +212,9 @@ onMounted(async () => {
     date.value = new Date(objItem.date.replace('Z', '')).toISOString().slice(0, -1);
     objItem.date = format(new Date(objItem.date.replace('Z', '')), { date: "full" }, getConfig().CURRENT_LANG);
     event.value = objItem;
+    updateEvents.value.title = event.value.title;
+    updateEvents.value.description = event.value.description;
+    updateEvents.value.type = event.value.type;
 
     await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
         lang.value = data;

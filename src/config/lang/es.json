@@ -7,6 +7,36 @@
     "welcome": "Bienvenido",
     "backText": "Volver",
     "correctText": "Correcto",
+    "developers":{
+        "title": "Desarrolladores",
+        "Diego":{
+            "name": "Diego Ríos Saborío",
+            "role": "Desarrollador full stack",
+            "description": "Informático Empresarial graduado de la UCR. Especializado en desarrollo backend y móvil, con capacidad full-stack para soluciones integrales."
+        },
+        "elias":{
+            "name": "Elias Mena",
+            "role": "Desarrollador Front-end",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+        },
+        "Jona":{
+            "name": "Jonathan",
+            "role": "Desarrollador Front-end",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+        },
+        "Yeikel":{
+            "name": "Yeikel",
+            "role": "Desarrollador Front-end",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+        },
+        "Jafeth":{
+            "name": "jafeth",
+            "role": "Desarrollador Front-end",
+            "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!"
+        }
+
+
+    },
     "homepage": {
         "titles": {
             "whatIsTea": "¿Que es el TEA?",

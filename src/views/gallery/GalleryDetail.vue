@@ -26,12 +26,12 @@
                             <div class="my-2" v-if="isAdmin">
                                 <div class="mb-3">
                                     <label for="title" class="form-label">{{ lang?.gallerydetailpage?.titles?.description }}</label>
-                                    <input v-model="gallery.description" type="text" class="form-control"
+                                    <input v-model="updateGallerys.description" type="text" class="form-control"
                                         id="description" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="description" class="form-label">{{ lang?.gallerydetailpage?.titles?.year }} </label>
-                                    <input v-model="gallery.year" type="number" class="form-control" id="year" />
+                                    <input v-model="updateGallerys.year" type="number" class="form-control" id="year" />
                                 </div>
                                 <button class="btn btn-success ms-3" @click="saveChanges">{{ lang?.gallerydetailpage?.bottoms?.save }}</button>
                                 <button @click="goToPage('/admin/add-gallery')" class="btn btn-secondary">
@@ -92,6 +92,10 @@ const lang = ref({})
 const PAGE = 'gallerydetailpage'
 const infModal = ref({})
 const gallery = ref({})
+const updatedGallerys = ref({
+    description: '',
+    year: ''
+})
 const images = ref([])
 const trashImages = ref([])
 const numImages = ref(0)
@@ -139,8 +143,8 @@ const saveChanges = async () => {
     modalLoading()
     const newGallery = {
         id: gallery.value._id,
-        description: gallery.value.description,
-        year: gallery.value.year,
+        description: updatedGallerys.value.description,
+        year: updatedGallerys.value.year,
         images: [],
         trashImages: trashImages.value
     }
@@ -152,6 +156,8 @@ const saveChanges = async () => {
         if (res && res.status) {
             showNotify(res.message, 'Galería actualizada con éxito')
 
+            gallery.value.description = updatedGallerys.value.description
+            gallery.value.year = updatedGallerys.value.year
             sessionStorage.setItem('gallery', JSON.stringify(gallery.value));
             
 
@@ -188,7 +194,8 @@ onMounted(async () => {
     gallery.value = JSON.parse(item)
 
     images.value = gallery.value.images
-
+    updatedGallerys.value.description = gallery.value.description
+    updatedGallerys.value.year = gallery.value.year
     await getLangForPage(getConfig().CURRENT_LANG, PAGE)
         .then((data) => {
             lang.value = data

@@ -64,7 +64,11 @@ import AdminIcon from '../icons/MenuIcons/AdminIcon.vue'
               <GroupIcon class="menu-icon"/>
               <label>{{ lang.value?.navbar?.titles?.team || '' }}</label>
             </li>
-            <li class="nav-item" data-bs-dismiss="offcanvas">
+            <li :class="[
+                { 'active': $route.path === '/developers' },
+                'nav-item'
+              ]" @click="goToPage('/developers')"
+               data-bs-dismiss="offcanvas">
               <PartnerIcon class="menu-icon"></PartnerIcon>
               <label>{{ lang.value?.navbar?.titles?.sponsors || '' }}</label>
             </li>

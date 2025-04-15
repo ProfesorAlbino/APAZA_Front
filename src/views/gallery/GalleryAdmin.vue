@@ -385,49 +385,56 @@ const saveChanges = async () => {
 
         <!-- Editar Imágenes -->
         <div v-if="num == 2">
-          <h1>{{ lang?.galleryadminpage?.titles?.edit }}</h1>
+    <h1>{{ lang?.galleryadminpage?.titles?.edit }}</h1>
 
-          <!-- Listado de Álbumes -->
-          <div v-for="album in albums" :key="album._id" class="album">
-            <h2>{{ album.description }} ({{ album.year }})</h2>
+    <!-- Listado de Álbumes -->
+    <div v-for="album in albums" :key="album._id" class="album">
+      <h2>{{ album.description }} ({{ album.year }})</h2>
 
-            <div class="images">
-              <img
-                v-for="(img, index) in album.images.slice(0, 5)"
-                :key="index"
-                :src="img"
-                alt="Imagen del álbum"
-              />
-            </div>
+      <div class="images">
 
-            <button @click="deleteAlbum(album._id)" class="btn-delete">{{ lang?.galleryadminpage.bottoms.delete }}</button>
-            <button @click="viewAlbum(album._id)" class="btn-view">{{ lang?.galleryadminpage.bottoms.update }}</button>
-          </div>
+         
+        
+          <img  v-for="(img, index) in album.images.slice(0, 5)"
+          :key="index"
+          class="image-card"
+            :src="img"
+            
+            alt="Imagen del álbum"
+          />
+
+
+        <!-- Contador de imágenes faltantes -->
+        <div v-if="album.images.length > 5" class="image-card more-images">
+          +{{ album.images.length - 5 }}
+        </div>
+      </div>
+
+      <button @click="deleteAlbum(album._id)" class="btn-delete">{{ lang?.galleryadminpage.bottoms.delete }}</button>
+      <button @click="viewAlbum(album._id)" class="btn-view">{{ lang?.galleryadminpage.bottoms.update }}</button>
+    </div>
 
           <!-- Paginación -->
-          <div class="pagination">
-            <button
-              @click="changePage(configPagination.page - 1)"
-              :disabled="configPagination.page <= 1"
-            >
-            {{ lang?.galleryadminpage.pagination.prev }}
-            </button>
+    <div class="pagination">
+      <button
+        @click="changePage(configPagination.page - 1)"
+        :disabled="configPagination.page <= 1"
+        class="btn-pagination"
+      >
+        {{ lang?.galleryadminpage.pagination.prev }}
+      </button>
 
-            <span
-              >{{ lang?.galleryadminpage.pagination.page }} {{ configPagination.page }} {{ lang?.galleryadminpage.pagination.of }} {{ configPagination.totalPages }} ({{
-                configPagination.totalItems
-              }}
-              {{ lang?.galleryadminpage.pagination.elements }})</span
-            >
+      <span>{{ lang?.galleryadminpage.pagination.page }} {{ configPagination.page }} {{ lang?.galleryadminpage.pagination.of }} {{ configPagination.totalPages }} ({{ configPagination.totalItems }} {{ lang?.galleryadminpage.pagination.elements }})</span>
 
-            <button
-              @click="changePage(configPagination.page + 1)"
-              :disabled="configPagination.page >= configPagination.totalPages"
-            >
-            {{ lang?.galleryadminpage.pagination.next }}
-            </button>
-          </div>
-        </div>
+      <button
+        @click="changePage(configPagination.page + 1)"
+        :disabled="configPagination.page >= configPagination.totalPages"
+        class="btn-pagination"
+      >
+        {{ lang?.galleryadminpage.pagination.next }}
+      </button>
+    </div>
+  </div>
 
         <!-- Crear Album -->
         <div v-if="num == 3">
@@ -440,28 +447,26 @@ const saveChanges = async () => {
 
 
            <!-- Paginación -->
-           <div class="pagination">
-            <button
-              @click="changePage(configPagination.page - 1)"
-              :disabled="configPagination.page <= 1"
-            >
-            {{ lang?.galleryadminpage.pagination.prev }}
-            </button>
+             <!-- Paginación -->
+    <div class="pagination">
+      <button
+        @click="changePage(configPagination.page - 1)"
+        :disabled="configPagination.page <= 1"
+        class="btn-pagination"
+      >
+        {{ lang?.galleryadminpage.pagination.prev }}
+      </button>
 
-            <span
-              >{{ lang?.galleryadminpage.pagination.page }} {{ configPagination.page }}  {{ lang?.galleryadminpage.pagination.of }} {{ configPagination.totalPages }} ({{
-                configPagination.totalItems
-              }}
-              {{ lang?.galleryadminpage.pagination.elements }})</span
-            >
+      <span>{{ lang?.galleryadminpage.pagination.page }} {{ configPagination.page }} {{ lang?.galleryadminpage.pagination.of }} {{ configPagination.totalPages }} ({{ configPagination.totalItems }} {{ lang?.galleryadminpage.pagination.elements }})</span>
 
-            <button
-              @click="changePage(configPagination.page + 1)"
-              :disabled="configPagination.page >= configPagination.totalPages"
-            >
-            {{ lang?.galleryadminpage.pagination.next }}
-            </button>
-          </div>
+      <button
+        @click="changePage(configPagination.page + 1)"
+        :disabled="configPagination.page >= configPagination.totalPages"
+        class="btn-pagination"
+      >
+        {{ lang?.galleryadminpage.pagination.next }}
+      </button>
+    </div>
         </div>
       </div>
     </div>
@@ -579,12 +584,21 @@ const saveChanges = async () => {
   padding: 10px;
   margin-bottom: 15px;
 }
-.images img {
-  width: 100px;
-  height: auto;
-  margin-right: 5px;
+.images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
 }
 
+.images img {
+  height: 80px;
+  width: auto;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
 
 .btn-delete {
   background-color: red;
@@ -598,6 +612,148 @@ const saveChanges = async () => {
 .pagination {
   margin-top: 20px;
   text-align: center;
+}
+
+
+.image-card {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.image-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.more-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-gray-color);
+  border-radius: 8px;
+  height: 200px;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.album .images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.album .images img {
+  border-radius: 8px;
+}
+
+.album, .album-images {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los botones */
+.btn-delete {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+  background-color: darkred;
+}
+
+.btn-view {
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-view:hover {
+  background-color: darkblue;
+}
+
+/* Estilos para la paginación */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-pagination {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-pagination:hover {
+  background-color: var(--secondary-color);
+}
+
+.btn-pagination:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* Estilo general de la página */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  margin-top: 40px;
+}
+
+h1, h2 {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+h2 {
+  margin-top: 15px;
+}
+
+.text-center {
+  color: var(--dark-color);
+}
+
+.btn-submit {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-submit:hover {
+  background-color: var(--secondary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.btn-label {
+  background-color: var(--primary-color) !important;
+}
+
+.btn-label:hover {
+  background-color: var(--secondary-color) !important;
 }
 
 
