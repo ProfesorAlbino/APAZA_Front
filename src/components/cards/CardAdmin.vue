@@ -3,13 +3,15 @@
     class="card d-flex flex-column justify-content-center align-items-center wow fadeInUp text-center rounded py-5 py-md-1 px-4 px-md-3 mx-lg-2"
     data-wow-delay="0.1s"
   >
-    <component :is="icon" class="icon mb-3"></component>
+    <Vue3Lottie :animation-data="props.icon" :height="200" :width="200" delay="1000" :loop="false"></Vue3Lottie>
     <h5 class="mb-3">{{ props.title }}</h5>
     <p class="m-0">{{ props.description }}</p>
   </div>
 </template>
 
 <script setup>
+import { Vue3Lottie } from 'vue3-lottie';
+
 const props = defineProps({
   title: {
     type: String,

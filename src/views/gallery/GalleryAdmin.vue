@@ -2,12 +2,12 @@
 import CardAdmin from '@/components/cards/CardAdmin.vue'
 import { onMounted, ref } from 'vue'
 import { addGallery } from '@/services/GalleryService'
-import AddPhotoIcon from '@/components/icons/others/AddPhotoIcon.vue'
-import EditAlbumIcon from '@/components/icons/others/EditAlbumIcon.vue'
-import AlbumIcon from '@/components/icons/others/AlbumIcon.vue'
 import { getLangForPage, getConfig } from '@/config/BasicConfig'
 import router from '@/router'
 import { isUserLoggedAdmin } from '@/utils/Validations'
+import CreateAlbum from '@/assets/create-album.json'
+import updateAlbum from '@/assets/update-album.json'
+import AddPhoto from '@/assets/AddPhoto.json'
 
 const num = ref(0)
 const isAdmin = ref(false)
@@ -113,8 +113,7 @@ const createGallery = () => {
       <div class="col-12 col-md-4 mb-3">
         <CardAdmin
           :description="lang?.galleryadminpage?.descriptions?.createAlbumImages"
-          :title="lang?.galleryadminpage?.titles?.addAlbum"
-          :icon="AlbumIcon"
+          :title="lang?.galleryadminpage?.titles?.addAlbum" :icon="CreateAlbum"
           @click="updateNum(1)"
         />
       </div>
@@ -122,15 +121,14 @@ const createGallery = () => {
         <CardAdmin
           :description="lang?.galleryadminpage?.descriptions?.editDeleteAlbum"
           :title="lang?.galleryadminpage?.titles?.editAlbum"
-          :icon="EditAlbumIcon"
+          :icon="updateAlbum"
           @click="updateNum(2)"
         />
       </div>
       <div class="col-12 col-md-4 mb-3">
         <CardAdmin
           :description="lang?.galleryadminpage?.descriptions?.addImageAlbum"
-          :title="lang?.galleryadminpage?.titles?.addImage"
-          :icon="AddPhotoIcon"
+          :title="lang?.galleryadminpage?.titles?.addImage" :icon="AddPhoto"
           @click="updateNum(3)"
         />
       </div>
