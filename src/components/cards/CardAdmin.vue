@@ -3,7 +3,7 @@
     class="card d-flex flex-column justify-content-center align-items-center wow fadeInUp text-center rounded py-5 py-md-1 px-4 px-md-3 mx-lg-2"
     data-wow-delay="0.1s"
   >
-    <Vue3Lottie :animation-data="props.icon" :height="200" :width="200" delay="1000" :loop="false"></Vue3Lottie>
+    <Vue3Lottie :animation-data="props.icon" :height="200" :width="200" delay="1000" :loop="false" :play-on-hover="true"></Vue3Lottie>
     <h5 class="mb-3">{{ props.title }}</h5>
     <p class="m-0">{{ props.description }}</p>
   </div>

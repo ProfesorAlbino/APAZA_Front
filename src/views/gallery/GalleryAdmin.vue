@@ -8,7 +8,7 @@ import { isUserLoggedAdmin } from '@/utils/Validations'
 import CreateAlbum from '@/assets/create-album.json'
 import updateAlbum from '@/assets/update-album.json'
 import AddPhoto from '@/assets/AddPhoto.json'
-
+import LottieEmptyBoxAnimation from '@/components/LottieEmptyBoxAnimation.vue'
 const num = ref(0)
 const isAdmin = ref(false)
 const lang = ref({})
@@ -57,9 +57,7 @@ export default {
     },
     processFiles(files) {
       for (const file of files) {
-        console.log(file)
         if (file.type.startsWith('image/')) {
-          console.log('Es una imagen')
           const reader = new FileReader()
           reader.onload = (e) => {
             const imageObject = {
@@ -111,26 +109,16 @@ const createGallery = () => {
 
     <div class="row gx-2">
       <div class="col-12 col-md-4 mb-3">
-        <CardAdmin
-          :description="lang?.galleryadminpage?.descriptions?.createAlbumImages"
-          :title="lang?.galleryadminpage?.titles?.addAlbum" :icon="CreateAlbum"
-          @click="updateNum(1)"
-        />
+        <CardAdmin :description="lang?.galleryadminpage?.descriptions?.createAlbumImages"
+          :title="lang?.galleryadminpage?.titles?.addAlbum" :icon="CreateAlbum" @click="updateNum(1)" />
       </div>
       <div class="col-12 col-md-4 mb-3">
-        <CardAdmin
-          :description="lang?.galleryadminpage?.descriptions?.editDeleteAlbum"
-          :title="lang?.galleryadminpage?.titles?.editAlbum"
-          :icon="updateAlbum"
-          @click="updateNum(2)"
-        />
+        <CardAdmin :description="lang?.galleryadminpage?.descriptions?.editDeleteAlbum"
+          :title="lang?.galleryadminpage?.titles?.editAlbum" :icon="updateAlbum" @click="updateNum(2)" />
       </div>
       <div class="col-12 col-md-4 mb-3">
-        <CardAdmin
-          :description="lang?.galleryadminpage?.descriptions?.addImageAlbum"
-          :title="lang?.galleryadminpage?.titles?.addImage" :icon="AddPhoto"
-          @click="updateNum(3)"
-        />
+        <CardAdmin :description="lang?.galleryadminpage?.descriptions?.addImageAlbum"
+          :title="lang?.galleryadminpage?.titles?.addImage" :icon="AddPhoto" @click="updateNum(3)" />
       </div>
     </div>
 
@@ -144,53 +132,32 @@ const createGallery = () => {
             <div class="row">
               <!-- Campos -->
               <div class="col-6 form-floating">
-                <input
-                  v-model="gallery.description"
-                  type="text"
-                  class="form-control"
-                  id="floatingDescription"
-                  :placeholder="lang?.galleryadminpage?.titles?.description"
-                />
+                <input v-model="gallery.description" type="text" class="form-control" id="floatingDescription"
+                  :placeholder="lang?.galleryadminpage?.titles?.description" />
                 <label class="ms-3" for="floatingDescription">{{
                   lang?.galleryadminpage?.titles?.description
                 }}</label>
               </div>
 
               <div class="col-6 form-floating mb-3">
-                <input
-                  v-model="gallery.year"
-                  type="number"
-                  class="form-control"
-                  id="floatingNumber"
-                  :placeholder="lang?.galleryadminpage?.titles?.year"
-                />
+                <input v-model="gallery.year" type="number" class="form-control" id="floatingNumber"
+                  :placeholder="lang?.galleryadminpage?.titles?.year" />
                 <label class="ms-3" for="floatingNumber">{{
                   lang?.galleryadminpage?.titles?.year
                 }}</label>
               </div>
 
               <!-- Drop Zone -->
-              <div
-                class="drop-zone mb-4 p-5 border rounded d-flex justify-content-center align-items-center"
-                @dragover.prevent
-                @drop.prevent="handleDrop"
-                :class="{ 'drag-over': isDragging }"
-                @dragenter.prevent="isDragging = true"
-                @dragleave.prevent="isDragging = false"
-              >
+              <div class="drop-zone mb-4 p-5 border rounded d-flex justify-content-center align-items-center"
+                @dragover.prevent @drop.prevent="handleDrop" :class="{ 'drag-over': isDragging }"
+                @dragenter.prevent="isDragging = true" @dragleave.prevent="isDragging = false">
                 <div class="text-center">
                   <i class="bi bi-cloud-upload fs-1"></i>
                   <p class="mb-0">{{ lang?.galleryadminpage?.descriptions?.dropImage }}</p>
                   <label class="btn btn-primary mt-2 btn-label" for="fileInput">
                     {{ lang?.galleryadminpage?.titles?.selectFile }}
-                    <input
-                      type="file"
-                      id="fileInput"
-                      multiple
-                      accept="image/*"
-                      class="d-none"
-                      @change="handleFileSelect"
-                    />
+                    <input type="file" id="fileInput" multiple accept="image/*" class="d-none"
+                      @change="handleFileSelect" />
                   </label>
                 </div>
               </div>
@@ -223,6 +190,10 @@ const createGallery = () => {
         <!-- Editar Imágenes -->
         <div v-if="num == 2">
           <h1>{{ lang?.galleryadminpage?.titles?.edit }}</h1>
+          <div v-if="images.length === 0">
+            <p class="mb-0">Aun no hay nada para editar!</p>
+            <LottieEmptyBoxAnimation/>
+          </div>
         </div>
 
         <!-- Crear Album -->
