@@ -29,8 +29,8 @@
             </div>
             <div class="row mb-5">
                 <div class="col-12">
-                    <h2>{{ lang?.eventpage?.titles?.description }}</h2>
-                    <p>{{ event.description }}</p>
+                    <h2 class="ev-detail">{{ lang?.eventpage?.titles?.description }}</h2>
+                    <p class="ev-detail">{{ event.description }}</p>
                 </div>
             </div>
 
@@ -227,8 +227,8 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.dark-mode .ev-detail { color: white;}
 .event-detail {
-    /* background-color: #f8f9fa; */
     background-color: var(--background-color-3);
     min-height: 100vh;
 }
@@ -244,7 +244,11 @@ onMounted(async () => {
     object-fit: cover;
 }
 
+.dark-mode .card {
+    color: black;
+}
 .card {
+    color: var(--text-color-3);
     border: none;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);

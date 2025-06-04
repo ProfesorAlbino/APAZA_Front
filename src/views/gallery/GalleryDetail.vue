@@ -9,34 +9,27 @@
                 <div class="row g-3 px-sm-md-2">
                     <div v-for="(image, index) in images" :key="index" class="col-md-4 col-sm-6">
                         <div class="card h-100">
-                            <img :src="image" class="card-img-top" alt="Preview" />
-                            <div class="card-body" style="display: flex; justify-content: space-around">
-                                <p class="btn btn-danger btn-sm" @click="removeImage(index)">
-                                    {{ lang?.gallerydetailpage?.bottoms?.delete }}
-                                </p>
-                                <a :href="image" :download class="btn btn-primary btn-sm"> {{ lang?.gallerydetailpage?.bottoms?.download }}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ lang?.gallerydetailpage?.titles?.main }}</h5>
-                            <div class="my-2" v-if="isAdmin">
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">{{ lang?.gallerydetailpage?.titles?.description }}</label>
-                                    <input v-model="updatedGallerys.description" type="text" class="form-control"
-                                        id="description" />
+                            <img :src="image" class="card-image rounded" alt="Preview" />
+                            <div class="card-body">
+                                <div class="d-flex justify-content-end">
+                                    <p class="btn btn-danger btn-sm d-flex align-items-center me-1"
+                                        @click="removeImage(index)" style="height: 40px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#e3e3e3">
+                                            <path
+                                                d="M292.31-140q-29.92 0-51.12-21.19Q220-182.39 220-212.31V-720h-40v-60h180v-35.38h240V-780h180v60h-40v507.69Q740-182 719-161q-21 21-51.31 21H292.31ZM680-720H280v507.69q0 5.39 3.46 8.85t8.85 3.46h375.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46V-720ZM376.16-280h59.99v-360h-59.99v360Zm147.69 0h59.99v-360h-59.99v360ZM280-720v520-520Z" />
+                                        </svg>
+                                    </p>
+                                    <a :href="image" :download class="btn btn-primary btn-sm  d-flex align-items-center"
+                                        role="button" style="height: 40px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                            width="24px" fill="#e3e3e3">
+                                            <path
+                                                d="M480-328.46 309.23-499.23l42.16-43.38L450-444v-336h60v336l98.61-98.61 42.16 43.38L480-328.46ZM252.31-180Q222-180 201-201q-21-21-21-51.31v-108.46h60v108.46q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85h455.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-108.46h60v108.46Q780-222 759-201q-21 21-51.31 21H252.31Z" />
+                                        </svg>
+                                    </a>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="description" class="form-label">{{ lang?.gallerydetailpage?.titles?.year }} </label>
-                                    <input v-model="updatedGallerys.year" type="number" class="form-control" id="year" />
-                                </div>
-                                <button class="btn btn-success ms-3" @click="saveChanges">{{ lang?.gallerydetailpage?.bottoms?.save }}</button>
-                                <button @click="goToPage('/admin/add-gallery')" class="btn btn-secondary">
-                                    {{ lang?.gallerydetailpage?.bottoms?.goGallery }}
-                                </button>
+
                             </div>
                         </div>
                     </div>
@@ -46,6 +39,35 @@
 
             <div class="row mt-5">
                 <div class="col-12 text-center"></div>
+            </div>
+        </div>
+        <div class="banner text-center py-5 mb-5">
+            <div class="d-flex justify-content-center">
+                <div class="card" ref="imageCard">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ lang?.gallerydetailpage?.titles?.main }}</h5>
+                        <div class="my-2" v-if="isAdmin">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">{{
+                                    lang?.gallerydetailpage?.titles?.description
+                                    }}</label>
+                                <input v-model="updatedGallerys.description" type="text" class="form-control"
+                                    id="description" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">{{ lang?.gallerydetailpage?.titles?.year
+                                    }}
+                                </label>
+                                <input v-model="updatedGallerys.year" type="number" class="form-control" id="year" />
+                            </div>
+                            <button class="btn btn-primary ms-3 me-2" @click="saveChanges">{{
+                                lang?.gallerydetailpage?.bottoms?.save }}</button>
+                            <button @click="goToPage('/admin/add-gallery')" class="btn btn-secondary">
+                                {{ lang?.gallerydetailpage?.bottoms?.goGallery }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -89,6 +111,7 @@ const router = useRouter()
 const isAdmin = ref(false)
 
 const lang = ref({})
+const imageCard = ref();
 const PAGE = 'gallerydetailpage'
 const infModal = ref({})
 const gallery = ref({})
@@ -159,7 +182,7 @@ const saveChanges = async () => {
             gallery.value.description = updatedGallerys.value.description
             gallery.value.year = updatedGallerys.value.year
             sessionStorage.setItem('gallery', JSON.stringify(gallery.value));
-            
+
 
             setTimeout(() => {
                 router.go(0)
@@ -205,6 +228,7 @@ onMounted(async () => {
             router.go(0)
         })
 })
+
 </script>
 
 <style scoped>
@@ -231,6 +255,7 @@ onMounted(async () => {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+
 .list-group-item {
     border-left: none;
     border-right: none;
@@ -251,39 +276,24 @@ h3 {
     margin-bottom: 1rem;
 }
 
-.btn-primary {
-    /*  background-color: #4ecdc4;
-    border-color: #4ecdc4; */
-    background-color: var(--primary-color);
-    border-color: var(--decorative-color);
-}
-
 .btn-primary:hover {
-    /* background-color: #45b7ae;
-    border-color: #45b7ae; */
     background-color: var(--primary-color);
-    border-color: var(--decorative-color);
 }
 
 .btn-secondary {
-    /* background-color: #ff6b6b;
-    border-color: #ff6b6b; */
-    background-color: var(--primary-color);
-    border-color: var(--decorative-color);
     transition: transform 0.2s ease-in-out;
 }
 
 .btn-secondary:hover {
-    /*  background-color: #ff5252;
-    border-color: #ff5252; */
     transform: scale(1.1);
     transition: transform 0.2s ease-in-out;
     background-color: var(--decorative-color);
     border-color: var(--decorative-color);
 }
 
-.card-img-top {
+.card-image {
     height: 200px;
     object-fit: cover;
+    cursor: pointer;
 }
 </style>

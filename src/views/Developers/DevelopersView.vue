@@ -32,7 +32,7 @@ const router = useRouter();
           name: 'Jonathan',
           jobTitle: 'System Engineer',
           description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!',
-          image: '/path/to/joe.jpg',
+          image: '/devs/user.png',
           email: 'joe.smith@example.com',
           linkedin: 'https://linkedin.com/in/joesmith',
           github: 'https://github.com/joesmith'
@@ -42,7 +42,7 @@ const router = useRouter();
           name: 'Yeikel',
           jobTitle: 'System Engineer',
           description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!',
-          image: '/path/to/fanny.jpg',
+          image: '/devs/user.png',
           email: 'fanny.caceres@example.com',
           linkedin: 'https://linkedin.com/in/fannycaceres',
           github: 'https://github.com/fannycaceres'
@@ -52,7 +52,7 @@ const router = useRouter();
           name: 'Jafeth',
           jobTitle: 'System Engineer',
           description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt, voluptatum!',
-          image: '/path/to/joe.jpg',
+          image: '/devs/user.png',
           email: 'joe.smith@example.com',
           linkedin: 'https://linkedin.com/in/joesmith',
           github: 'https://github.com/joesmith'
@@ -179,7 +179,7 @@ const secondRow = profiles.value.slice(firstRowCount);
   }
   
   .card-header {
-    background-color: #0d6e6e;
+    background-color: var(--decorative-color);
     height: 120px;
     position: relative;
     border-radius: 8px 8px 0 0;
@@ -216,7 +216,7 @@ const secondRow = profiles.value.slice(firstRowCount);
   
   .job-title {
     margin: 5px 0 15px;
-    color: #0d6e6e;
+    color: var(--decorative-color);
     font-weight: 600;
   }
   
@@ -240,14 +240,13 @@ const secondRow = profiles.value.slice(firstRowCount);
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #0d6e6e;
+    background-color: var(--decorative-color);
     color: white;
     text-decoration: none;
     transition: all 0.3s ease;
   }
   
   .icon:hover {
-    background-color: #0a5b5b;
     transform: translateY(-3px);
   }
   

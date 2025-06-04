@@ -8,8 +8,10 @@ import { getLangForPage, getConfig } from '@/config/BasicConfig';
 import { ref, onMounted } from 'vue';
 import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader'
 import BaseLoader from '@/components/loaders/BaseLoader.vue'
-
 import { useRouter } from 'vue-router';
+import TEA from '@/assets/imgwebp/awarenessTEA.jpg'
+import wthIsTEA from '@/assets/imgwebp/whtIsTea.jpg'
+import AboutAPAZA from '@/assets/imgwebp/about.jpg';
 
 const PAGE = 'homepage';
 const router = useRouter();
@@ -43,19 +45,19 @@ function navigate(url) {
 
   <section id="principal">
     <CardImageRight :title="lang.homepage?.titles?.whatIsTea || ''"
-      :description="lang.homepage?.body?.descriptionTea || ''" url="/Apaza/WhatIsTheAutism.png" :order="false"
+      :description="lang.homepage?.body?.descriptionTea || ''"  :url="TEA" :order="false"
       data-aos="zoom-in-right" />
 
     <!-- v-if="lang.homepage && lang.homepage.titles && lang.homepage.body" -->
     <CardImageLeft :title="lang.homepage?.titles?.characteristicsTea || ''"
-      :description="lang.homepage?.body?.descriptionCharacteristicsTea || ''" url="/Apaza/FirstCharacteristics.png"
+      :description="lang.homepage?.body?.descriptionCharacteristicsTea || ''" :url="wthIsTEA"
       :order="false" data-aos="zoom-in-left" />
   </section>
 
   <section class="about-section">
     <div class="row align-items-center">
       <div class="col-lg-6 mb-4 mb-lg-0 px-4">
-        <img src="/Apaza/APAZA_FONDO.jpg" alt="Acerca de Nosotros" class="img-fluid about-image">
+        <img :src="AboutAPAZA" alt="Acerca de Nosotros" class="img-fluid about-image">
       </div>
       <div class="col-lg-6 px-4">
         <h2 class="about-title">{{ lang.homepage?.titles?.informationTeaApaza || '' }}</h2>
