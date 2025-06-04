@@ -5,6 +5,7 @@ import './styles/General.css'
 import 'aos/dist/aos.css'
 import AOS from "aos"
 import 'bootstrap/dist/css/bootstrap.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 const app = createApp(App)
 
