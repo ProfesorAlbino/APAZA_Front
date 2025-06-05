@@ -51,6 +51,7 @@ defineProps({
 }
 
 .event-card {
+    color: var(--text-color-3);
     transition: all 0.3s ease;
     border: none;
     border-radius: 15px;
@@ -70,20 +71,17 @@ defineProps({
 }
 
 .card-title {
-    /* color: #333; */
-    color: var(--text-color-3);
     font-weight: bold;
 }
 
-.card-text {
-    /* color: #666; */
-    color: var(--text-color-3);
+.card-title, .card-text {
+    color: #2C2C2C
 }
-
+.dark-mode .card-footer .text-muted {
+  color: #ffff !important;
+}
 .card-footer {
-    /* background-color: #fff; */
     background-color: var(--background-color-3);
-    /* border-top: 1px solid #f0f0f0; */
     border-top: 1px solid var(--background-color);
 }
 </style>
