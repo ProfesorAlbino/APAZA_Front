@@ -40,11 +40,11 @@
               </div>
               <div class="mb-3">
                 <label for="name" class="form-label">{{ lang?.memberpage?.editModal?.name }}</label>
-                <input v-model="member.name" type="text" class="form-control" id="name" required />
+                <input v-model="updatedMember.name" type="text" class="form-control" id="name" required />
               </div>
               <div class="mb-3">
                 <label for="role" class="form-label">{{ lang?.memberpage?.editModal?.role }}</label>
-                <input v-model="member.role" type="text" class="form-control" id="role" required />
+                <input v-model="updatedMember.role" type="text" class="form-control" id="role" required />
               </div>
               <div class="mb-3">
                 <label for="photo" class="form-label">{{ lang?.memberpage?.editModal?.photo }}</label>
@@ -77,6 +77,10 @@ import LoadingModal from '@/components/modals/LoadingModal.vue';
 const router = useRouter();
 const isAdmin = ref(false);
 const member = ref({});
+const updatedMember = ref({
+    name: '',
+    role: ''
+});
 const PAGE = 'memberpage';
 const lang = ref({});
 const infModal = ref({});
@@ -110,8 +114,8 @@ const editMember = async () => {
     isLoading.value = true;
     const editMember={
         id: member.value._id,
-        name: member.value.name,
-        role: member.value.role,
+        name: updatedMember.value.name,
+        role: updatedMember.value.role,
         image: previewImage.value|| null
     };
     console.log(editMember);
@@ -121,6 +125,8 @@ const editMember = async () => {
       closeModalEdit();
       if (previewImage.value)
       member.value.photo = imagePresent.value;
+        member.value.name = updatedMember.value.name;
+        member.value.role = updatedMember.value.role;
         sessionStorage.setItem('member', JSON.stringify(member.value));
         imagePresent.value = null;
     }, 1500);
@@ -163,7 +169,8 @@ onMounted(async() => {
     if (!item) router.push('/board');
     member.value = JSON.parse(item);
 
-    console.log(member.value);
+    updatedMember.value.name = member.value.name;
+    updatedMember.value.role = member.value.role;
 
     await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
         lang.value = data;

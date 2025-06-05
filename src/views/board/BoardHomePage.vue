@@ -22,11 +22,6 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ member.name }}</h5>
                                     <p class="card-text">{{ member.role }}</p>
-                                    <div class="social-icons">
-                                        <i class="fab fa-facebook-f"></i>
-                                        <i class="fab fa-twitter"></i>
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoader'
 import { getLangForPage, getConfig } from '@/config/BasicConfig';
+import apazaImg from '@/assets/imgwebp/aboutUs.jpg'
 
 const PAGE = 'aboutUs';
 const router = useRouter();
@@ -44,7 +45,7 @@ onMounted(async () => {
                     </div>
                     <div class="col-lg-6">
                         <div class="image-container">
-                            <img src="/Apaza/AcercaDe.png" alt="Acerca de Nosotros" class="img-fluid about-image">
+                            <img :src="apazaImg" alt="Acerca de Nosotros" class="img-fluid about-image">
                         </div>
                     </div>
                 </div>

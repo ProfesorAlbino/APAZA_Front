@@ -47,13 +47,6 @@
         <BoardIcon class="menu-icon"></BoardIcon>
         <label>{{ lang?.navbar?.titles?.team || '' }}</label>
         </li>
-        <li
-          class="d-flex flex-row aside-item"
-          
-        >
-          <OtherIcon class="menu-icon" />
-          <label>{{ lang?.sidebar?.menu?.others ?? '' }}</label>
-        </li>
       </ul>
       <div class="dropdown ms-3">
         <button
@@ -182,9 +175,8 @@ const toggleSidebar = () => {
   transition: all 0.3s;
 }
 
-#sidebar ul .aside-item:hover {
-  color: var(--accent-color);
-  background: rgba(var(--white-color-rgb), 0.20)
+#sidebar ul .aside-item:not(.active):hover {
+  background: rgba(var(--white-color-rgb), 0.1)
 }
 #sidebar ul li label:hover {
   cursor: pointer;

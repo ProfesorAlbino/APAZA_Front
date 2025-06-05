@@ -15,6 +15,8 @@ import DashboardPanel from '@/views/dashboard/DashboardPanel.vue'
 import BoardHomePage from '@/views/board/BoardHomePage.vue'
 import AddMemberPage from '@/views/board/AddMemberPage.vue'
 import MemberPage from '@/views/board/MemberPage.vue'
+import GalleryDetail from '@/views/gallery/GalleryDetail.vue'
+import DevelopersView from '@/views/Developers/DevelopersView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -66,6 +68,11 @@ const router = createRouter({
           path: 'add-member',
           name: 'add-member',
           component: AddMemberPage
+        },
+        {
+          path: 'gallery-detail',
+          name: 'gallery-detail',
+          component: GalleryDetail
         }
       ]
     },
@@ -109,6 +116,11 @@ const router = createRouter({
           path: 'member',
           name: 'member',
           component: MemberPage
+        },
+        {
+          path: 'developers',
+          name: 'developers',
+          component: DevelopersView
         }
       ]
     }
