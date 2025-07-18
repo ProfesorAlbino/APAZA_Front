@@ -2,41 +2,15 @@
 
     <section :class="hasToShowMargin()">
         <div class="events-container">
-            <div class="banner text-center py-5 rounded-5 rounded-top-0">
-                <h1 class="display-4 text-white">{{ lang?.boardhomepage?.titles?.boards || "" }}</h1>
-                <div class="text-center" v-if="isAdmin">
-                    <button @click="goToAddMember" class="btn btn-primary btn-lg btn-block" v-if="isInAdminPage(router.currentRoute.value.path)">{{
-                        lang?.boardhomepage?.titles?.addmember }}</button>
-                </div>
-            </div>
+            <!-- <div class="banner text-center py-5 rounded-5 rounded-top-0">
+                <h1 class="display-4 text-white">{{ lang?.navbar?.titles?.sponsors || "" }}</h1>
+            </div> -->
             <div class="events-container relative px-5">
 
-                <img src="/Apaza/.webp/rompecabezas.webp" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover opacity-50 z2"
+                <img src="/Apaza/.webp/EnConstruccion.png" alt="rompecabezas" class="img-fluid top-0 left-0 w-full h-full object-cover z2"
                     id="background" />
 
-                <div class="z1">
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
-                        <div v-for="(member, index) in members" :key="index" class="col d-flex justify-content-center">
-                            <div class="card member-card text-center" @click="goToMemberPage(member)">
-                                <img :src="member.photo" class="card-img-top profile-img" alt="Foto de {{ member.name }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ member.name }}</h5>
-                                    <p class="card-text">{{ member.role }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div v-if="charge" class="m-5 p-5 d-flex justify-content-center">
-                        <div class="spinner-border" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                        <p class="ms-3 fs-4">{{ lang?.loading }}</p>
-                    </div>
-
-                    <div v-if="members.length === 0 && !charge" class="text-center">
-                        <h2>{{ lang?.boardhomepage?.titles?.nomembers }}</h2>
-                    </div>
-                </div>
+                <img src="" alt=""  id="background">
             </div>
 
         </div>
@@ -45,7 +19,6 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { getMembers } from '@/services/BoardService';
 import { useRouter } from 'vue-router';
 import { isUserLoggedAdmin, isInAdminPage } from '@/utils/Validations';
 import { getLangForPage, getConfig } from '@/config/BasicConfig';
@@ -54,35 +27,10 @@ import { getLangForPage, getConfig } from '@/config/BasicConfig';
 const router = useRouter();
 const members = ref([]);
 const isAdmin = ref(false);
-const charge = ref(true);
-const PAGE = 'boardhomepage';
+const PAGE = 'homepage';
 const lang = ref({});
 
-const getMember = async () => {
-    try {
-        await getMembers().then(data => {
-            members.value = data.data.data;
-            charge.value = false;
-        });
-    } catch (error) {
-        router.go(0); 
-    }
-};
 
-function goToMemberPage(member) {
-    sessionStorage.setItem('member', JSON.stringify(member));
-    router.push(`/member`);
-}
-
-
-
-function goToAddMember() {
-    router.push('/admin/add-member');
-}
-
-/* function isInAdminPage(){
-    return router.currentRoute.value.path === "/admin/event-list";
-} */
 
 function hasToShowMargin(){
     return members.value.length === 0 && !isInAdminPage(router.currentRoute.value.path) ? 'mt-3' : '';
@@ -90,7 +38,6 @@ function hasToShowMargin(){
 
 onMounted(async () => {
     isAdmin.value = isUserLoggedAdmin();
-    await getMember();
     await getLangForPage(getConfig().CURRENT_LANG, PAGE).then((data) => {
         lang.value = data;
     }).catch(() => {
@@ -257,7 +204,6 @@ onMounted(async () => {
 
 .card-body {
     padding: 20px;
-      background: var(--background-color-4);
 }
 
 .card-title {

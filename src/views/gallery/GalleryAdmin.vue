@@ -176,7 +176,7 @@ const viewAlbum = (albumId) => {
 }
 
 const changePage = (page) => {
-  getGallerys(page);
+  getGallerys(page,num.value);
 }
 
 const modalDeleteInfo = ref({
@@ -186,7 +186,7 @@ const modalDeleteInfo = ref({
   acceptText: infModal.value.delete,
   onAccept: async () => {
     await deleteGallery(gallery.value._id);
-    await getGallerys(configPagination.page);
+    await getGallerys(configPagination.page, num.value);
     gallery.value = {};
   }
 });
