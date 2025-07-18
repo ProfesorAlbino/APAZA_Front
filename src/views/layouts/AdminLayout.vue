@@ -18,18 +18,26 @@ import SideBar from '@/components/templates/SideBar.vue'
 
 <style scoped>
 .main-wrapper {
-  width: calc(100%-250px);
-}
-.ml-250{
+  flex: 1;
   margin-left: 250px;
+  min-height: 100vh;
 }
-main{
-  background-color: #edf2f9;
+
+.container-fluid {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  background-color: var(--background-color-4);
+}
+
+main {
+  background-color: var(--background-color-4);
+  min-height: 100vh;
 }
 
 @media (max-width: 768px) {
-    .ml-250 {
-      margin-left: 0%;
-    }
+  .main-wrapper {
+    margin-left: 0;
+  }
 }
 </style>

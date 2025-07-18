@@ -36,7 +36,7 @@ function addGallery(gallery){
 function updateGallery(gallery){
   const eventData = new FormData();
   eventData.append('id', gallery.id);
-  //eventData.append('year', gallery.year);
+  eventData.append('year', gallery.year);
   eventData.append('description', gallery.description);
   // Recorrer y agregar cada imagen al FormData
   gallery.images.forEach((image) => {

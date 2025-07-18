@@ -14,7 +14,7 @@
                 <h5 class="card-title">{{ lang?.memberpage?.actions?.main }}</h5>
                 <button class="btn btn-secondary" @click="goToPage('/admin/board-list')">{{ lang?.memberpage?.actions?.listAdmin }}</button>
                 <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editMemberModal">{{ lang?.memberpage?.actions?.edit }}</button>
-                <button class="btn btn-danger ms-3" @click="modalDelete">{{ lang?.memberpage?.actions?.delete }}</button>
+                <button class="btn btn-danger " @click="modalDelete">{{ lang?.memberpage?.actions?.delete }}</button>
             </div>
             <div class="text-center mt-3">
                 <button @click="goToPage('/board')" class="btn btn-custom">{{ lang?.memberpage?.actions?.list }}</button>
@@ -183,43 +183,382 @@ onMounted(async() => {
 
 <style scoped>
 .event-detail {
-    background-color: var(--background-color-3);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  font-family: var(--text-font-1);
+  background: linear-gradient(135deg, var(--background-color-3) 0%, var(--background-color) 100%);
+  min-height: 100vh;
 }
 
+/* Banner Hero Section */
 .banner {
-    background: linear-gradient(45deg, var(--primary-color), var(--background-color));
-    width: 100%;
-    height: 150px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+}
+
+.banner .display-4 {
+  font-family: var(--text-font-1);
+  font-weight: 800;
+  color: var(--text-color-1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Container Principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Cards de Miembro */
 .card {
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 20px;
+  background: var(--background-color-4);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.card .img-fluid {
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  object-fit: cover;
+}
+
+.card .img-fluid:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+.card .display-5 {
+  color: var(--text-color-2);
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.card .lead {
+  color: var(--text-color-3);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* Card de Acciones de Administrador */
+.card-title {
+  color: var(--text-color-2);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.card-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+  border-radius: 2px;
+}
+
+/* Botones */
+.btn {
+  font-family: var(--text-font-1);
+  font-weight: 600;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 0.4rem;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #5a6268, #495057);
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, #ffc107, #ffb300);
+  color: #212529;
+}
+
+.btn-warning:hover {
+  background: linear-gradient(135deg, #ffb300, #ffa000);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #c82333, #bd2130);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: var(--text-color-1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
 }
 
 .btn-custom {
-    background-color: var(--primary-color);
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 25px;
-    transition: transform 0.2s ease-in-out, background-color 0.2s;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: var(--text-color-1);
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  margin-top: 2rem;
 }
 
 .btn-custom:hover {
-    background-color: var(--decorative-color);
-    transform: scale(1.1);
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  transform: translateY(-3px);
+}
+
+/* Modal Styles */
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.75rem auto;
+  max-width: 600px;
 }
 
 .modal-content {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  width: 100%;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: var(--text-color-1);
+  border-radius: 20px 20px 0 0;
+  border-bottom: none;
+}
+
+.modal-title {
+  font-family: var(--text-font-1);
+  font-weight: 700;
+}
+
+.modal-body {
+  padding: 2rem;
+  background: var(--background-color-4);
+}
+
+.modal-body .text-center {
+  margin-bottom: 1.5rem;
+}
+
+.modal-body .img-thumbnail {
+  display: block;
+  margin: 0 auto;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--accent-color);
+  padding: 5px;
+}
+
+.form-label {
+  color: var(--text-color-2);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    padding: 3rem 0;
+    border-radius: 0 0 20px 20px;
+  }
+  
+  .banner .display-4 {
+    font-size: 2rem;
+  }
+  
+  .card {
+    margin-bottom: 2rem;
+  }
+  
+  .card .display-5 {
+    font-size: 1.5rem;
+  }
+  
+  .card .lead {
+    font-size: 1.1rem;
+  }
+  
+  .btn {
+    width: 100%;
+    margin: 0.2rem 0;
+  }
+  
+  .btn-custom {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+  
+  .modal-dialog {
+    margin: 1rem auto;
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner {
+    padding: 2rem 0;
+  }
+  
+  .banner .display-4 {
+    font-size: 1.8rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .card .display-5 {
+    font-size: 1.3rem;
+  }
+  
+  .card .lead {
+    font-size: 1rem;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+  }
+  
+  .modal-dialog {
+    margin: 0.5rem auto;
+    max-width: 98vw;
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+}
+
+/* Mejoras de Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible para navegación por teclado */
+.btn:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.form-control:focus-visible,
+.form-select:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+  .card {
+    background: white;
+    border: 2px solid #000;
+  }
+  
+  .btn {
+    border: 2px solid #000;
+  }
 }
 </style>

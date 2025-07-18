@@ -65,9 +65,9 @@ import AdminIcon from '../icons/MenuIcons/AdminIcon.vue'
               <label>{{ lang.value?.navbar?.titles?.team || '' }}</label>
             </li>
             <li :class="[
-                { 'active': $route.path === '/developers' },
+                { 'active': $route.path === '/partners' },
                 'nav-item'
-              ]" @click="goToPage('/developers')"
+              ]" @click="goToPage('/partners')"
                data-bs-dismiss="offcanvas">
               <PartnerIcon class="menu-icon"></PartnerIcon>
               <label>{{ lang.value?.navbar?.titles?.sponsors || '' }}</label>

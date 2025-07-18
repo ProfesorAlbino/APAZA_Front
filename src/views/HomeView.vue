@@ -1,5 +1,5 @@
 <script setup>
-import wave from '@/components/WaveShape.vue';
+import wave from '@/components/WaveCarrusel.vue';
 import CardImageRight from '../components/cards/CardImageRight.vue';
 import CardImageLeft from '../components/cards/CardImageLeft.vue';
 import CardFullImage from '@/components/cards/CardFullImage.vue';
@@ -15,6 +15,14 @@ import AboutAPAZA from '@/assets/imgwebp/about.jpg';
 
 const PAGE = 'homepage';
 const router = useRouter();
+
+const heroImages = ref([
+  '/src/assets/imgwebp/carrusel1.jpg',
+  '/src/assets/imgwebp/carrusel2.jpg',
+  '/src/assets/imgwebp/carrusel3.jpg',
+  '/src/assets/imgwebp/carrusel4.jpg',
+  // Agrega todas las imágenes que quieras para el carrusel
+])
 
 //Así se implementa el cambio de idioma, IMPORTANTE el operador condicional(o v-if) en el template para que no se caiga la página
 const lang = ref({});
@@ -38,10 +46,17 @@ function navigate(url) {
 </script>
 
 <template>
-  <section id="hero" >
-    <wave class="mb-20" url="/Background/bg-shape.webp" title="" description="Asociación de Personas con Autismo de la Zona Atlántica" data-aos="zoom-out"
-      data-aos-duration="1000" />
-  </section>
+  <section id="hero">
+  <wave 
+    class="mb-20" 
+    :images="heroImages"
+    title="" 
+    description="Asociación de Personas con Autismo de la Zona Atlántica" 
+    :interval="30000"
+    data-aos="zoom-out"
+    data-aos-duration="1000" 
+  />
+</section>
 
   <section id="principal">
     <CardImageRight :title="lang.homepage?.titles?.whatIsTea || ''"
@@ -53,8 +68,10 @@ function navigate(url) {
       :description="lang.homepage?.body?.descriptionCharacteristicsTea || ''" :url="wthIsTEA"
       :order="false" data-aos="zoom-in-left" />
   </section>
+  
 
   <section class="about-section">
+
     <div class="row align-items-center">
       <div class="col-lg-6 mb-4 mb-lg-0 px-4">
         <img :src="AboutAPAZA" alt="Acerca de Nosotros" class="img-fluid about-image">

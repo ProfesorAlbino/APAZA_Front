@@ -48,6 +48,10 @@
         <label>{{ lang?.navbar?.titles?.team || '' }}</label>
         </li>
       </ul>
+      <div class="d-flex justify-content-left">
+        <ButtonDarkMode class="bs-padding" :themeLabel="lang" />
+      </div>
+      <br>
       <div class="dropdown ms-3">
         <button
           class="btn btn-outline-secondary dropdown-toggle"
@@ -82,7 +86,7 @@ import { rippleEffect } from '@/composables/rippleEffect'
 import DashboardIcon from '../icons/MenuIcons/DashboardIcon.vue'
 import GalleryIcon from '../icons/MenuIcons/GalleryIcon.vue'
 import EventsIcon from '../icons/MenuIcons/EventsIcon.vue'
-import OtherIcon from '../icons/MenuIcons/OtherIcon.vue'
+import ButtonDarkMode from '../ButtonDarkMode.vue'
 import ToHomeIcon from '../icons/MenuIcons/ToHomeIcon.vue'
 import BoardIcon from '../icons/MenuIcons/BoardIcon.vue'
 

@@ -23,7 +23,7 @@ const props = defineProps({
         <div class="row justify-content-center align-items-center">
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4 mb-md-0">
-                    <img :src="url" alt="Logo" class="img-fluid" />
+                    <img :src="url" alt="Logo" class="img-fluid about-image" />
                 </div>
                 <div class="col-md-6">
                     <div class="text-center text-md-start">
@@ -48,5 +48,14 @@ p {
     color: var(--text-color-3);
     font-family: var(--text-font-2);
     text-align: justify;
+}
+
+.about-image {
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.about-image:hover {
+  transform: scale(1.02);
 }
 </style>

@@ -17,6 +17,7 @@ import AddMemberPage from '@/views/board/AddMemberPage.vue'
 import MemberPage from '@/views/board/MemberPage.vue'
 import GalleryDetail from '@/views/gallery/GalleryDetail.vue'
 import DevelopersView from '@/views/Developers/DevelopersView.vue'
+import PartnersView from '@/views/Partners/PartnersView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -121,6 +122,11 @@ const router = createRouter({
           path: 'developers',
           name: 'developers',
           component: DevelopersView
+        },
+        {
+          path: 'partners',
+          name: 'partners',
+          component: PartnersView
         }
       ]
     }
