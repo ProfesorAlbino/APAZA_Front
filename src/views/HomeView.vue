@@ -10,7 +10,7 @@ import { initPreloader, removePreloader } from '@/components/loaders/useBaseLoad
 import BaseLoader from '@/components/loaders/BaseLoader.vue'
 import { useRouter } from 'vue-router';
 import TEA from '@/assets/imgwebp/awarenessTEA.jpg'
-import wthIsTEA from '@/assets/imgwebp/whtIsTea.jpg'
+import wthIsTEA from '@/assets/imgwebp/whtIsTEA.jpg'
 import AboutAPAZA from '@/assets/imgwebp/about.jpg';
 
 const PAGE = 'homepage';
